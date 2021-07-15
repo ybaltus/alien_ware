@@ -1,0 +1,18 @@
+# GLobal
+home: Accueil
+
+# Product
+product:
+  title: Produit
+
+# Cart
+cart:
+  title: Panier
+  content:
+    title: Contenu panier
+
+# User
+user:
+  title: Utilisateur
+
+
