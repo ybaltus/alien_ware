@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -20,6 +21,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *     message = "user.errors.email"
+     * )
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -30,17 +35,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     /**
+     * @Assert\NotBlank
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=50)
      */
     private $firstname;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      * @ORM\Column(type="string", length=50)
      */
     private $lastname;
