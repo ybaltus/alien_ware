@@ -17,6 +17,8 @@ order: Commande
 # Product
 product:
   title: Produit
+  PagesAll: Produits
+  ProductDesc: Voici tout les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes specialise dans la Haute-Technologie a Haute Performance
   added: Produit ajouté
   add: Ajouter un produit
   edit: Modifier le produit
@@ -24,6 +26,8 @@ product:
   unknown: Produit introuvable
   updated: Produit mis à jour
   deleted: Produit supprimé
+  addToCart: Ajouter au panier
+  currency: €
   errors:
     minName: Votre nom doit faire au minimum 3 caractères
     maxName: Votre nom doit faire au maximum 255 caractères

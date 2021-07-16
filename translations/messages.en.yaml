@@ -17,6 +17,8 @@ order: Order
 # Product
 product:
   title: Product
+  PagesAll: Products
+  ProductDesc: There is all the products we propose.As you can see, we are specialize in High-Technologie with High Performance
   added: Product added
   add: Add product
   edit: Edit product
@@ -24,6 +26,8 @@ product:
   unknown: Product unknown
   updated: Product updated
   deleted: Product deleted
+  addToCart: Add to Cart
+  currency: $
   errors:
     minName: Your name must be at least 3 characters long
     maxName: Your name cannot be longer than 255 characters

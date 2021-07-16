@@ -1,42 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product{% endblock %}
+{% block title %}Product
+{% endblock %}
 
 {% block body %}
-    <h1>Product</h1>
+	<div class="collection_text">{{product.name}}</div>
+	<div class="about_main layout_padding">
+		<div class="collection_section">
+			<div class="container">
+				<a class='btn btn-success' href="{{ path('product_index') }}">back to list</a>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ product.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ product.price }}</td>
-            </tr>
-            <tr>
-                <th>Stock</th>
-                <td>{{ product.stock }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ product.image }}</td>
-            </tr>
-        </tbody>
-    </table>
+				<a class='btn btn-success' href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+				{{ include('product/_delete_form.html.twig') }}
+			</div>
+			<div class="container">
+				<h1 class="new_text">
+					<strong>{{product.name}}</strong>
+				</h1>
+				<p class="consectetur_text">{{product.description}}</p>
+			</div>
+		</div>
+		<div class="collectipn_section_3 layout_padding">
+			<div class="container">
+				<div class="racing_shoes">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="shoes-img3"><img src="{{'/uploads/images_products/' ~ product.image}}"></div>
+						</div>
+						<div class="col-md-4">
+							<div class="sale_text">
+								<strong>Sale<br>
+									<span style="color:#0a0506;">JOGING</span><br>
+									SHOES</strong>
+							</div>
+							<div class="number_text">
+								<strong>$
+									<span style="color:#0a0506">100</span>
+								</strong>
+							</div>
+							<button class="btn btn-danger btn-lg">
+								{{'product.addToCart'|trans}}
+							</button>
+						</div>
+					</div>
+				</div>
 
-    <a href="{{ path('product_index') }}">back to list</a>
+			</div>
 
-    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+		</div>
+	</div>
 
-    {{ include('product/_delete_form.html.twig') }}
+
 {% endblock %}
