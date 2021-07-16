@@ -3,8 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\CartRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -25,7 +26,7 @@ class Cart
     private $purchaseAt;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default": false})
      */
     private $state;
 
@@ -33,6 +34,17 @@ class Cart
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="carts")
      */
     private $User;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CartContent::class, mappedBy="cart", orphanRemoval=true)
+     */
+    private $cartContents;
+
+    public function __construct()
+    {
+        $this->cartContents = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -71,6 +83,36 @@ class Cart
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CartContent[]
+     */
+    public function getCartContents(): Collection
+    {
+        return $this->cartContents;
+    }
+
+    public function addCartContent(CartContent $cartContent): self
+    {
+        if (!$this->cartContents->contains($cartContent)) {
+            $this->cartContents[] = $cartContent;
+            $cartContent->setCart($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCartContent(CartContent $cartContent): self
+    {
+        if ($this->cartContents->removeElement($cartContent)) {
+            // set the owning side to null (unless already changed)
+            if ($cartContent->getCart() === $this) {
+                $cartContent->setCart(null);
+            }
+        }
 
         return $this;
     }

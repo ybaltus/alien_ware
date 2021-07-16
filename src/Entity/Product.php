@@ -62,11 +62,6 @@ class Product
      */
     private $image;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=CartContent::class, inversedBy="product")
-     */
-    private $cartContent;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -128,18 +123,6 @@ class Product
     public function setImage(string $image): self
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    public function getCartContent(): ?CartContent
-    {
-        return $this->cartContent;
-    }
-
-    public function setCartContent(?CartContent $cartContent): self
-    {
-        $this->cartContent = $cartContent;
 
         return $this;
     }

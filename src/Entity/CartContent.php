@@ -6,6 +6,8 @@ use App\Repository\CartContentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=CartContentRepository::class)
@@ -20,17 +22,9 @@ class CartContent
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="cartContent")
-     */
-    private $product;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Cart::class, cascade={"persist", "remove"})
-     */
-    private $Cart;
-
-    /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank
+     * @Assert\PositiveOrZero
      */
     private $quantity;
 
@@ -39,57 +33,24 @@ class CartContent
      */
     private $createAt;
 
-    public function __construct()
-    {
-        $this->product = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $product;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Cart::class, inversedBy="cartContents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $cart;
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProduct(): Collection
-    {
-        return $this->product;
-    }
-
-    public function addProduct(Product $product): self
-    {
-        if (!$this->product->contains($product)) {
-            $this->product[] = $product;
-            $product->setCartContent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): self
-    {
-        if ($this->product->removeElement($product)) {
-            // set the owning side to null (unless already changed)
-            if ($product->getCartContent() === $this) {
-                $product->setCartContent(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getCart(): ?Cart
-    {
-        return $this->Cart;
-    }
-
-    public function setCart(?Cart $Cart): self
-    {
-        $this->Cart = $Cart;
-
-        return $this;
-    }
 
     public function getQuantity(): ?int
     {
@@ -114,4 +75,29 @@ class CartContent
 
         return $this;
     }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    public function getCart(): ?Cart
+    {
+        return $this->cart;
+    }
+
+    public function setCart(?Cart $cart): self
+    {
+        $this->cart = $cart;
+
+        return $this;
+    }
+
 }
