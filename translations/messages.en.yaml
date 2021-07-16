@@ -1,15 +1,33 @@
 # GLobal
 home: Home
+save: Save
+edit: Update
+delete: Delete
+send: Send
+seeMore: See More
+contact: Contact
+contactUs: Contact Us
+buy: Buy
+buyNow: Buy now
+about: About
+aboutUs: About Us
+phone: Phone
+order: Order
 
 # Product
 product:
   title: Product
+  errors:
+    minName:  Your name must be at least 3 characters long
+    maxName: Your name cannot be longer than 255 characters
+    minDescription:  Your last description must be at least 10 characters long
+    maxDescription: Your last description cannot be longer than 500 characters
 
 # Cart
 cart:
   title: Cart
   content:
-    title: Content cart
+    title: Cart content
 
 # User
 user:

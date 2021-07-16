@@ -43,6 +43,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @Assert\NotBlank
+     * @Assert\Length(
+     *  min = 2,
+     *  max = 50,
+     *  minMessage = "user.errors.minFirstname",
+     *  maxMessage = "user.errors.maxFirstname"
+     * )
      * @ORM\Column(type="string", length=50)
      */
     private $firstname;
@@ -50,10 +56,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @Assert\NotBlank
      * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     *  min = 2,
+     *  max = 50,
+     *  minMessage = "user.errors.minLastname",
+     *  maxMessage = "user.errors.minLastname"
      * )
      * @ORM\Column(type="string", length=50)
      */

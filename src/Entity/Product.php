@@ -22,16 +22,23 @@ class Product
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
-     *      min = 1,
+     *      min = 3,
      *      max = 255,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     *      minMessage = "product.errors.minName",
+     *      maxMessage = "product.errors.minName"
      * )
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 500,
+     *      minMessage = "product.errors.minDescription",
+     *      maxMessage = "product.errors.maxDescription"
+     * )
      */
     private $description;
 
@@ -49,8 +56,16 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      max = 255,
+     * )
      */
     private $image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=CartContent::class, inversedBy="product")
+     */
+    private $cartContent;
 
     public function getId(): ?int
     {
@@ -113,6 +128,18 @@ class Product
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCartContent(): ?CartContent
+    {
+        return $this->cartContent;
+    }
+
+    public function setCartContent(?CartContent $cartContent): self
+    {
+        $this->cartContent = $cartContent;
 
         return $this;
     }
