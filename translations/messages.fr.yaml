@@ -1,9 +1,27 @@
 # GLobal
 home: Accueil
+save: Sauvegarder
+edit: Modifier
+delete: Supprimer
+send: Envoyer
+seeMore: Voir plus
+contact: Contact
+contactUs: Nous contacter
+buy: Acheter
+buyNow: Acheter maintenant
+about: À propos
+aboutUs: À propos de nous
+phone: Téléphone
+order: Commande
 
 # Product
 product:
   title: Produit
+  errors:
+    minName:  Votre nom doit faire au minimum 3 caractères
+    maxName: Votre nom doit faire au maximum 255 caractères
+    minDescription: Votre description doit faire au minimum 10 caractères
+    maxDescription: Votre description doit faire au maximum 500 caractères
 
 # Cart
 cart:
@@ -14,5 +32,11 @@ cart:
 # User
 user:
   title: Utilisateur
+  errors:
+    email: L'email n'est pas valide.
+    minFirstname: Votre prénom doit avoir au moins 2 caractères
+    maxFirstname: Votre prénom doit avoir maximum 50 caractères
+    minLastname: Votre nom doit avoir au moins 2 caractères
+    maxLastname: Votre nom doit avoir au moins 50 caractères
 
 
