@@ -39,7 +39,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     /**
-     * @Assert\NotBlank
      * @var string The hashed password
      * @ORM\Column(type="string")
      */

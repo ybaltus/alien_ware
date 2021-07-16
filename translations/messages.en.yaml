@@ -35,9 +35,16 @@ cart:
 # User
 user:
   title: User
+  connect: Sign In
   signin: SignIn
   signup: SignUp
   signout: SignOut
+  profil:
+    title: My account
+    welcome: Welcome on your Alien-Where account !
+    order: My orders
+    edit: Edit my profil
+    delete: Delete my profil
   form:
     firstname: Your firstname
     lastname: Your lastname
@@ -47,6 +54,8 @@ user:
     roles: User role(s)
   messages:
     successRegister: You are well registered. Connect you!
+    successLogin: You are connected!
+    connected: You are logged in as
   errors:
     email: The email is not a valid email.
     minFirstname:  Your first name must be at least 2 characters long
