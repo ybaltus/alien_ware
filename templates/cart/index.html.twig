@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-5 text-center">Mon panier</h1>
+        {% if app.user == false %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom du produit</th>
+                    <th>Quantité</th>
+                    <th>Prix TTC €</th>
+                    <th>Montal Total</th>
+                    <th>Suppression</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cart in carts %}
+                    <tr>
+                        <td>{{ cart.cartContents.product }}</td>
+                        <td>{{ cart.cartContents.quantity}}</td>
+                        <td>{{ cart.state ? 'Yes' : 'No' }}</td>
+                        <td>{{ cart.state ? 'Yes' : 'No' }}</td>
+                        <td>
+                            <form method="post" action="{{ path('cart_delete', {'id': cart.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cart.id) }}">
+                                <button class="btn btn-danger">{{'delete'|trans}}</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">Aucuns produits dans le panier</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="btn-container">
+                <a href="" class="btn btn-success">Passer au paiement</a>
+            </div>
+
+
+        {% else %}
+            <div class="row">
+                <div class="col-md-12 m-5">
+                    <p colspan="4" class="text-center">Veuillez vous connectez pour voir vos produits sur le panier</p>
+                    <a href="" class="btn btn-primary btnSize">Connexion</a>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}
