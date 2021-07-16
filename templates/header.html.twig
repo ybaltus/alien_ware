@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
-                        <div class="logo"><a href="#"><img src="{{ asset("images/logo.png ") }}"></a></div>
+                        <div class="logo"><a href="#"><img src="{{ asset("images/monaka/monaka5.png ") }}" width="125"></a></div>
                     </div>
                     <div class="col-sm-9">
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,8 +18,15 @@
                                     <a class="nav-item nav-link" href="#"> {{'product.title'|trans }}</a>
                                     <a class="nav-item nav-link" href="#"> {{'admin'|trans }}</a>
                                     <a class="nav-item nav-link" href="#"> {{'contact'|trans }} </a>
-                                    <a class="nav-item nav-link last" href="#"><i class="fa fa-shopping-cart text-white"> {{'cart.title'|trans }}</i></a>
-                                <a class="nav-item nav-link last" href="#"></a>
+                                    <a class="nav-item nav-link" href="#"><i class="fa fa-shopping-cart text-white"></i> {{'cart.title'|trans }}</a>
+                                    <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ "switch" | trans}}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="/{{'trad'|trans}}">{{'lang'|trans}}</a>
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
                         </nav>
