@@ -17,28 +17,34 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for cart in carts %}
+             {#   {% for carts in cart %}
+
+
                     <tr>
-                        <td>{{ cart.cartContents.product }}</td>
-                        <td>{{ cart.cartContents.quantity}}</td>
-                        <td>{{ cart.state ? 'Yes' : 'No' }}</td>
-                        <td>{{ cart.state ? 'Yes' : 'No' }}</td>
-                        <td>
+                        <td>{{ carts.product }}</td>
+                        <td>{{ carts.quantity}}</td>
+                        <td>{{ carts.product.price}}</td>
+                        <td>{{total}}</td>
+                       #}{# <td>
                             <form method="post" action="{{ path('cart_delete', {'id': cart.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cart.id) }}">
                                 <button class="btn btn-danger">{{'delete'|trans}}</button>
                             </form>
-                        </td>
+                        </td>#}{#
                     </tr>
                 {% else %}
                     <tr>
                         <td colspan="5" class="text-center">Aucuns produits dans le panier</td>
                     </tr>
-                {% endfor %}
+                {% endfor %}#}
                 </tbody>
             </table>
-            <div class="btn-container">
-                <a href="" class="btn btn-success">Passer au paiement</a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 col-sm-12 mb-5"><a href="" class="btn btn-success placer ">Passer au paiement</a></div>
+                </div>
             </div>
 
 
@@ -46,7 +52,7 @@
             <div class="row">
                 <div class="col-md-12 m-5">
                     <p colspan="4" class="text-center">Veuillez vous connectez pour voir vos produits sur le panier</p>
-                    <a href="" class="btn btn-primary btnSize">Connexion</a>
+                    <a href="" class="btn btn-primary">Connexion</a>
                 </div>
             </div>
         {% endif %}

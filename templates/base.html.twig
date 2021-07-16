@@ -49,10 +49,9 @@
         {% include('header.html.twig') %}
         <!--end header-->
         {% block body %}{% endblock %}
-
-        <!--footer-->
+        <!-- footer -->
         {% include('footer.html.twig') %}
-        <!--end footer-->
+        <!--end footer -->
         <!-- Javascript files-->
         <script src="{{ asset("js/jquery.min.js") }}"></script>
         <script src="{{ asset("js/popper.min.js") }}"></script>
@@ -96,7 +95,6 @@
                 $(".carousel").on("touchend", function(){
                     $(this).off("touchmove");
                 });
-            });
-	    </script> 
+	    </script>
     </body>
 </html>
