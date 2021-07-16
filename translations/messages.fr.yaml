@@ -45,6 +45,7 @@ user:
     order: Mes commandes
     edit: Éditer mon profil
     delete: Supprimer mon profil
+    orderEmpty: Vous n'avez pas de commandes.
   form:
     firstname: Votre prénom
     lastname: Votre nom

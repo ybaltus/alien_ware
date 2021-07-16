@@ -45,6 +45,7 @@ user:
     order: My orders
     edit: Edit my profil
     delete: Delete my profil
+    orderEmpty: You are not orders.
   form:
     firstname: Your firstname
     lastname: Your lastname
