@@ -13,6 +13,9 @@ about: About
 aboutUs: About Us
 phone: Phone
 order: Order
+joinUs: Join Us !
+admin: Admin
+superAdmin: Super admin
 
 # Product
 product:
@@ -32,9 +35,22 @@ cart:
 # User
 user:
   title: User
+  signin: SignIn
+  signup: SignUp
+  signout: SignOut
+  form:
+    firstname: Your firstname
+    lastname: Your lastname
+    email: Your email
+    agreeTerms: Agree terms
+    password: Your password
+    roles: User role(s)
+  messages:
+    successRegister: You are well registered. Connect you!
   errors:
     email: The email is not a valid email.
     minFirstname:  Your first name must be at least 2 characters long
     maxFirstname: Your first name cannot be longer than 50 characters
     minLastname:  Your last name must be at least 2 characters long
     maxLastname: Your last name cannot be longer than 50 characters
+    minPassword: Your password should be at least 6 characters

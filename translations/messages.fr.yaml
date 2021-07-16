@@ -13,6 +13,9 @@ about: À propos
 aboutUs: À propos de nous
 phone: Téléphone
 order: Commande
+joinUs: Rejoignez-nous !
+admin: Administrateur
+superAdmin: Super administrateur
 
 # Product
 product:
@@ -32,11 +35,24 @@ cart:
 # User
 user:
   title: Utilisateur
+  signin: Connexion
+  signup: Inscription
+  signout: Déconnexion
+  form:
+    firstname: Votre prénom
+    lastname: Votre nom
+    email: Votre email
+    agreeTerms: Accepter les conditions
+    password: Votre mot de passe
+    roles: Role(s) utilisateur
+  messages:
+    successRegister: Vous êtes bien enregistré. Connectez vous!
   errors:
     email: L'email n'est pas valide.
     minFirstname: Votre prénom doit avoir au moins 2 caractères
     maxFirstname: Votre prénom doit avoir maximum 50 caractères
     minLastname: Votre nom doit avoir au moins 2 caractères
     maxLastname: Votre nom doit avoir au moins 50 caractères
+    minPassword: Votre mot de passe doit avoir au moins 6 caractères
 
 
