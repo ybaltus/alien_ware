@@ -1,19 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product index
+{% block title %}
+	{{'product.title'|trans}}
 {% endblock %}
 
 {% block body %}
-	<main class="container">
-		{% for type, messages in app.flashes %}
-			{% for message in messages %}
-				<p class="alert alert-{{type}}">{{message}}</p>
-			{% endfor %}
-		{% endfor %}
-	</main>
-
-	<h1>Product index</h1>
 	<div class="container">
+		<a class=' btn btn-success mt-2 mb-2' href="{{ path('product_new') }}">Create new</a>
 		<table class="table">
 			<thead>
 				<tr>
@@ -29,17 +22,17 @@
 			<tbody>
 				{% for product in products %}
 					<tr>
-						<td>{{ product.id }}</td>
-						<td>{{ product.name }}</td>
-						<td>{{ product.description }}</td>
-						<td>{{ product.price }}</td>
-						<td>{{ product.stock }}</td>
-						<td>
-							<img class="img-fluid" src="{{'/uploads/images_products/' ~ product.image}}" style=" width: 200px">
+						<td scope="row">{{ product.id }}</td>
+						<td scope="row">{{ product.name }}</td>
+						<td scope="row">{{ product.description }}</td>
+						<td scope="row">{{ product.price }}</td>
+						<td scope="row">{{ product.stock }}</td>
+						<td scope="row">
+							<img class="img-fluid" src="{{' /uploads/images_products/' ~ product.image}}" style=" width: 200px">
 						</td>
-						<td>
-							<a href="{{ path('product_show', {'id': product.id}) }}">show</a>
-							<a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+						<td scope="row">
+							<a class='btn btn-primary' href="{{ path('product_show', {'id': product.id}) }}">show</a>
+							<a class='btn btn-secondary' href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
 						</td>
 					</tr>
 				{% else %}
@@ -50,8 +43,5 @@
 			</tbody>
 			<tfoot></tfoot>
 		</table>
-		<a class='btn btn-success mt-2 mb-2' href="{{ path('product_new') }}">Create new</a>
 	</div>
-
-
-{% endblock %}
+</div>{% endblock %}

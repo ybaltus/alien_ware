@@ -1,31 +1,41 @@
 <!-- header -->
 <header>
-<!-- header section start -->
-        <div class="header_section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="logo"><a href="#"><img src="{{ asset("images/logo.png ") }}"></a></div>
-                    </div>
-                    <div class="col-sm-9">
-                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                                <div class="navbar-nav">
-                                    <a class="nav-item nav-link" href="#">{{'home'|trans }}</a>
-                                    <a class="nav-item nav-link" href="#"> {{'product.title'|trans }}</a>
-                                    <a class="nav-item nav-link" href="#"> {{'admin'|trans }}</a>
-                                    <a class="nav-item nav-link" href="#"> {{'contact'|trans }} </a>
-                                    <a class="nav-item nav-link last" href="#"><i class="fa fa-shopping-cart text-white"> {{'cart.title'|trans }}</i></a>
-                                <a class="nav-item nav-link last" href="#"></a>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+	<!-- header section start -->
+	<div class="header_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="logo">
+						<a href="#"><img src="{{ asset("images/logo.png ") }}"></a>
+					</div>
+				</div>
+			
+				<div class="col-sm-9">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+							<div class="navbar-nav">
+								<a class="nav-item nav-link" href="#">{{'home'|trans }}</a>
+								<a class="nav-item nav-link" href="{{ path('product_index') }}">
+									{{'product.title'|trans }}</a>
+								<a class="nav-item nav-link" href="{{ path('admin_homepage') }}">
+									{{'admin'|trans }}</a>
+								<a class="nav-item nav-link" href="#">
+									{{'contact'|trans }}
+								</a>
+								<a class="nav-item nav-link last" href="#">
+									<i class="fa fa-shopping-cart text-white">
+										{{'cart.title'|trans }}</i>
+								</a>
+								<a class="nav-item nav-link last" href="#"></a>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
 
 	</div>
 	<!-- header section end -->

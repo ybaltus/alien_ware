@@ -28,12 +28,14 @@
 						<div class="best_shoes">
 							<p class="best_text">{{ product.name }}</p>
 							<div class="shoes_icon"><img class="img-fluid" src="{{'/uploads/images_products/' ~ product.image}}" style=" "></div>
-							<div class="star_text">
-								<div class="left_part">{{product.description}}</div>
-								<div class="right_part">
-									<div class="shoes_price">
+							<div class="star_text align-text">
+								<div class="left_part justify-content-center align-items-center">
+									<a class='btn btn-danger btn-lg btn-block' href="{{ path('product_show', {'id': product.id}) }}">show</a>
+								</div>
+								<div class="right_part justify-content-center align-items-center">
+									<div class="shoes_price mt-2">
 										{{'product.currency'|trans}}
-										<span style="color:#ff4e5b;">{{ product.price }}</span>
+										<span class='justify-content-center align-items-center mt-3' style="color:#ff4e5b;">{{ product.price }}</span>
 									</div>
 								</div>
 							</div>
