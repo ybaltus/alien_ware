@@ -14,3 +14,9 @@ cart:
 # User
 user:
   title: User
+  errors:
+    email: The email is not a valid email.
+    minFirstname:  Your first name must be at least 2 characters long
+    maxFirstname: Your first name cannot be longer than 50 characters
+    minLastname:  Your last name must be at least 2 characters long
+    maxLastname: Your last name cannot be longer than 50 characters

@@ -14,5 +14,11 @@ cart:
 # User
 user:
   title: Utilisateur
+  errors:
+    email: L'email n'est pas valide.
+    minFirstname: Votre prénom doit avoir au moins 2 caractères
+    maxFirstname: Votre prénom doit avoir maximum 50 caractères
+    minLastname: Votre nom doit avoir au moins 2 caractères
+    maxLastname: Votre nom doit avoir au moins 50 caractères
 
 
