@@ -17,8 +17,15 @@ order: Commande
 # Product
 product:
   title: Produit
+  added: Produit ajouté
+  add: Ajouter un produit
+  edit: Modifier le produit
+  delete: Supprimer le produit
+  unknown: Produit introuvable
+  updated: Produit mis à jour
+  deleted: Produit supprimé
   errors:
-    minName:  Votre nom doit faire au minimum 3 caractères
+    minName: Votre nom doit faire au minimum 3 caractères
     maxName: Votre nom doit faire au maximum 255 caractères
     minDescription: Votre description doit faire au minimum 10 caractères
     maxDescription: Votre description doit faire au maximum 500 caractères
@@ -38,5 +45,3 @@ user:
     maxFirstname: Votre prénom doit avoir maximum 50 caractères
     minLastname: Votre nom doit avoir au moins 2 caractères
     maxLastname: Votre nom doit avoir au moins 50 caractères
-
-

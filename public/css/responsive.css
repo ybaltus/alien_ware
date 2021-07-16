@@ -120,125 +120,347 @@
         float: none;
     }
     .menu-area-main {
-        height: 290px;
+        height: 45px;
         overflow-y: auto;
     }
     .mean-container .mean-nav ul li a.mean-expand {
         top: 0;
     }
+
+    .banner_text { font-size: 20pt;}
+    .mens_text { font-size: 25pt;}
+    .lorem_text { display: none;}
+    .buy_bt { display: none;}
+    .more_bt {display: none;}
+    .star_icon { width: 23%; }
+    .seemore_bt { width: 55%; }
+    .sport_text { width: 50%; }
+    .left_part { padding-left: 10px;}
+    .massage-bt { height: 160px; padding: 55px 20px 10px 20px; }
+
+
+
+
+
 }
-@media (min-width: 1200px) and (max-width: 1500px) {
-    .about {background: inherit;}
-}
+
 @media (min-width: 992px) and (max-width: 1199px) {
-    .main-menu ul > li a {padding: 22px 20px;}
-   .location_icon_bottum {display: none;}
-   .banner-main .carousel-caption span {font-size: 45px; line-height: 50px; padding-bottom: 10px;}
-   .banner-main .carousel-caption h1 {font-size: 55px; line-height: 63px;}
-   .banner-main .carousel-caption p {padding: 15px 0px 25px 0px;}
-    .about {background: inherit;}
+    
+    .titlepage h2::after {width: 58%;}
+    .about-box .titlepage h2::after {
+        width: 52%;
+right: -221px;
+    }
+    .Nursery-img .text-box h3 {padding: 111px 50px;}
+    .contact .titlepage h2::after {
+    left: -650px;
+width: 30%;
+   }
+   .sporrt_text { margin-top: 0px;}
+   #main_slider a.carousel-control-prev {
+    display: none;
+   }
+   #main_slider a.carousel-control-next {
+    display: none;
+    }
+
+.navbar-light .navbar-nav .nav-link { font-size: 13pt; }
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 1.5rem;
+}
+.banner_text { font-size: 28pt;}
+.mens_text { font-size: 35pt;}
+.lorem_text { font-size: 10pt;}
+.buy_bt { width: 40%;}
+.more_bt { width: 40%; }
+.page_no { width: 40%; }
+.mens_taital_2 { margin-top: 100px;}
+.sport_text { width: 30%; } 
+.star_icon { width: 30%; }
+.footer-logo { font-size: 10pt;}
+.map_text { padding-left: 9px; }
+.mail_section li { padding-right: 28px;}
+.dummy_text { font-size: 10pt;}
+.pet_text { font-size: 10pt; }
+.delivery_text { font-size: 10pt;}
+.shop_text { font-size: 20px;}
+.adderess_text { font-size: 20px;}  
+.dummy_text { margin-top: 45px;}
+.email_box {  width: 95%; padding: 20px 0px;}
+.last{ padding-left: 12px !important; }
+
+
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .logo {padding-top: 11px;}
-    .location_icon_bottum {display: none;}
-    .main-menu ul > li a {padding: 8px 14px ; padding-top: 20px;}
-     .last {display: none !important;}
+    .main-menu ul > li a {padding: 7px 6px ; }
+    .main-menu ul>li a { font-size: 14px;}
+
+
     .banner-main .carousel-caption h1 {
 
         font-size: 36px;
-
-padding-top: 30px;
+        padding-top: 0px;
     }
-     .banner-main .carousel-caption span {font-size: 30px; line-height: 19px; padding-bottom: 0px;}
-.banner-main .carousel-caption h1 {font-size: 35px;  padding-top: 15px; line-height: 40px;}
-.banner-main .carousel-caption p  {font-size: 17px; padding: 10px 0px 20px 0px;}
-.banner-main .carousel-caption .buynow {width: 149px; padding: 7px 0;}
-ul.social_icon {display: none !important;}
-    .about {background: inherit;}
-   .about .about_box {
-    padding-top: 0px;
-   }
-.about .about_box span {font-size: 44px;}
-.about_img {
+    .banner-main .carousel-caption p {
 
-    margin-top: 30px;
+        margin-bottom: 7px;
+        display: none;
+    }
+    .main { width: 15%;}
+    .info_icon { min-width: 10%;}
+    #main_slider a.carousel-control-prev {
+    display: none;
+    }
+    .btn_main { margin-top: 58px; width: 65%;}
+    #main_slider a.carousel-control-next {
+    display: none;
+    }
+    .sporrt_text { margin-top: 0px; font-size: 24px;}
+    .email_btn { padding: 41px;}
+    .btn-primary {max-width: 144px;}
+    .titlepage h2::after {width: 79%;}
+    .about-box .titlepage h2::after {width: 73%;
+       right: -88px;
+    }
+    .contact .titlepage h2::after {
+        left: -403px;
+        width: 41%;
+    }
+    .paddimg-right {
+        padding-right: 15px;
+    }
+    .paddimg-left {
+         padding-left: 15px;
+    }
 
+.banner_text { font-size: 20pt;}
+.mens_text { font-size: 26pt;}
+.lorem_text { display: none;}
+.buy_bt { width: 45%; font-size: 14pt;}
+.more_bt { width: 45%; font-size: 14pt; margin-left: 10px;}
+.mens_taital { display: none;}
+.page_no { display: none;}
+.mens_taital_2 { display: none;}
+.new_bt { width: 30%;}
+.sport_text { width: 37%; }
+.star_icon { width: 40%; }
+.seemore_bt { width: 45%; }
+.sale_text { font-size: 36pt;}
+.seemore { width: 70%; }
+.left_part { padding-left: 0px;}
+.left_part li { padding-left: 6px;}
+.shoes_price { font-size: 18pt;}
+.buy_text {  width: 45%; }
+.shop_banner { padding: 47px;}
+
+.navbar-light .navbar-toggler {
+    color: #ffffff;
+    border-color: #fff;
+    background: white;
 }
-.about_box_ span {font-size: 44px;}
-.testomonial_section {
 
-    padding: 0 91px;
-
+.bg-light {
+    background-color: #0c0116!important;
+    width: 50%;
 }
+.out_shop_bt { width: 60%;}
+.email_box {
+    width: 100%; padding: 20px 0px;}
+
+
+
+
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
     .last {display: none;}
-    .location_icon_bottum {display: none;}
-    .logo {padding-top: 7px;}
-    .mean-container .mean-bar {background: #000;}
-    .mean-container .mean-bar {margin-left: 20px;}
-    .banner-main .carousel-caption span {font-size: 25px; line-height: 19px;}
-.banner-main .carousel-caption h1 {font-size: 30px; line-height: 40px;}
-.banner-main .carousel-caption p  {display: none;}
-.banner-main .carousel-caption .buynow {width: 149px; padding: 7px 0;}
+    .banner-main .carousel-caption {top: 0%;}
 .titlepage h2 {
-font-size: 42px; 
+font-size: 42px;
+display: block; 
 }
-.about .about_box_ { margin-bottom: 30px; }
+#main_slider a.carousel-control-prev {
+    position: absolute;
+    left: 25%;
+    top: 64%;
+    display: none;
+}
+.btn_main { margin-top: 58px; width: 80%;}
+#main_slider a.carousel-control-next {
+    position: absolute;
+    left: 50px;
+    top: 64%;
+    display: none;
+}
+.btn-primary {
+    margin-top: 0px;
+    margin-left: -7px;
+}
+.menu_main {
+    width: 95%;}
+
+.banner-main .carousel-caption h1 {
+    font-size: 50px;
+}
+.titlepage h2::after {
+width: 88%;
+}
+
+.about-box .titlepage h2::after {width: 45%;
+right: -281px;}
+.sporrt_text { margin-top: 0px;}
+.Nursery-img .text-box h3 {
+font-size: 36px;
+padding: 126px 40px;
+}
+.main {
+    width: 20%;}
+
+.contact .titlepage h2::after {
+    left: -234px;
+width: 55%;
+}
+
+
+.banner_taital { display: none;}
+.padding_0 { display: none;}
+.about-img { margin-left: 0px;}
+.new_bt { margin-left: 0px;}
+.about-img2 { margin-left: 0px; margin-top: 0px; margin-bottom: 70px;}
+.left_part { padding-left: 2px;}
+.left_part li { padding-left: 0px;}
+.shoes_price { font-size: 13pt; padding-top: 17px;}
+.buy_text { width: 50%; }
+.shop_banner { margin-top: 20px;}
+
+.navbar-light .navbar-toggler {
+    color: #ffffff;
+    border-color: #fff;
+    background: white;
+}
+
+.bg-light {
+    background-color: #0c0116!important;
+    width: 50%;
+}
+
+.star_icon li { padding-right: 8px;}
 
 
 
-.about {background: inherit;}
-.mrgn {margin-top: 0px;}
-    .img-box {display: none;}
-    ul.link li {
-    padding: 8px 8px;}
-    .testomonial_section {padding: 0px;}
-.cross_inner {transform: inherit;}
-.cross_layout {transform: inherit;}
-.testimonial_cont {padding-left: 10px; padding-right: 10px;}
+
+
 }
 
 
 @media (max-width: 575px) {
-    .relative {left: 21%;}
-    .mean-container .mean-bar {margin-bottom: -1px;}
-    .location_icon_bottum {display: none;}
-    .header {background: inherit; padding-bottom: 0; padding-top: 30px;}
-    .last {display: none;}
-    .img-box {display: none;} 
+    .last { display: none; }
+    .carousel-caption {display: none;} 
+.header { padding-top: 0px; }
+.logo { float: inherit; padding-bottom: 15px; text-align: center;}
+.btn-primary {max-width: 126px;
+margin-right: 2px;
+font-size: 14px;}
+.banner-main .carousel-caption h1 {font-size: 30px; line-height: 38px;}
+.titlepage h2 {
+    font-size: 27px;
+}
+.sporrt_text{ 
+     font-size: 23px; 
+     margin-top: 0px;
+}
+.main {
+    width: 30%;
+}
+.btn_main {
+    margin-top: 30px;
+    padding-bottom: 30px;
+    width: 55%;}
 
-.logo {float: inherit; padding-bottom: 15px; text-align: center;}
-#myCarousel a.carousel-control-prev {width: 45px; height: 45px;}
-#myCarousel a.carousel-control-next {width: 45px; height: 45px;}
-.banner-main .carousel-item img {height: 290px;}
-.banner-main .carousel-caption span {font-size: 21px; line-height: 19px;}
-.banner-main .carousel-caption h1 {font-size: 20px; line-height: 40px;}
-.banner-main .carousel-caption p  {display: none;}
-.banner-main .carousel-caption .buynow {width: 149px; padding: 7px 0;}
-.titlepage h2 {font-size: 32px;}
-.about .about_box span {font-size: 33px; line-height: 53px;}
-.mrgn {margin-top: 30px;}
+#main_slider a.carousel-control-prev {
+    position: absolute;
+    left: 175px;
+    top: 90%;
+    display: none;
+}
+
+#main_slider a.carousel-control-next {
+    position: absolute;
+    left: 236px;
+    top: 90%;
+    display: none;
+}
+
+.titlepage h2::after {
+    width: 93%;
+}
+    .about-box .titlepage h2::after {
+        width: 238px;
+        right: -50px;
+    }
+ .Gallery .titlepage h2 {
+    font-size: 47px;
+ }
+    .Gallery .titlepage h2::after {
+        width: 89%;
+    }
+
+    .paddimg-right {
+    padding-right: 15px;
+}
+.paddimg-left {
+    padding-left: 15px;
+}
+.Nursery-img .text-box h3 {
+font-size: 23px;
+padding: 30px 14px;
+
+}
+
+.contact .titlepage h2::after {
+
+    left: -8px;
+    width: 281px;
+}
 .footer .headinga span {
 font-size: 16px;
 
 }
-.about .about_box_ { margin-bottom: 30px; }
-.about .about_box_ span {font-size: 33px; line-height: 53px;}
-.about {background: inherit;}
-.testomonial_section {padding: 0px;}
-.cross_inner {transform: inherit;}
-.cross_layout {transform: inherit;}
-.testimonial_cont {padding-left: 10px; padding-right: 10px;}
+.menu-bottom {
+    margin-bottom: 45px;
+}
 ul.link li {
 
-    padding: 8px 9px;
+    padding: 8px 12px;
     padding-bottom: 0px; 
 }
-.copyright {
-    margin-top: 60px;
+
+
+.mens_taital { display: none; }
+.mens_taital_2 { display: none; }
+.page_no { display: none;}
+.bg-light { background-color: #db5660!important;  }
+.header_section { background-size: cover;}
+.header_section { background-size: cover; background-repeat: no-repeat;}
+.buy_text { width: 100%; }
+.email_box { width: 100%; }
+.shop_banner { margin-top: 20px;}
+.footer-logo { padding-top: 20px;}
+.mail_section li { padding-top: 20px;}
+.subscribr_bt { width: 55%; }
+.out_shop_bt {
+    width: 100%;
+    font-size: 14pt;
+    height: 50px;
 }
+
+.about-img { margin-left: 0px;}
+.new_bt { margin-left: 0px; width: 33%;}
+.about-img2 { margin-left: 0px;}
+
+
 
 }

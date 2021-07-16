@@ -17,10 +17,17 @@ order: Order
 # Product
 product:
   title: Product
+  added: Product added
+  add: Add product
+  edit: Edit product
+  delete: Delete product
+  unknown: Product unknown
+  updated: Product updated
+  deleted: Product deleted
   errors:
-    minName:  Your name must be at least 3 characters long
+    minName: Your name must be at least 3 characters long
     maxName: Your name cannot be longer than 255 characters
-    minDescription:  Your last description must be at least 10 characters long
+    minDescription: Your last description must be at least 10 characters long
     maxDescription: Your last description cannot be longer than 500 characters
 
 # Cart
@@ -34,7 +41,7 @@ user:
   title: User
   errors:
     email: The email is not a valid email.
-    minFirstname:  Your first name must be at least 2 characters long
+    minFirstname: Your first name must be at least 2 characters long
     maxFirstname: Your first name cannot be longer than 50 characters
-    minLastname:  Your last name must be at least 2 characters long
+    minLastname: Your last name must be at least 2 characters long
     maxLastname: Your last name cannot be longer than 50 characters
