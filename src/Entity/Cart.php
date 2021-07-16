@@ -29,6 +29,11 @@ class Cart
      */
     private $state;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="carts")
+     */
+    private $User;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +59,18 @@ class Cart
     public function setState(bool $state): self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }
