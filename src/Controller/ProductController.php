@@ -13,12 +13,12 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * @Route("/{_locale}/product")
+ * @Route("/{_locale}")
  */
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="product_index", methods={"GET"})
+     * @Route("/product", name="product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
     {
@@ -28,7 +28,19 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="product_new", methods={"GET","POST"})
+     * Admin Homepage
+     * @Route("/admin/",name="admin_homepage")
+     */
+    public function indexAdmin(ProductRepository $productRepository): Response
+    {
+        return $this->render('product/index-admin.html.twig', [
+            'products' => $productRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * Admin add new product
+     * @Route("/admin/product/new", name="product_new", methods={"GET","POST"})
      */
     public function new(Request $request, TranslatorInterface $t): Response
     {
@@ -61,7 +73,7 @@ class ProductController extends AbstractController
 
             $this->addFlash('success', $t->trans('product.added'));
 
-            return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_homepage', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('product/new.html.twig', [
@@ -71,7 +83,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="product_show", methods={"GET"})
+     * @Route("/product/{id}", name="product_show", methods={"GET"})
      */
     public function show(Product $product): Response
     {
@@ -81,11 +93,12 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
+     * @Route("/admin/product/{id}/edit", name="product_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Product $product, TranslatorInterface $t): Response
     {
         $form = $this->createForm(ProductType::class, $product);
+        // dd($form);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -93,7 +106,7 @@ class ProductController extends AbstractController
 
             $this->addFlash('success', $t->trans('product.updated'));
 
-            return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_homepage', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('product/edit.html.twig', [
@@ -103,7 +116,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="product_delete", methods={"POST"})
+     * @Route("/admin/product/{id}", name="product_delete", methods={"POST"})
      */
     public function delete(Request $request, Product $product, TranslatorInterface $t): Response
     {
