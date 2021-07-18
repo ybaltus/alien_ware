@@ -6,14 +6,14 @@
 
 {% block body %}
 	<div class="container">
-		<a class=' btn btn-success mt-2 mb-2' href="{{ path('product_new') }}">Create new</a>
+		<a class=' btn btn-success mt-2 mb-2' href="{{ path('product_new') }}">{{'product.add'|trans}}</a>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Name</th>
+					<th>{{ 'product.name'|trans }}</th>
 					<th>Description</th>
-					<th>Price</th>
+					<th>{{ 'product.price'|trans }}</th>
 					<th>Stock</th>
 					<th>Image</th>
 					<th>actions</th>
@@ -31,8 +31,8 @@
 							<img class="img-fluid" src="{{' /uploads/images_products/' ~ product.image}}" style=" width: 200px">
 						</td>
 						<td scope="row">
-							<a class='btn btn-primary' href="{{ path('product_show', {'id': product.id}) }}">show</a>
-							<a class='btn btn-secondary' href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+							<a class='btn btn-primary' href="{{ path('product_show', {'id': product.id}) }}">{{"product.show"|trans}}</a>
+							<a class='btn btn-secondary' href="{{ path('product_edit', {'id': product.id}) }}">{{"product.edit"|trans}}</a>
 						</td>
 					</tr>
 				{% else %}
