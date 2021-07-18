@@ -35,17 +35,6 @@ class Cart
      */
     private $User;
 
-    /**
-     * @ORM\OneToMany(targetEntity=CartContent::class, mappedBy="cart", orphanRemoval=true)
-     */
-    private $cartContents;
-
-    public function __construct()
-    {
-        $this->cartContents = new ArrayCollection();
-    }
-
-
     public function getId(): ?int
     {
         return $this->id;
@@ -87,33 +76,4 @@ class Cart
         return $this;
     }
 
-    /**
-     * @return Collection|CartContent[]
-     */
-    public function getCartContents(): Collection
-    {
-        return $this->cartContents;
-    }
-
-    public function addCartContent(CartContent $cartContent): self
-    {
-        if (!$this->cartContents->contains($cartContent)) {
-            $this->cartContents[] = $cartContent;
-            $cartContent->setCart($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCartContent(CartContent $cartContent): self
-    {
-        if ($this->cartContents->removeElement($cartContent)) {
-            // set the owning side to null (unless already changed)
-            if ($cartContent->getCart() === $this) {
-                $cartContent->setCart(null);
-            }
-        }
-
-        return $this;
-    }
 }

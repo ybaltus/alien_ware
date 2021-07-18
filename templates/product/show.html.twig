@@ -4,10 +4,25 @@
 {% endblock %}
 
 {% block body %}
+
 	<div class="collection_text">{{product.name}}</div>
 	<div class="about_main layout_padding">
 		<div class="collection_section">
 			<div class="container">
+				<div class="row">
+					<div class="col-12 mt-5">
+						{% for type, messages in app.flashes %}
+							{% for message in messages %}
+								<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+									{{ message }}
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							{% endfor %}
+						{% endfor %}
+					</div>
+				</div>
 				<a class='btn btn-success' href="{{ path('product_index') }}">back to list</a>
 
 				<a class='btn btn-success' href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
@@ -38,9 +53,9 @@
 									<span style="color:#0a0506">100</span>
 								</strong>
 							</div>
-							<button class="btn btn-danger btn-lg">
+							<a href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-danger btn-lg">
 								{{'product.addToCart'|trans}}
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>

@@ -1,12 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cart index{% endblock %}
+{% block title %}Panier{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1 class="mt-5 text-center">Mon panier</h1>
+        <div class="row">
+            <div class="col-12 mt-5">
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
         {% if app.user == false %}
-            <table class="table">
+            <table class="table m-5">
                 <thead>
                 <tr>
                     <th>Nom du produit</th>
@@ -17,33 +30,45 @@
                 </tr>
                 </thead>
                 <tbody>
-             {#   {% for carts in cart %}
-
-
+                {% for carts in items %}
                     <tr>
                         <td>{{ carts.product }}</td>
-                        <td>{{ carts.quantity}}</td>
-                        <td>{{ carts.product.price}}</td>
-                        <td>{{total}}</td>
-                       #}{# <td>
-                            <form method="post" action="{{ path('cart_delete', {'id': cart.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cart.id) }}">
-                                <button class="btn btn-danger">{{'delete'|trans}}</button>
-                            </form>
-                        </td>#}{#
+                        <td>
+                            <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
+                               class="btn btn-primary btn-sm">
+                                -
+                            </a>
+                            {{ carts.qty }}
+                            <a href="{{ path('cart_add', {'id': carts.product.id}) }}?returnToCart=true"
+                               class="btn btn-sm btn-primary">
+                                +
+                            </a>
+                        </td>
+                        <td>{{ carts.product.price }} €</td>
+                        <td>{{ carts.qty * carts.product.price }} €</td>
+                        <td>
+                            <a href="{{ path('cart_delete', {'id': carts.product.id}) }}" class="btn btn-danger">X</a>
+                        </td>
                     </tr>
                 {% else %}
                     <tr>
                         <td colspan="5" class="text-center">Aucuns produits dans le panier</td>
                     </tr>
-                {% endfor %}#}
+                {% endfor %}
+                <tfoot>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td>{{ total }} €</td>
+                </tr>
+                </tfoot>
                 </tbody>
             </table>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
-                    <div class="col-md-4 col-sm-12 mb-5"><a href="" class="btn btn-success placer ">Passer au paiement</a></div>
+                    <div class="col-md-4 col-sm-12 mb-5"><a href="" class="btn btn-success placer ">Passer au
+                            paiement</a></div>
                 </div>
             </div>
 
