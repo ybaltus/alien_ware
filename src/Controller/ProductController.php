@@ -128,6 +128,6 @@ class ProductController extends AbstractController
             $this->addFlash('danger', $t->trans('product.delete'));
         }
 
-        return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_homepage', [], Response::HTTP_SEE_OTHER);
     }
 }
