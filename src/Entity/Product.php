@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Product
 {
@@ -130,5 +131,17 @@ class Product
         $this->image = $image;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function deleteImage()
+    {
+        if (!empty($this->image)) {
+            $path = __DIR__ . '/../../public/uploads/images_products/' . $this->image;
+            unlink($path);
+        }
+        return true;
     }
 }

@@ -35,12 +35,14 @@ product:
   price: Price
   new: New Product
   PagesAll: Products
+  OutofStockDesc: Due to our success, we are are sold out.
   ProductDesc: There is all the products we propose.As you can see, we are specialize in High-Technologie with High Performance
   added: Product added
   show: see more
   add: Add product
   edit: Edit product
   delete: Delete product
+  noProduct: There is no product in the database
   unknown: Product unknown
   updated: Product updated
   deleted: Product deleted
@@ -49,8 +51,8 @@ product:
   back: < Back
   inStock: in stock
   outOfStock: Out of stock
-  lastStocks: they are %nb% products n the stock
-  lastStock: 1 product remain
+  lastStocks: there is %nb% products remaining
+  lastStock: there is 1 product remaining
   errors:
     minName: Your name must be at least 3 characters long
     maxName: Your name cannot be longer than 255 characters

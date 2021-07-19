@@ -39,28 +39,31 @@
 					<tr>
 						<td scope="row">{{ product.id }}</td>
 						<td scope="row">{{ product.name }}</td>
-						<td scope="row">{{ product.description }}</td>
+						<td scope="row" data-toggle="tooltip" data-html="true" title="{{ product.description}}">{{ product.description |slice(0, 50)}}</td>
 						<td scope="row">{{ product.price }}</td>
 						<td scope="row">{{ product.stock }}</td>
 						<td scope="row">
-							<img class="img-fluid" src="{{' /uploads/images_products/' ~ product.image}}" style=" width: 200px">
+							<img class="img-fluid" src="{{' /uploads/images_products/' ~ product.image}}" style=" width: 100px">
 						</td>
 						<td scope="row">
 							<div class="row ">
-								<a class='btn btn-primary btn-block' href="{{ path('product_show', {'id': product.id}) }}">{{"product.show"|trans}}</a>
-								<a class='btn btn-secondary mt-2 btn-block' href="{{ path('product_edit', {'id': product.id}) }}">{{"product.edit"|trans}}</a>
+								<a class='btn btn-primary' href="{{ path('product_show', {'id': product.id}) }}">
+									<i class="fa fa-eye"></i>
+								</a>
+								<a class='btn btn-secondary ml-1' href="{{ path('product_edit', {'id': product.id}) }}">
+									<i class="fa fa-pencil"></i>
+								</a>
 								{{ include('admin/_delete_form.html.twig') }}
 							</div>
-
 						</td>
 					</tr>
-				{% else %}
-					<tr>
-						<td colspan="7">no records found</td>
-					</tr>
-				{% endfor %}
+				</td>
 			</tbody>
-			<tfoot></tfoot>
-		</table>
-	</div>
-</div>{% endblock %}
+		</tr>
+	{% else %}
+		<tr>
+			<td colspan="7">{{'product.noProduct'|trans}}</td>
+		</tr>
+	{% endfor %}
+</tbody>
+<tfoot></tfoot></table></div></div>{% endblock %}
