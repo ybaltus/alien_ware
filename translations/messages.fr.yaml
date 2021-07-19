@@ -16,12 +16,30 @@ order: Commande
 lang: Anglais
 switch: FR
 trad: en
+joinUs: Rejoignez-nous !
+admin: Administrateur
+superAdmin: Super administrateur
 
 # Product
 product:
   title: Produit
+  name: Nom
+  price: Prix
+  PagesAll: Produits
+  ProductDesc: Voici tout les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes specialise dans la Haute-Technologie a Haute Performance
+  added: Produit ajouté
+  show: voir plus
+  add: Ajouter un produit
+  edit: Modifier le produit
+  delete: Supprimer le produit
+  unknown: Produit introuvable
+  updated: Produit mis à jour
+  deleted: Produit supprimé
+  addToCart: Ajouter au panier
+  currency: €
+  back: < Retour
   errors:
-    minName:  Votre nom doit faire au minimum 3 caractères
+    minName: Votre nom doit faire au minimum 3 caractères
     maxName: Votre nom doit faire au maximum 255 caractères
     minDescription: Votre description doit faire au minimum 10 caractères
     maxDescription: Votre description doit faire au maximum 500 caractères
@@ -35,11 +53,33 @@ cart:
 # User
 user:
   title: Utilisateur
+  connect: Se connecter
+  signin: Se connecter
+  signup: S'inscrire
+  signout: Se déconnecter
+  profil:
+    title: Mon compte
+    title2: Mes informations
+    welcome: "Bonjour %firstname% %lastname% !"
+    order: Mes commandes
+    edit: Éditer mon profil
+    delete: Supprimer mon profil
+    orderEmpty: Vous n'avez pas de commandes.
+  form:
+    firstname: Votre prénom
+    lastname: Votre nom
+    email: Votre email
+    agreeTerms: Accepter les conditions
+    password: Votre mot de passe
+    roles: Role(s) utilisateur
+  messages:
+    successRegister: Vous êtes bien enregistré. Connectez vous!
+    successLogin: Vous êtes connecté!
+    connected: Vous êtes connecté en tant que
   errors:
     email: L'email n'est pas valide.
     minFirstname: Votre prénom doit avoir au moins 2 caractères
     maxFirstname: Votre prénom doit avoir maximum 50 caractères
     minLastname: Votre nom doit avoir au moins 2 caractères
     maxLastname: Votre nom doit avoir au moins 50 caractères
-
-
+    minPassword: Votre mot de passe doit avoir au moins 6 caractères

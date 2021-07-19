@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.signin'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="collection_text">{{ 'user.signin'|trans }}</div>
+    <div class="layout_padding contact_section">
+        <div class="container">
+            <h1 class="new_text"><strong>{{ 'user.signin'|trans }}</strong></h1>
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <div class="container-fluid ram">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="email_box">
+                        <div class="input_main">
+                            <div class="container">
+                                <form method="post">
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+
+                                    {% if app.user %}
+                                        <div class="mb-3">
+                                            {{ 'user.messages.connected'|trans }} {{ app.user.username }}, <a href="{{ path('app_logout') }}">{{ 'user.signout'|trans }}</a>
+                                        </div>
+                                    {% endif %}
+
+                                    <label for="inputEmail">{{ 'user.form.email'|trans }}</label>
+                                    <input type="email" value="{{ last_username }}" placeholder="{{ 'user.form.email'|trans }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                                    <label for="inputPassword">{{ 'user.form.password'|trans }}"</label>
+                                    <input type="password" name="password" placeholder="{{ 'user.form.password'|trans }}"  id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                                    <input type="hidden" name="_csrf_token"
+                                           value="{{ csrf_token('authenticate') }}"
+                                    >
+
+                                    {#
+                                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                    See https://symfony.com/doc/current/security/remember_me.html
+
+                                    <div class="checkbox mb-3">
+                                        <label>
+                                            <input type="checkbox" name="_remember_me"> Remember me
+                                        </label>
+                                    </div>
+                                    #}
+                                    <button class="btn btn-lg btn-primary mt-2" type="submit">
+                                        {{ 'user.signin'|trans }}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="shop_banner">
+                        <div class="our_shop">
+                            <button class="out_shop_bt">{{ 'joinUs'|trans }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

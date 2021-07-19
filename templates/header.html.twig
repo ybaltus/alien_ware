@@ -1,6 +1,6 @@
 <!-- header -->
 <header>
-<!-- header section start -->
+    <!-- header section start -->
         <div class="header_section">
             <div class="container">
                 <div class="row">
@@ -13,28 +13,38 @@
                             <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                                <div class="navbar-nav">
-                                    <a class="nav-item nav-link" href="#">{{'home'|trans }}</a>
-                                    <a class="nav-item nav-link" href="#"> {{'product.title'|trans }}</a>
-                                    <a class="nav-item nav-link" href="#"> {{'admin'|trans }}</a>
-                                    <a class="nav-item nav-link" href="#"> {{'contact'|trans }} </a>
-                                    <a class="nav-item nav-link" href="#"><i class="fa fa-shopping-cart text-white"></i> {{'cart.title'|trans }}</a>
-                                    <div class="dropdown">
+                                <div class="dropdown"> 
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         {{ "switch" | trans}}
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="/{{'trad'|trans}}">{{'lang'|trans}}</a>
                                     </div>
-                                    </div>
+                                </div>
+                                <div class="navbar-nav">
+                                    <a class="nav-item nav-link" href="#">{{'home'|trans }}</a>
+									<a class="nav-item nav-link" href="{{ path('product_index') }}">
+										{{'product.title'|trans }}</a>
+									<a class="nav-item nav-link" href="{{ path('admin_products') }}">
+										{{'admin'|trans }}</a>
+                                    <a class="nav-item nav-link" href="#"> {{'contact'|trans }} </a>
+                                    
+                                    <a class="nav-item nav-link" href="#"><i class="fa fa-shopping-cart text-white"></i> {{'cart.title'|trans }}</a>
+                                    {% if app.user is not null %}
+                                        <a class="nav-item nav-link last" href="{{ path('app_profil') }}" title="{{ 'user.profil.title'|trans }}">{{ 'user.profil.title'|trans }}</a>
+                                        <a class="nav-item nav-link last" href="{{ path('app_logout') }}" title="{{ 'user.signout'|trans }}">{{ 'user.signout'|trans }}</a>
+                                    {% else %}
+                                        <a class="nav-item nav-link last" href="{{ path('app_login') }}" title="{{ 'user.signin'|trans }}">{{'user.signin'|trans }}</a>
+                                        <a class="nav-item nav-link last" href="{{ path('app_register') }}" title="{{ 'user.signup'|trans }}">{{ 'user.signup'|trans }}</a>
+                                    {% endif %}
+                                    
                                 </div>
                             </div>
                         </nav>
                     </div>
                 </div>
             </div>
-
-	</div>
+		</div>
 	<!-- header section end -->
 </header>
 <!-- end header -->
