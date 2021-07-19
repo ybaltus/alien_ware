@@ -19,7 +19,7 @@
             </div>
         </div>
         <h1 class="text-center">{{ 'cart.content.title'|trans }}</h1>
-        {% if app.user == false %}
+        {% if app.user is not null %}
             <table class="table m-5">
                 <thead class="text-center">
                 <tr>
