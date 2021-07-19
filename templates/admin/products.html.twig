@@ -5,21 +5,22 @@
 {% endblock %}
 
 {% block body %}
-	<div class="row">
-		<div class="col-12 mt-5">
-			{% for type, messages in app.flashes %}
-				{% for message in messages %}
-					<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-						{{ message }}
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-				{% endfor %}
-			{% endfor %}
-		</div>
-	</div>
+
 	<div class="container">
+		<div class="row">
+			<div class="col-12 mt-5">
+				{% for type, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+							{{ message }}
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
 		<a class=' btn btn-success mt-2 mb-2' href="{{ path('product_new') }}">{{'product.add'|trans}}</a>
 		<table class="table">
 			<thead>
@@ -45,8 +46,12 @@
 							<img class="img-fluid" src="{{' /uploads/images_products/' ~ product.image}}" style=" width: 200px">
 						</td>
 						<td scope="row">
-							<a class='btn btn-primary' href="{{ path('product_show', {'id': product.id}) }}">{{"product.show"|trans}}</a>
-							<a class='btn btn-secondary' href="{{ path('product_edit', {'id': product.id}) }}">{{"product.edit"|trans}}</a>
+							<div class="row ">
+								<a class='btn btn-primary btn-block' href="{{ path('product_show', {'id': product.id}) }}">{{"product.show"|trans}}</a>
+								<a class='btn btn-secondary mt-2 btn-block' href="{{ path('product_edit', {'id': product.id}) }}">{{"product.edit"|trans}}</a>
+								{{ include('product/_delete_form.html.twig') }}
+							</div>
+
 						</td>
 					</tr>
 				{% else %}

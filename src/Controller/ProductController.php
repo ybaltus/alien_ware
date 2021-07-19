@@ -18,7 +18,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/product", name="product_index", methods={"GET"})
+     * @Route("/products", name="product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
     {
@@ -27,16 +27,6 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * Admin Homepage
-     * @Route("/admin/",name="admin_homepage")
-     */
-    public function indexAdmin(ProductRepository $productRepository): Response
-    {
-        return $this->render('product/index-admin.html.twig', [
-            'products' => $productRepository->findAll(),
-        ]);
-    }
 
     /**
      * Admin add new product
