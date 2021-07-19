@@ -2,12 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Cart;
-use App\Entity\Product;
-use App\Form\CartType;
-use App\Repository\CartRepository;
+
 use App\Repository\ProductRepository;
-use phpDocumentor\Reflection\DocBlock\Tags\See;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +45,7 @@ class CartController extends AbstractController
 
         // voir si le produit(id) existe dans le tableau
 
-        // si il existe, on incremente
+        // si il existe, on incremente la quantité du produit
         if (array_key_exists($id, $cart)) {
             $cart[$id]++;
         } //sinon on ajoute le produit pour la 1ère fois
@@ -150,11 +146,16 @@ class CartController extends AbstractController
 
         // si aucun produit n'existe on ne retourne rien
         if (!array_key_exists($id, $cart)){
-            return;
+            return false;
         }
 
-        // on décremente le produit cart si il est supérieur à 1
-        $cart[$id]--;
+        // on décremente la quantité du produit cart si il est supérieur à 1
+        if ( $cart[$id] <= 1){
+           return false;
+        }else{
+            $cart[$id]-- ;
+        }
+
 
         //On définit l'attribut cart.
         $this->session->set('cart', $cart);

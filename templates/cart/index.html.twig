@@ -18,26 +18,36 @@
                 {% endfor %}
             </div>
         </div>
+        <h1 class="text-center">{{ 'cart.content.title'|trans }}</h1>
         {% if app.user == false %}
             <table class="table m-5">
-                <thead>
+                <thead class="text-center">
                 <tr>
-                    <th>Nom du produit</th>
-                    <th>Quantité</th>
-                    <th>Prix TTC €</th>
-                    <th>Montal Total</th>
-                    <th>Suppression</th>
+                    <th>{{ 'cart.content.name'|trans }}</th>
+                    <th>{{ 'cart.content.quantity'|trans }}</th>
+                    <th>{{ 'cart.content.price'|trans }}€</th>
+                    <th>{{ 'cart.content.total'|trans }}</th>
+                    <th>{{ 'cart.content.delete'|trans }}</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-center">
                 {% for carts in items %}
                     <tr>
                         <td>{{ carts.product }}</td>
                         <td>
-                            <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
-                               class="btn btn-primary btn-sm">
-                                -
-                            </a>
+                            {% set session = app.session.get('cart') %}
+                            {% if session.1 >= 2 %}
+                                <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
+                                   class="btn btn-primary btn-sm ">
+                                    -
+                                </a>
+                            {% else %}
+                                <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
+                                   class="btn btn-primary btn-sm disabled">
+                                    -
+                                </a>
+                            {% endif %}
+
                             {{ carts.qty }}
                             <a href="{{ path('cart_add', {'id': carts.product.id}) }}?returnToCart=true"
                                class="btn btn-sm btn-primary">
@@ -57,7 +67,7 @@
                 {% endfor %}
                 <tfoot>
                 <tr>
-                    <td colspan="3">Total</td>
+                    <td colspan="3"><strong>Total</strong></td>
                     <td class="text-center">{{ total }} €</td>
                 </tr>
                 </tfoot>
@@ -67,8 +77,7 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
-                    <div class="col-md-4 col-sm-12 mb-5"><a href="" class="btn btn-success placer ">Passer au
-                            paiement</a></div>
+                    <div class="col-md-4 col-sm-12 mb-5"><a href="" class="btn btn-success placer ">{{'cart.content.checkout' |trans }}</a></div>
                 </div>
             </div>
 

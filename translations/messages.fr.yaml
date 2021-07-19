@@ -42,6 +42,13 @@ cart:
   title: Panier
   content:
     title: Contenu panier
+    delete: Suppression
+    checkout: Paiement
+    name: Nom du produit
+    quantity: Quantité
+    price: Prix T.T.C
+    total: Total
+
 
 # User
 user:

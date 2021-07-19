@@ -42,7 +42,13 @@ product:
 cart:
   title: Cart
   content:
-    title: Cart content
+    title: Cart Content
+    delete: Delete
+    checkout: Pay
+    name: Name
+    quantity: Quantities
+    price: Price A.T.I
+    total: Total
 
 # User
 user:
