@@ -26,7 +26,7 @@
 						{% for product in products %}
 							<div class="col-sm-4">
 								<div class="best_shoes" style="width: 300px">
-									<p class="best_text">{{ product.name }}</p>
+									<p class="best_text">{{ product.name|capitalize }}</p>
 									<div class="shoes_icon"><img class="img-fluid" style="width:80%" src="{{'/uploads/images_products/' ~ product.image}}" style=" "></div>
 									<div class="star_text align-text">
 										<div class="left_part justify-content-center align-items-center">

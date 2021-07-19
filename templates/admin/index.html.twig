@@ -3,6 +3,25 @@
 {% block title %}{{'admin.title'|trans}}{% endblock %}
 
 {% block body %}
-	<h1>{{'admin.title'|trans}}</h1>
-	<a class="btn btn-primary" href="{{ path('admin_products') }}" title="{{ 'admin.product.title'|trans }}">{{ 'admin.product.title'|trans }}</a>
+<div class="collection_text">{{'admin.title'|trans}}</div>
+<div class="layout_padding contact_section">
+	<div class="container">
+{#		<h1 class="new_text"><strong>{{'admin.title'|trans}}</strong></h1>#}
+		{% for type, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+					{{ message }}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+	<div class="container-fluid ram">
+		<div class="row">
+			<a class="btn btn-primary" href="{{ path('admin_products') }}" title="{{ 'admin.product.title'|trans }}">{{ 'admin.product.title'|trans }}</a>
+		</div>
+	</div>
+</div>
 {% endblock %}
