@@ -20,13 +20,17 @@ class ProfilController extends AbstractController
         // Get the current user
         $user = $this->getUser();
 
-        // Redirect if he does not exist
+        // Redirect to login page if the user does not exist
         if(!$user){
-            $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('profil/index.html.twig', [
             'user' => $user
         ]);
+    }
+
+    public function update(): Response {
+
     }
 }

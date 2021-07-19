@@ -16,8 +16,32 @@
     {% endfor %}
     <div class="collection_section layout_padding">
         <div class="container">
-            <h1 class="new_text"><strong>{{ 'user.profil.welcome'|trans }}</strong></h1>
-            <p class="consectetur_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+            <h1 class="new_text"><strong>{{ 'user.profil.welcome'|trans({'%firstname%': user.firstname, '%lastname%': user.lastname})}}</strong></h1>
+{#            <p class="consectetur_text">#}
+                <div class="card m-5" >
+                    <div class="card-header">
+                        <h3>{{ 'user.profil.title2'|trans }}</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>{{ 'user.form.firstname'|trans }}: </strong>{{ user.firstname }}</li>
+                        <li class="list-group-item"><strong>{{ 'user.form.lastname'|trans }}: </strong>{{ user.lastname }}</li>
+                        <li class="list-group-item"><strong>{{ 'user.form.email'|trans }}: </strong>{{ user.email }}</li>
+                        <li class="list-group-item"><strong>{{ 'user.form.roles'|trans }}: </strong>
+                            {% for role in user.roles %}
+                                <span class="badge badge-info">
+                                    {% if role == 'ROLE_ADMIN' %}
+                                        {{ 'admin'|trans }}
+                                    {% elseif role == 'ROLE_SUPER_ADMIN' %}
+                                        {{ 'superAdmin'|trans }}
+                                    {% else %}
+                                        {{ 'user.title'|trans }}
+                                    {% endif %}
+                                </span>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+{#            </p>#}
             <a class="btn btn-info" href="" title="{{ 'user.profil.edit'|trans }}">{{ 'user.profil.edit'|trans }}</a>
             <a class="btn btn-danger" href="" title="{{ 'user.profil.delete'|trans }}">{{ 'user.profil.delete'|trans }}</a>
         </div>
@@ -51,9 +75,6 @@
                     <p class="text-bold" style="color:black">{{ 'user.profil.orderEmpty'|trans }} :(</p>
                 {% endfor %}
             </div>
-{#            <div class="buy_now_bt">#}
-{#                <button class="buy_text">Buy Now</button>#}
-{#            </div>#}
         </div>
     </div>
 {% endblock %}

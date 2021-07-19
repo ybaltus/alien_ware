@@ -30,6 +30,11 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
+        // Redirect  to profil page if the user is already connected
+        if($this->getUser()){
+            return $this->redirectToRoute('app_profil');
+        }
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);

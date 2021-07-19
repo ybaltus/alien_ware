@@ -41,7 +41,8 @@ user:
   signout: Se déconnecter
   profil:
     title: Mon compte
-    welcome: Bienvenu sur votre compte Alien-where !
+    title2: Mes informations
+    welcome: "Bonjour %firstname% %lastname% !"
     order: Mes commandes
     edit: Éditer mon profil
     delete: Supprimer mon profil

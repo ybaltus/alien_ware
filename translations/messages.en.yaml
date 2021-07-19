@@ -41,7 +41,8 @@ user:
   signout: SignOut
   profil:
     title: My account
-    welcome: Welcome on your Alien-Where account !
+    title2: My informations
+    welcome: "Hello %firstname% %lastname% !"
     order: My orders
     edit: Edit my profil
     delete: Delete my profil
