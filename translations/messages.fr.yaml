@@ -43,11 +43,14 @@ cart:
   content:
     title: Contenu panier
     delete: Suppression
-    checkout: Paiement
+    pay: Paiement
     name: Nom du produit
     quantity: Quantité
     price: Prix T.T.C
     total: Total
+    message: Aucuns produits dans le panier
+    purchaseAt: Date d'achat
+    validate: Valider la commande
 
 
 # User

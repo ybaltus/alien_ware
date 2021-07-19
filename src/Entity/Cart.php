@@ -21,19 +21,35 @@ class Cart
     private $id;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $purchaseAt;
 
     /**
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $state;
+    private $state = false;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="carts")
      */
     private $User;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CartContent::class, mappedBy="cart", orphanRemoval=true)
+     */
+    private $cartContents;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $total;
+
+    public function __construct()
+    {
+        $this->cartContents = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -76,4 +92,45 @@ class Cart
         return $this;
     }
 
+    /**
+     * @return Collection|CartContent[]
+     */
+    public function getCartContents(): Collection
+    {
+        return $this->cartContents;
+    }
+
+    public function addCartContent(CartContent $cartContent): self
+    {
+        if (!$this->cartContents->contains($cartContent)) {
+            $this->cartContents[] = $cartContent;
+            $cartContent->setCart($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCartContent(CartContent $cartContent): self
+    {
+        if ($this->cartContents->removeElement($cartContent)) {
+            // set the owning side to null (unless already changed)
+            if ($cartContent->getCart() === $this) {
+                $cartContent->setCart(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(float $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
 }

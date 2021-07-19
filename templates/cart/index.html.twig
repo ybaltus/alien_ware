@@ -19,7 +19,7 @@
             </div>
         </div>
         <h1 class="text-center">{{ 'cart.content.title'|trans }}</h1>
-        {% if app.user == false %}
+        {% if app.user == true %}
             <table class="table m-5">
                 <thead class="text-center">
                 <tr>
@@ -62,7 +62,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="5" class="text-center">Aucuns produits dans le panier</td>
+                        <td colspan="5" class="text-center">{{ 'cart.content.message'|trans }}</td>
                     </tr>
                 {% endfor %}
                 <tfoot>
@@ -77,7 +77,10 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
-                    <div class="col-md-4 col-sm-12 mb-5"><a href="" class="btn btn-success placer ">{{'cart.content.checkout' |trans }}</a></div>
+                    {{ dump(items) }}
+                    {% if items|length > 0 %}
+                    <div class="col-md-4 col-sm-12 mb-5"><a href="{{ path('cart_content_insert') }}" class="btn btn-success placer ">{{'cart.content.validate' |trans }}</a></div>
+                    {% endif %}
                 </div>
             </div>
 
@@ -85,8 +88,7 @@
         {% else %}
             <div class="row">
                 <div class="col-md-12 m-5">
-                    <p colspan="4" class="text-center">Veuillez vous connectez pour voir vos produits sur le panier</p>
-                    <a href="" class="btn btn-primary">Connexion</a>
+                    <p colspan="4" class="text-center">Veuillez vous connectez pour voir vos produits sur le panier,ici</a> </p>
                 </div>
             </div>
         {% endif %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Cart;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,11 +84,14 @@ class CartController extends AbstractController
         //
         foreach ($session->get('cart', []) as $id => $qty){
             //On récupère chaque produit dans la Base de donnée
+            $cart = new Cart();
             $product = $productRepository->find($id);
             //puis on les ajoute dans le tableau detailedCart
             $detailedCart[] = [
                 'product' => $product,
-                'qty' => $qty
+                'qty' => $qty,
+                'id' => $cart->getId()
+
             ];
             // on dynamise le montant total du panier
             $total += $product->getPrice() * $qty;
