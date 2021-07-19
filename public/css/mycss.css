@@ -1,0 +1,23 @@
+.button{
+    padding: 20px;
+    width: 10vw;
+    margin-left:10px
+}
+
+.image-rognage {
+    position: relative;
+    width: 159px;
+    height: 76px;
+    overflow: hidden;
+    top: -23px;
+    right: 65px;
+}
+
+.navbar_right{
+    position:relative;
+    right: 190px;
+}
+
+.last_items{
+    left:555px;
+}

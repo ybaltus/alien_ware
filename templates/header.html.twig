@@ -7,7 +7,7 @@
                     <div class="col-sm-3">
                         <div class="image-rognage"><a href="#"><img src="{{ asset("images/monaka/monaka5.png ") }}"></a></div>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 navbar_right">
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -22,21 +22,37 @@
                                     </div>
                                 </div>
                                 <div class="navbar-nav">
-                                    <a class="nav-item nav-link" href="#">{{'home'|trans }}</a>
+                                    <a class="nav-item nav-link" href="/{{'redirectHome'|trans}}">{{'home'|trans }}</a>
 									<a class="nav-item nav-link" href="{{ path('product_index') }}">
 										{{'product.title'|trans }}</a>
-									<a class="nav-item nav-link" href="{{ path('admin_products') }}">
-										{{'admin'|trans }}</a>
+									
                                     <a class="nav-item nav-link" href="#"> {{'contact'|trans }} </a>
                                     
                                     <a class="nav-item nav-link" href="#"><i class="fa fa-shopping-cart text-white"></i> {{'cart.title'|trans }}</a>
-                                    {% if app.user is not null %}
-                                        <a class="nav-item nav-link last" href="{{ path('app_profil') }}" title="{{ 'user.profil.title'|trans }}">{{ 'user.profil.title'|trans }}</a>
-                                        <a class="nav-item nav-link last" href="{{ path('app_logout') }}" title="{{ 'user.signout'|trans }}">{{ 'user.signout'|trans }}</a>
-                                    {% else %}
-                                        <a class="nav-item nav-link last" href="{{ path('app_login') }}" title="{{ 'user.signin'|trans }}">{{'user.signin'|trans }}</a>
-                                        <a class="nav-item nav-link last" href="{{ path('app_register') }}" title="{{ 'user.signup'|trans }}">{{ 'user.signup'|trans }}</a>
-                                    {% endif %}
+
+
+                                    <div class="dropdown last_items"> 
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-user" aria-hidden="true"></i> {{ "user.profil.title" | trans}}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            {% if app.user is not null %}
+                                                <a class="nav-item nav-link" href="{{ path('app_profil') }}" title="{{ 'user.profil.title'|trans }}">{{ 'user.profil.title'|trans }}</a>
+                                                <a class="nav-item nav-link" href="{{ path('app_logout') }}" title="{{ 'user.signout'|trans }}">{{ 'user.signout'|trans }}</a>
+                                            {% else %}
+                                                <a class="nav-item nav-link" href="{{ path('app_login') }}" title="{{ 'user.signin'|trans }}">{{'user.signin'|trans }}</a>
+                                                <a class="nav-item nav-link" href="{{ path('app_register') }}" title="{{ 'user.signup'|trans }}">{{ 'user.signup'|trans }}</a>
+                                            {% endif %}
+                                            
+                                            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
+                                                <a class="nav-item nav-link" href="{{ path('admin_products') }}">
+                                                    {{'admin'|trans }}
+                                                </a>
+                                            {% endif %}
+                                            
+                                            
+                                        </div>
+                                    </div>
                                     
                                 </div>
                             </div>

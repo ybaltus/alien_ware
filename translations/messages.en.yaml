@@ -1,4 +1,5 @@
 # GLobal
+redirectHome: en
 home: Home
 save: Save
 edit: Update
@@ -19,6 +20,13 @@ trad: fr
 joinUs: Join Us !
 admin: Admin
 superAdmin: Super admin
+alienShop: Alien Where Shop
+
+
+#Monaka
+monakaSaysHello: Monaka says hello
+
+
 
 # Product
 product:
@@ -41,7 +49,7 @@ product:
   back: < Back
   inStock: in stock
   outOfStock: Out of stock
-  lastStocks: %nb% products remains
+  lastStocks: they are %nb% products n the stock
   lastStock: 1 product remain
   errors:
     minName: Your name must be at least 3 characters long
