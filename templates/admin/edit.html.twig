@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Product
+{% block title %}
+	{{'product.edit'|trans}}
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid ram mt-5">
+	<div class="container-fluid ram mt-5 mb-5">
+		
 		<div class="row">
 			<div class="col-md-6">
 				<div class="email_box">
@@ -15,7 +17,6 @@
 								{{form_label(form.name)}}
 								{{ form_errors(form.name) }}
 								{{ form_widget(form.name, {'attr': {'class': 'email-bt'}}) }}
-
 							</div>
 							<div class="form-group">
 								{{form_label(form.description)}}
@@ -55,6 +56,5 @@
 		</div>
 	</div>
 
-	
 
 {% endblock %}

@@ -13,8 +13,14 @@
 			<div class="container">
 				<h1 class="new_text">
 					<strong>{{product.name}}</strong>
-					{% if product.stock > 10 %}
-						<span class="badge badge-success">In Stock</span>
+					{% if product.stock >= 5 %}
+						<span class="badge badge-success">{{'product.inStock'|trans}}</span>
+					{% elseif product.stock == 1 %}
+						<span class="badge badge-warning">{{'product.lastStock'|trans}}</span>
+					{% elseif product.stock == 0 %}
+						<span class="badge badge-danger">{{'product.outOfStock'|trans}}</span>
+					{% else %}
+						<span class="badge badge-warning">{{'product.lastStocks'|trans({'%nb%':product.stock})}}</span>
 					{% endif %}
 				</h1>
 			</div>

@@ -22,9 +22,10 @@ superAdmin: Super administrateur
 
 # Product
 product:
-  title: Produit
+  title: Produits
   name: Nom
   price: Prix
+  new: Nouveau Produit
   PagesAll: Produits
   ProductDesc: Voici tout les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes specialise dans la Haute-Technologie a Haute Performance
   added: Produit ajouté
@@ -38,6 +39,10 @@ product:
   addToCart: Ajouter au panier
   currency: €
   back: < Retour
+  inStock: En stock
+  outOfStock: Rupture de  stock
+  lastStocks: Il reste %nb% produits
+  lastStock: Il reste 1 produit
   errors:
     minName: Votre nom doit faire au minimum 3 caractères
     maxName: Votre nom doit faire au maximum 255 caractères
