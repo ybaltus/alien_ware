@@ -21,14 +21,14 @@ class Cart
     private $id;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $purchaseAt;
 
     /**
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $state;
+    private $state = false;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="carts")
@@ -39,6 +39,11 @@ class Cart
      * @ORM\OneToMany(targetEntity=CartContent::class, mappedBy="cart", orphanRemoval=true)
      */
     private $cartContents;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $total;
 
     public function __construct()
     {
@@ -113,6 +118,18 @@ class Cart
                 $cartContent->setCart(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(float $total): self
+    {
+        $this->total = $total;
 
         return $this;
     }

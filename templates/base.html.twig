@@ -52,7 +52,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="main-layout ">
+    <body>
         <!-- loader  -->
         {# <div class="loader_bg">
             <div class="loader"><img src="{{ asset("images/loading.gif") }}" alt="#" /></div>
@@ -62,9 +62,9 @@
         {% include('header.html.twig') %}
         <!--end header-->
         {% block body %}{% endblock %}
-        <!--footer-->
+        <!-- footer -->
         {% include('footer.html.twig') %}
-        <!--end footer-->
+        <!--end footer -->
         <!-- Javascript files-->
         <script src="{{ asset("js/jquery.min.js") }}"></script>
         <script src="{{ asset("js/popper.min.js") }}"></script>
@@ -80,34 +80,34 @@
         
         <script>
             $(document).ready(function() {
-                $(".fancybox").fancybox({
-                    openEffect: "none",
-                    closeEffect: "none"
-                });
+				$(".fancybox").fancybox({
+					openEffect: "none",
+					closeEffect: "none"
+				});
 
-                $('#myCarousel').carousel({
-                    interval: false
-                });
+				$('#myCarousel').carousel({
+					interval: false
+				});
 
-                //scroll slides on swipe for touch enabled devices
+				//scroll slides on swipe for touch enabled devices
 
-                $("#myCarousel").on("touchstart", function (event) {
+				$("#myCarousel").on("touchstart", function (event) {
 
-                    var yClick = event.originalEvent.touches[0].pageY;
-                    $(this).one("touchmove", function (event) {
+					var yClick = event.originalEvent.touches[0].pageY;
+					$(this).one("touchmove", function (event) {
 
-                        var yMove = event.originalEvent.touches[0].pageY;
-                        if (Math.floor(yClick - yMove) > 1) {
-                            $(".carousel").carousel('next');
-                        } else if (Math.floor(yClick - yMove) < -1) {
-                            $(".carousel").carousel('prev');
-                        }
-                    });
-                    $(".carousel").on("touchend", function () {
-                        $(this).off("touchmove");
-                    });
-                });
-            });
-	    </script> 
+						var yMove = event.originalEvent.touches[0].pageY;
+						if (Math.floor(yClick - yMove) > 1) {
+							$(".carousel").carousel('next');
+						} else if (Math.floor(yClick - yMove) < -1) {
+							$(".carousel").carousel('prev');
+						}
+					});
+					$(".carousel").on("touchend", function () {
+						$(this).off("touchmove");
+					});
+				});
+			});
+	    </script>
     </body>
 </html>

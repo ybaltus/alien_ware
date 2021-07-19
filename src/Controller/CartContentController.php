@@ -2,93 +2,84 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\CartContent;
-use App\Form\CartContentType;
-use App\Repository\CartContentRepository;
+use App\Repository\CartRepository;
+use App\Repository\ProductRepository;
+use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/cart/content")
+ * @Route("{_locale}/cart/content")
  */
 class CartContentController extends AbstractController
 {
-    /**
-     * @Route("/", name="cart_content_index", methods={"GET"})
-     */
-    public function index(CartContentRepository $cartContentRepository): Response
+    protected $session;
+
+    /** @var ProductRepository */
+    protected $productRepository;
+
+    private $em;
+
+    public function __construct(ProductRepository $productRepository, SessionInterface $session, EntityManagerInterface $em)
     {
-        return $this->render('cart_content/index.html.twig', [
-            'cart_contents' => $cartContentRepository->findAll(),
-        ]);
+        $this->productRepository = $productRepository;
+        $this->session = $session;
+        $this->em = $em;
+
     }
 
     /**
-     * @Route("/new", name="cart_content_new", methods={"GET","POST"})
+     * @Route("/", name="cart_content_insert")
      */
-    public function new(Request $request): Response
+    public function insert(): Response
     {
-        $cartContent = new CartContent();
-        $form = $this->createForm(CartContentType::class, $cartContent);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($cartContent);
-            $entityManager->flush();
+        // création de l'entité Cart
+        $cart = new Cart();
+        $totalCart = 0;
+        $cart->setUser($this->getUser());
+        $cart->setPurchaseAt(new DateTimeImmutable('now'));
+        $this->em->persist($cart);
 
-            return $this->redirectToRoute('cart_content_index', [], Response::HTTP_SEE_OTHER);
+        foreach ($this->session->get('cart', []) as $id => $qty) {
+            $cartContent = new CartContent();
+            $cartContent->setCart($cart);
+            $cartContent->setCreateAt(new DateTimeImmutable('now'));
+
+            $cartContent->setQuantity($qty);
+            //On récupère chaque produit dans la Base de donnée
+            $product = $this->productRepository->find($id);
+            $cartContent->setProduct($product);
+            // montant total du produit dans le CONTENU DU PANIER
+            $cartContent->setTotal($cartContent->getQuantity() * $product->getPrice());
+            $totalCart += $cartContent->getTotal();
+            $this->em->persist($cartContent);
         }
+        // Montant total du panier
+        $cart->setTotal($totalCart);
+        $this->em->flush();
 
-        return $this->renderForm('cart_content/new.html.twig', [
-            'cart_content' => $cartContent,
-            'form' => $form,
+        //Suppression du panier dans la session actuelle
+        $this->session->remove('cart');
+
+        return $this->redirectToRoute('cart_content_show', [
+            'id' => $cart->getId()
         ]);
     }
 
     /**
-     * @Route("/{id}", name="cart_content_show", methods={"GET"})
+     * @Route ("/{id}", name="cart_content_show", requirements={"id": "\d+"})
      */
-    public function show(CartContent $cartContent): Response
-    {
+    public function show(Cart $cart = null, CartRepository $cartRepository){
+        $cart = $cartRepository->find($cart);
+
         return $this->render('cart_content/show.html.twig', [
-            'cart_content' => $cartContent,
+            'cart' => $cart
         ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="cart_content_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, CartContent $cartContent): Response
-    {
-        $form = $this->createForm(CartContentType::class, $cartContent);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('cart_content_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('cart_content/edit.html.twig', [
-            'cart_content' => $cartContent,
-            'form' => $form,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="cart_content_delete", methods={"POST"})
-     */
-    public function delete(Request $request, CartContent $cartContent): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$cartContent->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($cartContent);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('cart_content_index', [], Response::HTTP_SEE_OTHER);
     }
 }

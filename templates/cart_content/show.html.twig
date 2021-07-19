@@ -3,28 +3,97 @@
 {% block title %}CartContent{% endblock %}
 
 {% block body %}
-    <h1>CartContent</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        <h1 class="text-center">{{ 'cart.content.title'|trans }}</h1>
+        {% if app.user == false %}
+            <table class="table m-5">
+                <thead class="text-center">
+                <tr>
+                    <th>{{ 'cart.content.name'|trans }}</th>
+                    <th>{{ 'cart.content.quantity'|trans }}</th>
+                    <th>{{ 'cart.content.price'|trans }}€</th>
+                    <th>{{ 'cart.content.total'|trans }}</th>
+                    <th>{{ 'cart.content.purchaseAt'|trans }}</th>
+                    <th>{{ 'cart.content.delete'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                {% for carts in cart %}
+                    <tr>
+                        <td>{{ carts.product }}</td>
+                        <td>
+                            {% set session = app.session.get('cart') %}
+                            {% if session.1 >= 2 %}
+                                <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
+                                   class="btn btn-primary btn-sm ">
+                                    -
+                                </a>
+                            {% else %}
+                                <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
+                                   class="btn btn-primary btn-sm disabled">
+                                    -
+                                </a>
+                            {% endif %}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ cart_content.id }}</td>
-            </tr>
-            <tr>
-                <th>Quantity</th>
-                <td>{{ cart_content.quantity }}</td>
-            </tr>
-            <tr>
-                <th>CreateAt</th>
-                <td>{{ cart_content.createAt ? cart_content.createAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+                            {{ carts.qty }}
+                            <a href="{{ path('cart_add', {'id': carts.product.id}) }}?returnToCart=true"
+                               class="btn btn-sm btn-primary">
+                                +
+                            </a>
+                        </td>
+                        <td>{{ carts.product.price }} €</td>
+                        <td>{{ carts.qty * carts.product.price }} €</td>
+                        <td>{{ purchaseAt |date("d/m/Y", "Europe/Paris") }}</td>
+                        <td>
+                            <a href="{{ path('cart_delete', {'id': carts.product.id}) }}" class="btn btn-danger">X</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">{{ 'cart.content.message'|trans }}</td>
+                    </tr>
+                {% endfor %}
+                <tfoot>
+                <tr>
+                    <td colspan="3"><strong>Total</strong></td>
+                    <td class="text-center">{{ cart.total }} €</td>
+                </tr>
+                </tfoot>
+                </tbody>
+            </table>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                    {% if cart|length > 0 %}
+                        <div class="col-md-4 col-sm-12 mb-5"><a href="{{ path('cart_content_show') }}"
+                                                                class="btn btn-success placer ">{{ 'cart.content.pay' |trans }}</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
 
-    <a href="{{ path('cart_content_index') }}">back to list</a>
-
-    <a href="{{ path('cart_content_edit', {'id': cart_content.id}) }}">edit</a>
-
-    {{ include('cart_content/_delete_form.html.twig') }}
+        {% else %}
+            <div class="row">
+                <div class="col-md-12 m-5">
+                    <p colspan="4" class="text-center">Veuillez vous connectez pour voir vos produits sur le panier</p>
+                    <a href="" class="btn btn-primary">Connexion</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

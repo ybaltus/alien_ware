@@ -61,7 +61,16 @@ product:
 cart:
   title: Cart
   content:
-    title: Cart content
+    title: Cart Content
+    delete: Delete
+    pay: Payment
+    name: Name
+    quantity: Quantities
+    price: Price A.T.I
+    total: Total
+    message: No products in the cart
+    purchaseAt: Date of purchase
+    validate: Checkout
 
 # User
 user:

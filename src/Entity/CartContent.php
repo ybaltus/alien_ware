@@ -45,6 +45,11 @@ class CartContent
      */
     private $cart;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $total;
+
 
     public function getId(): ?int
     {
@@ -99,5 +104,18 @@ class CartContent
 
         return $this;
     }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(float $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
 
 }
