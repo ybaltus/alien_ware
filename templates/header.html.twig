@@ -15,8 +15,10 @@
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav">
                                     <a class="nav-item nav-link" href="#">{{'home'|trans }}</a>
-                                    <a class="nav-item nav-link" href="#"> {{'product.title'|trans }}</a>
-                                    <a class="nav-item nav-link" href="#"> {{'admin'|trans }}</a>
+									<a class="nav-item nav-link" href="{{ path('product_index') }}">
+										{{'product.title'|trans }}</a>
+									<a class="nav-item nav-link" href="{{ path('admin_products') }}">
+										{{'admin'|trans }}</a>
                                     <a class="nav-item nav-link" href="#"> {{'contact'|trans }} </a>
                                     <a class="nav-item nav-link last" href="#"><i class="fa fa-shopping-cart text-white"> {{'cart.title'|trans }}</i></a>
                                     {% if app.user is not null %}
@@ -32,8 +34,7 @@
                     </div>
                 </div>
             </div>
-
-	</div>
+		</div>
 	<!-- header section end -->
 </header>
 <!-- end header -->

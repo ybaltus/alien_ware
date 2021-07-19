@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index
+{% endblock %}
+
+{% block body %}
+	<div class="collection_text">{{'product.PagesAll'|trans}}</div>
+	<div class="collection_section layout_padding">
+		<div class="container">
+			<h1 class="new_text">
+				<strong>{{'product.PagesAll'|trans}}</strong>
+			</h1>
+			<p class="consectetur_text">{{'product.ProductDesc'|trans}}</p>
+		</div>
+	</div>
+	<div class="layout_padding gallery_section">
+		<div class="container">
+			<div class="row">
+				{% for product in products %}
+					<div class="col-sm-4">
+						<div class="best_shoes">
+							<p class="best_text">{{ product.name }}</p>
+							<div class="shoes_icon"><img class="img-fluid" src="{{'/uploads/images_products/' ~ product.image}}" style=" "></div>
+							<div class="star_text align-text">
+								<div class="left_part justify-content-center align-items-center">
+									<a class='btn btn-danger btn-lg btn-block' href="{{ path('product_show', {'id': product.id}) }}">{{'product.show'|trans}}</a>
+								</div>
+								<div class="right_part justify-content-center align-items-center">
+									<div class="shoes_price mt-2">
+										{{'product.currency'|trans}}
+										<span class='justify-content-center align-items-center mt-3' style="color:#ff4e5b;">{{ product.price }}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="buy_now_bt">
+				<button class="buy_text">Buy Now</button>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{'product.title'|trans}}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 mt-5">
+				{% for type, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+							{{ message }}
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+		<a class=' btn btn-success mt-2 mb-2' href="{{ path('product_new') }}">{{'product.add'|trans}}</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>{{ 'product.name'|trans }}</th>
+					<th>Description</th>
+					<th>{{ 'product.price'|trans }}</th>
+					<th>Stock</th>
+					<th>Image</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in products %}
+					<tr>
+						<td scope="row">{{ product.id }}</td>
+						<td scope="row">{{ product.name }}</td>
+						<td scope="row">{{ product.description }}</td>
+						<td scope="row">{{ product.price }}</td>
+						<td scope="row">{{ product.stock }}</td>
+						<td scope="row">
+							<img class="img-fluid" src="{{' /uploads/images_products/' ~ product.image}}" style=" width: 200px">
+						</td>
+						<td scope="row">
+							<div class="row ">
+								<a class='btn btn-primary btn-block' href="{{ path('product_show', {'id': product.id}) }}">{{"product.show"|trans}}</a>
+								<a class='btn btn-secondary mt-2 btn-block' href="{{ path('product_edit', {'id': product.id}) }}">{{"product.edit"|trans}}</a>
+								{{ include('product/_delete_form.html.twig') }}
+							</div>
+
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+			<tfoot></tfoot>
+		</table>
+	</div>
+</div>{% endblock %}
