@@ -17,18 +17,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class RegistrationController extends AbstractController
 {
     /**
-     * @var TranslatorInterface
-     */
-    private $translator;
-
-    public function __construct(TranslatorInterface $translator){
-        $this->translator = $translator;
-    }
-
-    /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, TranslatorInterface $translator): Response
     {
         // Redirect  to profil page if the user is already connected
         if($this->getUser()){
@@ -48,15 +39,15 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            // Insert the user in the database
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
             // FLash message success
             $this->addFlash(
                 'success',
-                $this->translator->trans('user.messages.successRegister')
+                $translator->trans('user.messages.successRegister')
             );
 
             return $this->redirectToRoute('app_login');

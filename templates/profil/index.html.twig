@@ -4,18 +4,18 @@
 
 {% block body %}
     <div class="collection_text">{{ 'user.profil.title'|trans }}</div>
-    {% for type, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        {% endfor %}
-    {% endfor %}
     <div class="collection_section layout_padding">
         <div class="container">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
             <h1 class="new_text"><strong>{{ 'user.profil.welcome'|trans({'%firstname%': user.firstname, '%lastname%': user.lastname})}}</strong></h1>
 {#            <p class="consectetur_text">#}
                 <div class="card m-5" >
@@ -42,7 +42,7 @@
                     </ul>
                 </div>
 {#            </p>#}
-            <a class="btn btn-info" href="" title="{{ 'user.profil.edit'|trans }}">{{ 'user.profil.edit'|trans }}</a>
+            <a class="btn btn-info" href="{{ path('app_profil_edit', {id: user.id}) }}" title="{{ 'user.profil.edit'|trans }}">{{ 'user.profil.edit'|trans }}</a>
             <a class="btn btn-danger" href="" title="{{ 'user.profil.delete'|trans }}">{{ 'user.profil.delete'|trans }}</a>
         </div>
     </div>

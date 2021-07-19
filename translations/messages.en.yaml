@@ -57,6 +57,7 @@ user:
   profil:
     title: My account
     title2: My informations
+    editTitle: Edit my account
     welcome: "Hello %firstname% %lastname% !"
     order: My orders
     edit: Edit my profil
@@ -72,6 +73,7 @@ user:
   messages:
     successRegister: You are well registered. Connect you!
     successLogin: You are connected!
+    successEditProfil: Your account is modified!
     connected: You are logged in as
   errors:
     email: The email is not a valid email.
@@ -80,3 +82,4 @@ user:
     minLastname: Your last name must be at least 2 characters long
     maxLastname: Your last name cannot be longer than 50 characters
     minPassword: Your password should be at least 6 characters
+    notBlankPassword: Please enter a password

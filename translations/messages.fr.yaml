@@ -57,6 +57,7 @@ user:
   profil:
     title: Mon compte
     title2: Mes informations
+    editTitle: Éditer mon compte
     welcome: "Bonjour %firstname% %lastname% !"
     order: Mes commandes
     edit: Éditer mon profil
@@ -72,6 +73,7 @@ user:
   messages:
     successRegister: Vous êtes bien enregistré. Connectez vous!
     successLogin: Vous êtes connecté!
+    successEditProfil: Votre compte à bien été modifié !
     connected: Vous êtes connecté en tant que
   errors:
     email: L'email n'est pas valide.
@@ -80,3 +82,4 @@ user:
     minLastname: Votre nom doit avoir au moins 2 caractères
     maxLastname: Votre nom doit avoir au moins 50 caractères
     minPassword: Votre mot de passe doit avoir au moins 6 caractères
+    notBlankPassword: Veuillez renseigner un mot de passe
