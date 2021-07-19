@@ -54,6 +54,7 @@ user:
   signin: SignIn
   signup: SignUp
   signout: SignOut
+  empty: The user does not exist.
   profil:
     title: My account
     title2: My informations
@@ -71,9 +72,11 @@ user:
     password: Your password
     roles: User role(s)
   messages:
+    confirmDeleteProfil: Do you confim the deletion of your profil ?
     successRegister: You are well registered. Connect you!
     successLogin: You are connected!
     successEditProfil: Your account is modified!
+    successDeleteProfil: Your account is deleted!
     connected: You are logged in as
   errors:
     email: The email is not a valid email.

@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -54,7 +55,7 @@ class ProfilController extends AbstractController
      * @param User $user
      * @return Response
      */
-    public function edit(Request $request, User $user): Response {
+    public function edit(Request $request, User $user = null): Response {
         // Redirect to login page if the user does not exist
         if(!$this->getUser()){
             return $this->redirectToRoute('app_login');
@@ -90,7 +91,37 @@ class ProfilController extends AbstractController
         ]);
     }
 
-    public function delete(): Response {
+    /**
+     * Delete a profil
+     * @Route("/delete/{id}", name="app_profil_delete", methods={"POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function delete(Request $request, User $user = null): Response {
+        if(!$user) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('user.empty')
+            );
+            return $this->redirectToRoute('discipline_index');
+        }
 
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+            $this->entityManager->remove($user);
+            $this->entityManager->flush();
+            $this->addFlash(
+                'success',
+                $this->translator->trans('user.messages.successDeleteProfil')
+            );
+
+            // Invalidate the session for the redirection
+            $session = new Session();
+            $session->invalidate();
+//            $request->getSession()->invalidate(); Not working...
+        }
+
+
+        // Redirect register page after the deletion
+        return $this->redirectToRoute('app_register');
     }
 }
