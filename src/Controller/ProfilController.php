@@ -121,7 +121,7 @@ class ProfilController extends AbstractController
         }
 
 
-        // Redirect register page after the deletion
-        return $this->redirectToRoute('app_register');
+        // Redirect home page after the deletion
+        return $this->redirectToRoute('home');
     }
 }

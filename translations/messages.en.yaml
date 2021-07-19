@@ -75,6 +75,7 @@ user:
     agreeTerms: Agree terms
     password: Your password
     roles: User role(s)
+    create: Create
   messages:
     confirmDeleteProfil: Do you confim the deletion of your profil ?
     successRegister: You are well registered. Connect you!

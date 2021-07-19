@@ -75,6 +75,7 @@ user:
     agreeTerms: Accepter les conditions
     password: Votre mot de passe
     roles: Role(s) utilisateur
+    create: Créer
   messages:
     confirmDeleteProfil: Confirmez vous la  suppression de votre profil ?
     successRegister: Vous êtes bien enregistré. Connectez vous!
