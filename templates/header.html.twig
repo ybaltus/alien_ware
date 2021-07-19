@@ -25,7 +25,7 @@
                                     <a class="nav-item nav-link" href="/{{'redirectHome'|trans}}">{{'home'|trans }}</a>
 									<a class="nav-item nav-link" href="{{ path('product_index') }}">{{'product.title'|trans }}</a>
                                     <a class="nav-item nav-link" href="#"> {{'contact'|trans }} </a>
-                                    <a class="nav-item nav-link" href="#"><i class="fa fa-shopping-cart text-white"></i> {{'cart.title'|trans }}</a>
+                                    <a class="nav-item nav-link" href="{{ path('cart_show') }}"><i class="fa fa-shopping-cart text-white"></i> {{'cart.title'|trans }}</a>
                                     <div class="dropdown last_items"> 
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fa fa-user" aria-hidden="true"></i> {{ "user.profil.title" | trans}}
@@ -40,8 +40,8 @@
                                             {% endif %}
                                             
                                             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
-                                                <a class="nav-item nav-link" href="{{ path('admin_products') }}">
-                                                    {{'admin'|trans }}
+                                                <a class="nav-item nav-link" href="{{ path('admin_home') }}">
+                                                    {{'admin.titleHeader'|trans }}
                                                 </a>
                                             {% endif %}
                                         </div>

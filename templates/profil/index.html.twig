@@ -52,7 +52,7 @@
         <div class="container">
             <h1 class="new_text"><strong>{{ 'user.profil.order'|trans }}</strong></h1>
             <div class="row">
-                {% for cart in user.carts%}
+                {% for cart in user.carts %}
                     {% if cart.state == true %}
                         <div class="col-sm-4">
                             <div class="best_shoes">

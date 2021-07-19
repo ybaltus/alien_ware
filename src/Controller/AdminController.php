@@ -12,20 +12,27 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
-
-
 /**
  * @Route("/{_locale}/admin")
  */
 class AdminController extends AbstractController
 {
     /**
+     * Admin home page
+     * @Route("/home", name="admin_home")
+     *
+     * @return Response
+     */
+    public function index() {
+        return $this->render('admin/index.html.twig');
+    }
+    /**
      * Admin index for managing products
      * @Route("/products", name="admin_products")
      */
     public function indexProducts(ProductRepository $productRepository): Response
     {
-        return $this->render('admin/products.html.twig', [
+        return $this->render('admin/product/products.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
     }
@@ -34,7 +41,7 @@ class AdminController extends AbstractController
      * Admin function for creating a product
      * @Route("/product/new", name="product_new", methods={"GET","POST"})
      */
-    public function new(Request $request, TranslatorInterface $t): Response
+    public function newProduct(Request $request, TranslatorInterface $t): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -68,7 +75,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_products', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/new.html.twig', [
+        return $this->renderForm('admin/product/new.html.twig', [
             'product' => $product,
             'form' => $form,
         ]);
@@ -78,7 +85,7 @@ class AdminController extends AbstractController
      * Admin function for editing a product
      * @Route("/product/{id}/edit", name="product_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Product $product, TranslatorInterface $t): Response
+    public function editProduct(Request $request, Product $product, TranslatorInterface $t): Response
     {
         $form = $this->createForm(ProductType::class, $product);
         // dd($form);
@@ -92,7 +99,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_products', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin/edit.html.twig', [
+        return $this->renderForm('admin/product/edit.html.twig', [
             'product' => $product,
             'form' => $form,
         ]);
@@ -102,7 +109,7 @@ class AdminController extends AbstractController
      * Admin function for deleting a product
      * @Route("/product/{id}", name="product_delete", methods={"POST"})
      */
-    public function delete(Request $request, Product $product, TranslatorInterface $t): Response
+    public function deleteProduct(Request $request, Product $product, TranslatorInterface $t): Response
     {
         if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

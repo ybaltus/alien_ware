@@ -18,7 +18,6 @@ lang: Anglais
 switch: FR
 trad: en
 joinUs: Rejoignez-nous !
-admin: Administrateur
 superAdmin: Super administrateur
 alienShop: Boutique en ligne Alien Where
 
@@ -31,6 +30,7 @@ product:
   title: Produits
   name: Nom
   price: Prix
+  description: Description
   new: Nouveau Produit
   PagesAll: Produits
   OutofStockDesc: Suite à une forte demande, nous sommes en rupture de stock.
@@ -117,3 +117,12 @@ user:
     maxLastname: Votre nom doit avoir au moins 50 caractères
     minPassword: Votre mot de passe doit avoir au moins 6 caractères
     notBlankPassword: Veuillez renseigner un mot de passe
+
+# Admin
+admin:
+  titleHeader: Adminitrateur
+  title: Bienvenu sur la page d'administration
+  product:
+    title: Gérer les produits
+  user:
+    title: Gérer les utilisateurs

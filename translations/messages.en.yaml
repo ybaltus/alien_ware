@@ -18,7 +18,6 @@ lang: French
 switch: EN
 trad: fr
 joinUs: Join Us !
-admin: Admin
 superAdmin: Super admin
 alienShop: Alien Where Shop
 
@@ -32,6 +31,7 @@ monakaSaysHello: Monaka says hello
 product:
   title: Products
   name: Name
+  description: Description
   price: Price
   new: New Product
   PagesAll: Products
@@ -118,3 +118,12 @@ user:
     maxLastname: Your last name cannot be longer than 50 characters
     minPassword: Your password should be at least 6 characters
     notBlankPassword: Please enter a password
+
+# Admin
+admin:
+  titleHeader: Admin
+  title: Welcome on the admin page
+  product:
+    title: Products management
+  user:
+    title: Users management

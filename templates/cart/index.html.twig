@@ -77,14 +77,11 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
-                    {{ dump(items) }}
                     {% if items|length > 0 %}
                     <div class="col-md-4 col-sm-12 mb-5"><a href="{{ path('cart_content_insert') }}" class="btn btn-success placer ">{{'cart.content.validate' |trans }}</a></div>
                     {% endif %}
                 </div>
             </div>
-
-
         {% else %}
             <div class="row">
                 <div class="col-md-12 m-5">

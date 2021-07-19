@@ -34,12 +34,6 @@ class Product
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 500,
-     *      minMessage = "product.errors.minDescription",
-     *      maxMessage = "product.errors.maxDescription"
-     * )
      */
     private $description;
 
