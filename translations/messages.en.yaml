@@ -60,10 +60,14 @@ user:
     title2: My informations
     editTitle: Edit my account
     welcome: "Hello %firstname% %lastname% !"
-    order: My orders
+    order: History of my orders
     edit: Edit my profil
     delete: Delete my profil
     orderEmpty: You are not orders.
+    orderNumber: Order n°
+    orderAmount: Amount
+    orderDate: Past
+    show: Show
   form:
     firstname: Your firstname
     lastname: Your lastname

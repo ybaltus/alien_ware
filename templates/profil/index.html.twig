@@ -53,27 +53,27 @@
             <h1 class="new_text"><strong>{{ 'user.profil.order'|trans }}</strong></h1>
             <div class="row">
                 {% for cart in user.carts%}
-                    <div class="col-sm-4">
-                        <div class="best_shoes">
-                            <p class="best_text">Best Shoes </p>
-                            <div class="shoes_icon"><img src="images/shoes-img4.png"></div>
-                            <div class="star_text">
-                                <div class="left_part">
-                                    <ul>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                    </ul>
+                    {% if cart.state is true %}
+                        <div class="col-sm-4">
+                            <div class="best_shoes">
+                                <p class="best_text">{{ 'user.profil.orderNumber'|trans }} {{ cart.id }}</p>
+                                <div class="shoes_icon">
+                                    <strong>{{ cart.purchaseAt|date('d-m-Y H:i') }}</strong>
                                 </div>
-                                <div class="right_part">
-                                    <div class="shoes_price">$ <span style="color: #ff4e5b;">60</span></div>
+                                <div class="star_text">
+                                    <div class="left_part">
+                                        <a class="btn btn-info" href="{{ path('cart_content_show', {'id': cart.id}) }}"><i class="fa fa-eye" aria-hidden="true"></i> {{ 'user.profil.show'|trans }}</a>
+                                    </div>
+                                    <div class="right_part">
+                                        <div class="shoes_price">&euro; <span style="color: #ff4e5b;">{{ cart.total }}</span></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     {% else %}
+                        <p class="text-bold" style="color:black">{{ 'user.profil.orderEmpty'|trans }} :(</p>
+                    {% endif %}
+                {% else %}
                     <p class="text-bold" style="color:black">{{ 'user.profil.orderEmpty'|trans }} :(</p>
                 {% endfor %}
             </div>
