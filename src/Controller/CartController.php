@@ -81,16 +81,15 @@ class CartController extends AbstractController
         $detailedCart = [];
         $total = 0;
 
+        $cart = new Cart();
         //
         foreach ($session->get('cart', []) as $id => $qty){
             //On récupère chaque produit dans la Base de donnée
-            $cart = new Cart();
             $product = $productRepository->find($id);
             //puis on les ajoute dans le tableau detailedCart
             $detailedCart[] = [
                 'product' => $product,
                 'qty' => $qty,
-                'id' => $cart->getId()
 
             ];
             // on dynamise le montant total du panier
@@ -99,7 +98,8 @@ class CartController extends AbstractController
         // enfin on affiche tous dans la page ci-dessous
         return $this->render('cart/index.html.twig', [
             'items' => $detailedCart,
-            'total' => $total
+            'total' => $total,
+            'cart' => $cart
         ]);
     }
 
