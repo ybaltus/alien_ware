@@ -19,57 +19,29 @@
             </div>
         </div>
         <h1 class="text-center">{{ 'cart.content.title'|trans }}</h1>
-        {% if app.user == false %}
             <table class="table m-5">
                 <thead class="text-center">
                 <tr>
                     <th>{{ 'cart.content.name'|trans }}</th>
                     <th>{{ 'cart.content.quantity'|trans }}</th>
                     <th>{{ 'cart.content.price'|trans }}€</th>
-                    <th>{{ 'cart.content.total'|trans }}</th>
                     <th>{{ 'cart.content.purchaseAt'|trans }}</th>
-                    <th>{{ 'cart.content.delete'|trans }}</th>
+                    <th>{{ 'cart.content.total'|trans }}</th>
                 </tr>
                 </thead>
                 <tbody class="text-center">
-                {% for carts in cart %}
+                {% for content in cart.cartContents %}
                     <tr>
-                        <td>{{ carts.product }}</td>
-                        <td>
-                            {% set session = app.session.get('cart') %}
-                            {% if session.1 >= 2 %}
-                                <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
-                                   class="btn btn-primary btn-sm ">
-                                    -
-                                </a>
-                            {% else %}
-                                <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
-                                   class="btn btn-primary btn-sm disabled">
-                                    -
-                                </a>
-                            {% endif %}
-
-                            {{ carts.qty }}
-                            <a href="{{ path('cart_add', {'id': carts.product.id}) }}?returnToCart=true"
-                               class="btn btn-sm btn-primary">
-                                +
-                            </a>
-                        </td>
-                        <td>{{ carts.product.price }} €</td>
-                        <td>{{ carts.qty * carts.product.price }} €</td>
-                        <td>{{ purchaseAt |date("d/m/Y", "Europe/Paris") }}</td>
-                        <td>
-                            <a href="{{ path('cart_delete', {'id': carts.product.id}) }}" class="btn btn-danger">X</a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="5" class="text-center">{{ 'cart.content.message'|trans }}</td>
+                        <td>{{ content.product }}</td>
+                        <td>{{ content.quantity }}</td>
+                        <td>{{ content.product.price }} €</td>
+                        <td>{{ content.cart.purchaseAt |date("d/m/Y") }}</td>
+                        <td>{{ content.total }} €</td>
                     </tr>
                 {% endfor %}
                 <tfoot>
                 <tr>
-                    <td colspan="3"><strong>Total</strong></td>
+                    <td colspan="4"><strong>Total</strong></td>
                     <td class="text-center">{{ cart.total }} €</td>
                 </tr>
                 </tfoot>
@@ -79,21 +51,10 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4"></div>
-                    {% if cart|length > 0 %}
-                        <div class="col-md-4 col-sm-12 mb-5"><a href="{{ path('cart_content_show') }}"
+                        <div class="col-md-4 col-sm-12 mb-5"><a href="{{ path('cart_content_show',{'id': cart.id}) }}"
                                                                 class="btn btn-success placer ">{{ 'cart.content.pay' |trans }}</a>
                         </div>
-                    {% endif %}
                 </div>
             </div>
-
-        {% else %}
-            <div class="row">
-                <div class="col-md-12 m-5">
-                    <p colspan="4" class="text-center">Veuillez vous connectez pour voir vos produits sur le panier</p>
-                    <a href="" class="btn btn-primary">Connexion</a>
-                </div>
-            </div>
-        {% endif %}
     </div>
 {% endblock %}

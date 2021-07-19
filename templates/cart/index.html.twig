@@ -19,7 +19,7 @@
             </div>
         </div>
         <h1 class="text-center">{{ 'cart.content.title'|trans }}</h1>
-        {% if app.user == true %}
+        {% if app.user == false %}
             <table class="table m-5">
                 <thead class="text-center">
                 <tr>
@@ -85,7 +85,7 @@
         {% else %}
             <div class="row">
                 <div class="col-md-12 m-5">
-                    <p colspan="4" class="text-center">Veuillez vous connectez pour voir vos produits sur le panier,ici</a> </p>
+                    <p colspan="4" class="text-center">Veuillez vous connectez pour voir vos produits sur le panier,<a href="{{ path('app_register') }}">ici</a> </p>
                 </div>
             </div>
         {% endif %}

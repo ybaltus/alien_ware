@@ -50,7 +50,7 @@ class CartContentController extends AbstractController
             $cartContent = new CartContent();
             $cartContent->setCart($cart);
             $cartContent->setCreateAt(new DateTimeImmutable('now'));
-
+            dump($cartContent);
             $cartContent->setQuantity($qty);
             //On récupère chaque produit dans la Base de donnée
             $product = $this->productRepository->find($id);
@@ -76,10 +76,11 @@ class CartContentController extends AbstractController
      * @Route ("/{id}", name="cart_content_show", requirements={"id": "\d+"})
      */
     public function show(Cart $cart = null, CartRepository $cartRepository){
+
         $cart = $cartRepository->find($cart);
 
         return $this->render('cart_content/show.html.twig', [
-            'cart' => $cart
+            'cart' => $cart,
         ]);
     }
 }
