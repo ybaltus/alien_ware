@@ -4,13 +4,6 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container">
-		{% for type, messages in app.flashes %}
-			{% for message in messages %}
-				<p class="alert alert-{{type}}">{{message}}</p>
-			{% endfor %}
-		{% endfor %}
-	</main>
 	<div class="collection_text">{{'product.PagesAll'|trans}}</div>
 	<div class="collection_section layout_padding">
 		<div class="container">
