@@ -8,12 +8,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/{_locale}")
+ * @Route("/{_locale}/profil")
  */
 class ProfilController extends AbstractController
 {
     /**
-     * @Route("/profil", name="app_profil")
+     * Profil page
+     *
+     * @Route("/", name="app_profil")
      */
     public function index(): Response
     {
@@ -31,6 +33,10 @@ class ProfilController extends AbstractController
     }
 
     public function update(): Response {
+
+    }
+
+    public function delete(): Response {
 
     }
 }
