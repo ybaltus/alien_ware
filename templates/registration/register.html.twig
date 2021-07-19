@@ -40,9 +40,9 @@
                                     {{ form_label(registrationForm.roles) }}
                                     {{ form_widget(registrationForm.roles, {'attr': {'class': 'form-control'}}) }}
                                 </div>
-                                    <div class="send_btn">
-                                        <button class="main_bt" type="submit">{{ 'save'|trans }}</button>
-                                    </div>
+                                <div class="send_btn">
+                                    <button class="main_bt" type="submit" title="{{ 'user.form.create'|trans }}">{{ 'user.form.create'|trans }}</button>
+                                </div>
                                 {{ form_end(registrationForm) }}
                             </div>
                         </div>

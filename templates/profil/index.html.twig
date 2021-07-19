@@ -4,20 +4,19 @@
 
 {% block body %}
     <div class="collection_text">{{ 'user.profil.title'|trans }}</div>
-    {% for type, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        {% endfor %}
-    {% endfor %}
     <div class="collection_section layout_padding">
         <div class="container">
-            <h1 class="new_text"><strong>{{ 'user.profil.welcome'|trans({'%firstname%': user.firstname, '%lastname%': user.lastname})}}</strong></h1>
-{#            <p class="consectetur_text">#}
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <h1 class="new_text"><strong>{{ 'user.profil.welcome'|trans({'%firstname%': user.firstname|capitalize, '%lastname%': user.lastname|capitalize})}}</strong></h1>
                 <div class="card m-5" >
                     <div class="card-header">
                         <h3>{{ 'user.profil.title2'|trans }}</h3>
@@ -41,9 +40,12 @@
                         </li>
                     </ul>
                 </div>
-{#            </p>#}
-            <a class="btn btn-info" href="" title="{{ 'user.profil.edit'|trans }}">{{ 'user.profil.edit'|trans }}</a>
-            <a class="btn btn-danger" href="" title="{{ 'user.profil.delete'|trans }}">{{ 'user.profil.delete'|trans }}</a>
+            <div class="d-flex flex-row col-12">
+                {# Edit #}
+                <a class="btn btn-info mb-2 mr-2 col-6" href="{{ path('app_profil_edit', {id: user.id}) }}" title="{{ 'user.profil.edit'|trans }}"><i class="fa fa-pencil" aria-hidden="true"></i> {{ 'user.profil.edit'|trans }}</a>
+                {# Delete #}
+                {{ include('profil/_delete_form.html.twig') }}
+            </div>
         </div>
     </div>
     <div class="layout_padding gallery_section mt-3">
@@ -51,30 +53,31 @@
             <h1 class="new_text"><strong>{{ 'user.profil.order'|trans }}</strong></h1>
             <div class="row">
                 {% for cart in user.carts%}
-                    <div class="col-sm-4">
-                        <div class="best_shoes">
-                            <p class="best_text">Best Shoes </p>
-                            <div class="shoes_icon"><img src="images/shoes-img4.png"></div>
-                            <div class="star_text">
-                                <div class="left_part">
-                                    <ul>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                        <li><a href="#"><img src="images/star-icon.png"></a></li>
-                                    </ul>
+                    {% if cart.state == true %}
+                        <div class="col-sm-4">
+                            <div class="best_shoes">
+                                <p class="best_text">{{ 'user.profil.orderNumber'|trans }} {{ cart.id }}</p>
+                                <div class="shoes_icon">
+                                    <strong>{{ cart.purchaseAt|date('d-m-Y H:i') }}</strong>
                                 </div>
-                                <div class="right_part">
-                                    <div class="shoes_price">$ <span style="color: #ff4e5b;">60</span></div>
+                                <div class="star_text">
+                                    <div class="left_part">
+                                        <a class="btn btn-info" href="{{ path('cart_content_show', {'id': cart.id}) }}"><i class="fa fa-eye" aria-hidden="true"></i> {{ 'user.profil.show'|trans }}</a>
+                                    </div>
+                                    <div class="right_part">
+                                        <div class="shoes_price">&euro; <span style="color: #ff4e5b;">{{ cart.total }}</span></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     {% else %}
+                        <p class="text-bold" style="color:black">{{ 'user.profil.orderEmpty'|trans }} :(</p>
+                    {% endif %}
+                {% else %}
                     <p class="text-bold" style="color:black">{{ 'user.profil.orderEmpty'|trans }} :(</p>
                 {% endfor %}
             </div>
         </div>
     </div>
 {% endblock %}
+

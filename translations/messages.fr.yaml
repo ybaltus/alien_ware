@@ -70,14 +70,20 @@ user:
   signin: Se connecter
   signup: S'inscrire
   signout: Se déconnecter
+  empty: L'utilisateur n'existe pas.
   profil:
     title: Mon compte
     title2: Mes informations
+    editTitle: Éditer mon compte
     welcome: "Bonjour %firstname% %lastname% !"
-    order: Mes commandes
+    order: Historique de mes commandes
     edit: Éditer mon profil
     delete: Supprimer mon profil
     orderEmpty: Vous n'avez pas de commandes.
+    orderNumber: Commande n°
+    orderAmount: Montant
+    orderDate: Passé le
+    show: Consulter
   form:
     firstname: Votre prénom
     lastname: Votre nom
@@ -85,9 +91,13 @@ user:
     agreeTerms: Accepter les conditions
     password: Votre mot de passe
     roles: Role(s) utilisateur
+    create: Créer
   messages:
+    confirmDeleteProfil: Confirmez vous la  suppression de votre profil ?
     successRegister: Vous êtes bien enregistré. Connectez vous!
     successLogin: Vous êtes connecté!
+    successEditProfil: Votre compte à bien été modifié !
+    successDeleteProfil: Votre compte à bien été supprimé !
     connected: Vous êtes connecté en tant que
   errors:
     email: L'email n'est pas valide.
@@ -96,3 +106,4 @@ user:
     minLastname: Votre nom doit avoir au moins 2 caractères
     maxLastname: Votre nom doit avoir au moins 50 caractères
     minPassword: Votre mot de passe doit avoir au moins 6 caractères
+    notBlankPassword: Veuillez renseigner un mot de passe

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.profil.editTitle'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="collection_text">{{ 'user.profil.editTitle'|trans }}</div>
+    <div class="layout_padding contact_section">
+        <div class="container">
+            <h1 class="new_text"><strong>{{ 'user.profil.editTitle'|trans }}</strong></h1>
+        </div>
+        <div class="container-fluid ram">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="email_box">
+                        <div class="input_main">
+                            <div class="container">
+                                {{ form_start(profilForm) }}
+                                <div class="form-group">
+                                    {{ form_errors(profilForm.firstname) }}
+                                    {{ form_widget(profilForm.firstname, {'attr': {'class': 'email-bt'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_errors(profilForm.lastname) }}
+                                    {{ form_widget(profilForm.lastname, {'attr': {'class': 'email-bt'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_errors(profilForm.email) }}
+                                    {{ form_widget(profilForm.email, {'attr': {'class': 'email-bt'}}) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_errors(profilForm.plainPassword) }}
+                                    {{ form_widget(profilForm.plainPassword, {'attr': {'class': 'email-bt'}}) }}
+                                </div>
+                                <div class="send_btn">
+                                    <button class="main_bt" type="submit" title="{{ 'edit'|trans }}">{{ 'edit'|trans }}</button>
+                                </div>
+                                {{ form_end(profilForm) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="shop_banner">
+                        <div class="our_shop">
+                            <button class="out_shop_bt">{{ 'joinUs'|trans }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,5 @@
+<form class="col-6 p-0" method="post" action="{{ path('app_profil_delete', {'id': user.id}) }}" onsubmit="return confirm(`{{ 'user.messages.confirmDeleteProfil'|trans }}`);">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+    <button class="btn btn-danger col-12" title="{{ 'user.profil.delete'|trans }}"><i class="fa fa-minus" aria-hidden="true"></i> {{ 'user.profil.delete'|trans }}</button>
+</form>
+
