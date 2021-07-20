@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("{_locale}/cart/content")
@@ -87,13 +88,13 @@ class CartContentController extends AbstractController
     /**
      * @Route ("/validate/{id}", name="cart_content_validate", requirements={"id": "\d+"})
      */
-    public function validate(Cart $cart = null, CartRepository $cartRepository){
+    public function validate(Cart $cart = null, CartRepository $cartRepository, TranslatorInterface $translator){
 
         $cart = $cartRepository->find($cart);
         $cart->setState(true);
         $this->em->persist($cart);
 
-        $this->addFlash("success", "FÉLICITATIONS, votre commande a bien été validé");
+        $this->addFlash("success", $translator->trans('cart.messages.successPayment'));
 
         $this->em->flush();
 

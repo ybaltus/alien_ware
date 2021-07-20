@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/{_locale}/cart")
@@ -31,7 +32,7 @@ class CartController extends AbstractController
     /**
      * @Route("/add/{id}", name="cart_add", methods={"GET"}, requirements={"id":"\d+"})
      */
-    public function add($id, ProductRepository $productRepository, SessionInterface $session, Request $request): Response
+    public function add($id, ProductRepository $productRepository, SessionInterface $session, Request $request, TranslatorInterface $translator): Response
     {
         // securisation : est ce que le produit existe bien
         $product = $productRepository->find($id);
@@ -58,7 +59,7 @@ class CartController extends AbstractController
         $session->set('cart', $cart);
 
         // on affiche un message flash a l'utilisateur
-        $this->addFlash('success', "L'article a bien été ajouter au panier !");
+        $this->addFlash('success', $translator->trans('cart.messages.successAdd'));
 
         // on redirige l'utilisateur à la page panier
         if ($request->query->get('returnToCart')){
@@ -111,7 +112,7 @@ class CartController extends AbstractController
     /**
      * @Route("/delete/{id}", name="cart_delete", requirements={"id": "\d+"})
      */
-    public function delete($id){
+    public function delete($id, TranslatorInterface $translator){
         // securisation : est ce que le produit existe bien
         $product = $this->productRepository->find($id);
 
@@ -130,7 +131,7 @@ class CartController extends AbstractController
         $this->session->set('cart', $cart);
 
         // on affiche un message flash a l'utilisateur
-        $this->addFlash("success", "Le produit a bien été supprimé du panier");
+        $this->addFlash("success", $translator->trans('cart.messages.successPayment'));
 
         // on redirige l'utilisateur dans la page panier
         return $this->redirectToRoute("cart_show");
@@ -140,7 +141,7 @@ class CartController extends AbstractController
     /**
      * @Route("/decrement/{id}", name="cart_decrement", requirements={"id": "\d+"})
      */
-    public function decrement($id){
+    public function decrement($id, TranslatorInterface $translator){
 
         // securisation : est ce que le produit existe bien
         $product = $this->productRepository->find($id);
@@ -170,7 +171,7 @@ class CartController extends AbstractController
         $this->session->set('cart', $cart);
 
         // on affiche un message flash a l'utilisateur
-        $this->addFlash("success", "Le produit a bien été mis à jour");
+        $this->addFlash("success", $translator->trans('cart.messages.successUpdate'));
 
         // redirection de l'utilisateur dans la page panier
         return $this->redirectToRoute("cart_show");
