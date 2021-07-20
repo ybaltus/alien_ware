@@ -4,6 +4,14 @@
 
 {% block body %}
     <div class="collection_text">{{ 'user.profil.title'|trans }}</div>
+    <!-- breadcrumb end  -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ 'user.profil.title'|trans }}</li>
+        </ol>
+    </nav>
+    <!-- breadcrumb end -->
     <div class="collection_section layout_padding">
         <div class="container">
             {% for type, messages in app.flashes %}

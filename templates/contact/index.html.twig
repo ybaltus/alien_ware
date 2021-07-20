@@ -5,6 +5,14 @@
 {% block body %}
     <!-- contact section start -->
     <div class="collection_text">{{ 'contact.title'|trans }}</div>
+    <!-- breadcrumb end  -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ 'contact.title'|trans }}</li>
+            </ol>
+        </nav>
+    <!-- breadcrumb end -->
     <div class="layout_padding contact_section">
         <div class="container">
             <h1 class="new_text"><strong>{{ 'contact.now'|trans }}</strong></h1>
