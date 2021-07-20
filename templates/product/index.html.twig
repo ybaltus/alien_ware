@@ -1,29 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product index
+{% block title %}
+	{{'product.title'|trans}}
 {% endblock %}
 
 {% block body %}
-	<div class="collection_text">{{'product.PagesAll'|trans}}</div>
+	<div class="collection_text">{{'product.title2'|trans}}</div>
 	<div class="collection_section layout_padding">
 		<div class="container">
 			<h1 class="new_text">
 				<strong>{{'product.PagesAll'|trans}}</strong>
 			</h1>
-            <div class="row">
-                <div class="col-12">
-                    {% for type, messages in app.flashes %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-                </div>
-            </div>
+			<div class="row">
+				<div class="col-12">
+					{% for type, messages in app.flashes %}
+						{% for message in messages %}
+							<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+								{{ message }}
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
 			<p class="consectetur_text">{{'product.ProductDesc'|trans}}</p>
 		</div>
 	</div>

@@ -119,7 +119,7 @@ class AdminController extends AbstractController
             $entityManager->remove($product);
             $entityManager->flush();
 
-            $this->addFlash('danger', $t->trans('product.delete'));
+            $this->addFlash('danger', $t->trans('product.deleted'));
         }
 
         return $this->redirectToRoute('admin_products', [], Response::HTTP_SEE_OTHER);

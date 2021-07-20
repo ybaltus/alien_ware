@@ -26,6 +26,7 @@ monakaSaysHello: Monaka vous salut
 # Product
 product:
   title: Produits
+  title2: Nos produits
   name: Nom
   price: Prix
   description: Description
@@ -75,7 +76,6 @@ cart:
     purchaseAt: Date d'achat
     validate: Valider la commande
     summary: Récapitulatif de votre commande
-
 
 # User
 user:
@@ -139,4 +139,3 @@ admin:
     title: Gérer les produits
   user:
     title: Gérer les utilisateurs
-
