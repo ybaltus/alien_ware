@@ -20,6 +20,7 @@ trad: fr
 joinUs: Join Us !
 superAdmin: Super admin
 alienShop: Alien Where Shop
+close: Close
 
 
 #Monaka
@@ -61,8 +62,16 @@ product:
 
 # Cart
 cart:
+  total: Total
+  actions: Actions
+  state: State
+  number: Cart number
+  unbought: Unbought
+  unboughtlist: List of unbought carts
+  nocart: they are no available cart
   title: Cart
   content:
+    view: View content
     title: Cart Content
     delete: Delete
     pay: Payment
@@ -76,6 +85,11 @@ cart:
 
 # User
 user:
+  today:
+    registered: List of today registered users
+    nouser: No one registered today
+  firstname: firstname
+  lastname: lastname
   title: User
   connect: Sign In
   signin: SignIn
@@ -126,4 +140,6 @@ admin:
   product:
     title: Products management
   user:
-    title: Users management
+    title: View Today registered user 
+  cart:
+    title: View cart

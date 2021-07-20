@@ -18,9 +18,16 @@
 			{% endfor %}
 		{% endfor %}
 	</div>
-	<div class="container-fluid ram">
+	<div class="container">
 		<div class="row">
-			<a class="btn btn-primary" href="{{ path('admin_products') }}" title="{{ 'admin.product.title'|trans }}">{{ 'admin.product.title'|trans }}</a>
+			{% if is_granted('ROLE_SUPER_ADMIN') %}
+				<div class="carte gpink col"><a class="btn btn-primary" href="{{ path('admin_carts') }}" title="{{ 'admin.product.title'|trans }}">{{ 'admin.cart.title'|trans }}</a></div>
+				<div class="carte gpink col"><a class="btn btn-primary" href="{{ path('admin_users') }}" title="{{ 'admin.user.title'|trans }}">{{ 'admin.user.title'|trans }}</a></div>
+			{% endif %}
+
+			{% if is_granted('ROLE_ADMIN') %}
+				<div class="carte gp col"><a class="btn btn-primary" href="{{ path('admin_products') }}" title="{{ 'admin.product.title'|trans }}">{{ 'admin.product.title'|trans }}</a></div>
+			{% endif %}
 		</div>
 	</div>
 </div>

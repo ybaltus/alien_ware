@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use DateTime;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -36,22 +38,26 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
+
+
+    /**
+     * @return User[] Returns an array of User objects
+     */
+    public function findByCreatedAt()
     {
+        $date = new \DateTime("now");
+        $from = new \DateTime($date->format("Y-m-d")." 00:00:00");
+        $to   = new \DateTime($date->format("Y-m-d")." 23:59:59");
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('u.created_at BETWEEN :from AND :to')
+            ->setParameter('to', $to)
+            ->setParameter('from', $from)
             ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+            ->setMaxResults(50)
+            ->getQuery()->getResult()
         ;
     }
-    */
+   
 
     /*
     public function findOneBySomeField($value): ?User

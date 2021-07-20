@@ -21,3 +21,35 @@
 .last_items{
     left:555px;
 }
+
+a{
+    cursor: pointer !important;
+}
+
+/* Les carte */
+.carte{
+    height: 300px;
+    width: 200px;
+    /* box-sizing: border-box; */
+    border: 1px black solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 1px 10px 1px;
+    margin-right: 10px;
+}
+
+/*Color gray purple*/
+.gp{
+    background: linear-gradient(gray, purple) !important;
+}
+
+/*Color gray pink*/
+.gpink{
+    background: linear-gradient(gray, pink) !important;
+}
+
+.panier-table{
+    width: 100%;
+}

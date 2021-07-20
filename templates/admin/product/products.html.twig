@@ -31,7 +31,7 @@
 					<th>{{ 'product.price'|trans }}</th>
 					<th>Stock</th>
 					<th>Image</th>
-					<th>actions</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -57,13 +57,12 @@
 							</div>
 						</td>
 					</tr>
-				</td>
+				{% else %}
+				<tr>
+					<td colspan="7">{{'product.noProduct'|trans}}</td>
+				</tr>
+				{% endfor %}
 			</tbody>
-		</tr>
-	{% else %}
-		<tr>
-			<td colspan="7">{{'product.noProduct'|trans}}</td>
-		</tr>
-	{% endfor %}
-</tbody>
-<tfoot></tfoot></table></div></div>{% endblock %}
+		</table>
+	</div>
+{% endblock %}

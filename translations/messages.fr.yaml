@@ -20,6 +20,7 @@ trad: en
 joinUs: Rejoignez-nous !
 superAdmin: Super administrateur
 alienShop: Boutique en ligne Alien Where
+close: Fermer
 
 
 #Monaka
@@ -59,8 +60,16 @@ product:
 
 # Cart
 cart:
+  total: Total
+  actions: Actions
+  state: État
+  number: Numéro du panier
+  unbought: Non acheté
+  unboughtlist: Liste des paniers non achetés 
+  nocart: Nous n'avons pas trouvé de panier abandonnés
   title: Panier
   content:
+    view: Voir le contenu
     title: Contenu panier
     delete: Suppression
     pay: Paiement
@@ -75,6 +84,11 @@ cart:
 
 # User
 user:
+  today:
+    registered: Liste des utilisateurs inscrits aujourd'hui
+    nouser: Il n'y a pas encore de nouveau inscrit aujourd'hui
+  firstname: Prénom
+  lastname: Nom
   title: Utilisateur
   connect: Se connecter
   signin: Se connecter
@@ -120,9 +134,11 @@ user:
 
 # Admin
 admin:
-  titleHeader: Adminitrateur
+  titleHeader: Adminitration
   title: Bienvenu sur la page d'administration
   product:
     title: Gérer les produits
   user:
-    title: Gérer les utilisateurs
+    title: Lister les utilisateurs inscrits du jour
+  cart:
+    title: Lister les paniers
