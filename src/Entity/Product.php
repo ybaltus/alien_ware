@@ -22,13 +22,6 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *      min = 3,
-     *      max = 255,
-     *      minMessage = "product.errors.minName",
-     *      maxMessage = "product.errors.minName"
-     * )
-     * @Assert\NotBlank
      */
     private $name;
 

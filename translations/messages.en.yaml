@@ -20,11 +20,13 @@ joinUs: Join Us !
 superAdmin: Super admin
 alienShop: Alien Where Shop
 
-
 #Monaka
 monakaSaysHello: Monaka says hello
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> sandy2
 # Product
 product:
   title: Products
@@ -45,6 +47,7 @@ product:
   updated: Product updated
   deleted: Product deleted
   addToCart: Add to Cart
+  addImage: add an image
   currency: $
   back: < Back
   inStock: in stock
@@ -52,7 +55,9 @@ product:
   lastStocks: there is %nb% products remaining
   lastStock: there is 1 product remaining
   list: List of products
+  submitDelete: Are you sure you want to delete this item?
   errors:
+    mimeTypesMessage: Please upload a valid Image
     minName: Your name must be at least 3 characters long
     maxName: Your name cannot be longer than 255 characters
     minDescription: Your last description must be at least 10 characters long
@@ -85,7 +90,7 @@ user:
     title: My account
     title2: My informations
     editTitle: Edit my account
-    welcome: "Hello %firstname% %lastname% !"
+    welcome: 'Hello %firstname% %lastname% !'
     order: History of my orders
     edit: Edit my profil
     delete: Delete my profil
