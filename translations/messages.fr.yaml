@@ -6,7 +6,6 @@ edit: Modifier
 delete: Supprimer
 send: Envoyer
 seeMore: Voir plus
-contact: Contact
 contactUs: Nous contacter
 buy: Acheter
 buyNow: Acheter maintenant
@@ -118,6 +117,15 @@ user:
     minPassword: Votre mot de passe doit avoir au moins 6 caractères
     notBlankPassword: Veuillez renseigner un mot de passe
 
+# Contact
+contact:
+  title: Contactez-nous
+  header: Contact
+  now: Contactez-nous maintenant
+  phone: Votre téléphone
+  message: Votre message
+  send: Envoyer
+
 # Admin
 admin:
   titleHeader: Adminitrateur
@@ -126,3 +134,4 @@ admin:
     title: Gérer les produits
   user:
     title: Gérer les utilisateurs
+

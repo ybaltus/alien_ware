@@ -6,7 +6,6 @@ edit: Update
 delete: Delete
 send: Send
 seeMore: See More
-contact: Contact
 contactUs: Contact Us
 buy: Buy
 buyNow: Buy now
@@ -24,7 +23,6 @@ alienShop: Alien Where Shop
 
 #Monaka
 monakaSaysHello: Monaka says hello
-
 
 
 # Product
@@ -119,6 +117,15 @@ user:
     minPassword: Your password should be at least 6 characters
     notBlankPassword: Please enter a password
 
+# Contact
+contact:
+  title: Contact Us
+  header: Contact
+  now: Contact Now
+  phone: Your phone number
+  message: Your message
+  send: Send
+
 # Admin
 admin:
   titleHeader: Admin
@@ -127,3 +134,4 @@ admin:
     title: Products management
   user:
     title: Users management
+

@@ -22,12 +22,18 @@
                                     </div>
                                 </div>
                                 <div class="navbar-nav">
-                                    <a class="nav-item nav-link" href="/{{'redirectHome'|trans}}">{{'home'|trans }}</a>
-									<a class="nav-item nav-link" href="{{ path('product_index') }}">{{'product.title'|trans }}</a>
-                                    <a class="nav-item nav-link" href="#"> {{'contact'|trans }} </a>
+                                    <a class="nav-item nav-link" href="/{{'redirectHome'|trans}}" title="{{'home'|trans }}">{{'home'|trans }}</a>
+									<a class="nav-item nav-link" href="{{ path('product_index') }}" title="{{'product.title'|trans }}">{{'product.title'|trans }}</a>
+                                    <a class="nav-item nav-link" href="{{ path('app_contact') }}" title="{{'contact.header'|trans }}"> {{'contact.header'|trans }} </a>
                                     <a class="nav-item nav-link" href="{{ path('cart_show') }}"><i class="fa fa-shopping-cart text-white"></i> {{'cart.title'|trans }}</a>
                                     <div class="dropdown last_items"> 
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button class="btn btn-secondary dropdown-toggle"
+                                                type="button"
+                                                id="dropdownMenuButton"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
+                                                title="{{ "user.profil.title" | trans}}">
                                             <i class="fa fa-user" aria-hidden="true"></i> {{ "user.profil.title" | trans}}
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -40,7 +46,7 @@
                                             {% endif %}
                                             
                                             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
-                                                <a class="nav-item nav-link" href="{{ path('admin_home') }}">
+                                                <a class="nav-item nav-link" href="{{ path('admin_home') }}" title="{{'admin.titleHeader'|trans }}">
                                                     {{'admin.titleHeader'|trans }}
                                                 </a>
                                             {% endif %}
