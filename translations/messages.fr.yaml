@@ -34,7 +34,7 @@ product:
   new: Nouveau Produit
   PagesAll: Produits
   OutofStockDesc: Suite à une forte demande, nous sommes en rupture de stock.
-  ProductDesc: Voici tous les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes specialise dans la Haute-Technologie à Haute Performance
+  ProductDesc: Voici tous les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes spécialisés dans la Haute-Technologie à Haute Performance
   added: Produit ajouté
   show: voir plus
   add: Ajouter un produit
@@ -65,6 +65,8 @@ product:
 
 # Cart
 cart:
+  noConnect: Veuillez vous connecter pour voir vos produits sur le panier
+  noConnect2: Veuillez vous connecter pour accéder à votre récapitulatif de commande
   total: Total
   actions: Actions
   state: État
@@ -163,7 +165,7 @@ contact:
 # Admin
 admin:
   titleHeader: Adminitration
-  title: Bienvenu sur la page d'administration
+  title: Bienvenue sur la page d'administration
   product:
     title: Gérer les produits
   user:

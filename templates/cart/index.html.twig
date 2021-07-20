@@ -89,8 +89,7 @@
         {% else %}
             <div class="row">
                 <div class="col-md-12 m-5">
-                    <h1 colspan="4" class="text-center col-md-12">Veuillez vous connectez pour voir vos produits sur le
-                        panier</h1>
+                    <h1 colspan="4" class="text-center col-md-12">{{ 'cart.noConnect'|trans }}</h1>
                     <a href="{{ path('app_login') }}" class="col-md-12 btn btn-primary">Connexion</a>
                 </div>
             </div>

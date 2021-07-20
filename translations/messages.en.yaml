@@ -65,6 +65,8 @@ product:
 
 # Cart
 cart:
+  noConnect: Please log in to view your products in the cart
+  noConnect2: Please log in to access your order summary
   total: Total
   actions: Actions
   state: State

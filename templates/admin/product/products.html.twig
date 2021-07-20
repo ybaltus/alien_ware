@@ -1,79 +1,87 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{'product.title'|trans}}
+    {{ 'admin.product.title'|trans }}
 {% endblock %}
 
 {% block body %}
-	<!-- breadcrumb end  -->
-	<nav aria-label="breadcrumb">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
-			<li class="breadcrumb-item"><a href="{{ path('admin_home') }}" title="{{ 'admin.titleHeader'|trans }}">{{ 'admin.titleHeader'|trans }}</a></li>
-			<li class="breadcrumb-item active" aria-current="page">{{'admin.product.title'|trans}}</li>
-		</ol>
-	</nav>
-	<!-- breadcrumb end -->
-	<div class="container">
-		<h1>{{'admin.product.title'|trans}}</h1>
-		<div class="row">
-			<div class="col-12 mt-5">
-				{% for type, messages in app.flashes %}
-					{% for message in messages %}
-						<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-							{{ message }}
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-					{% endfor %}
-				{% endfor %}
-			</div>
-		</div>
-		<a class=' btn btn-success mt-2 mb-2' href="{{ path('product_new') }}" title="{{ 'product.add'|trans }}">{{'product.add'|trans}}</a>
-		<table class="table">
-			<thead>
-			<tr>
-				<th>Id</th>
-				<th>{{ 'product.name'|trans }}</th>
-				<th>Description</th>
-				<th>{{ 'product.price'|trans }}</th>
-				<th>Stock</th>
-				<th>Image</th>
-				<th>Actions</th>
-			</tr>
-			</thead>
-			<tbody>
-				{% for product in products %}
-					<tr>
-						<td scope="row">{{ product.id }}</td>
-						<td scope="row">{{ product.name }}</td>
-						<td scope="row" data-toggle="tooltip" data-html="true" title="{{ product.description}}">{{ product.description |slice(0, 50)}}</td>
-						<td scope="row">{{ product.price }}</td>
-						<td scope="row">{{ product.stock }}</td>
-						<td scope="row">
-							<img class="img-fluid" src="{{' /uploads/images_products/' ~ product.image}}" style=" width: 100px">
-						</td>
-						<td scope="row">
-							<div class="row ">
-								<a class='btn btn-primary' href="{{ path('product_show', {'id': product.id}) }}" title="{{'product.show'|trans}}">
-									<i class="fa fa-eye"></i>
-								</a>
-								<a class='btn btn-secondary ml-1' href="{{ path('product_edit', {'id': product.id}) }}" title="{{'product.edit'|trans}}" title="{{'product.edit'|trans}}">
-									<i class="fa fa-pencil"></i>
-								</a>
-								{{ include('admin/product/_delete_form.html.twig') }}
-							</div>
-						</td>
-					</tr>
-				{% else %}
-					<tr>
-						<td colspan="7">{{'product.noProduct'|trans}}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div>
-	</div>
+    <div class="collection_text">{{ 'admin.product.title'|trans }}</div>
+    <!-- breadcrumb end  -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+            </li>
+            <li class="breadcrumb-item"><a href="{{ path('admin_home') }}"
+                                           title="{{ 'admin.titleHeader'|trans }}">{{ 'admin.titleHeader'|trans }}</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{{ 'admin.product.title'|trans }}</li>
+        </ol>
+    </nav>
+    <!-- breadcrumb end -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5">
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        <a class=' btn btn-success mt-2 mb-2' href="{{ path('product_new') }}"
+           title="{{ 'product.add'|trans }}">{{ 'product.add'|trans }}</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{ 'product.name'|trans }}</th>
+                <th>Description</th>
+                <th>{{ 'product.price'|trans }}</th>
+                <th>Stock</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td scope="row">{{ product.id }}</td>
+                    <td scope="row">{{ product.name }}</td>
+                    <td scope="row" data-toggle="tooltip" data-html="true"
+                        title="{{ product.description }}">{{ product.description |slice(0, 50) }}</td>
+                    <td scope="row">{{ product.price }}</td>
+                    <td scope="row">{{ product.stock }}</td>
+                    <td scope="row">
+                        <img class="img-fluid" src="{{ ' /uploads/images_products/' ~ product.image }}"
+                             style=" width: 100px">
+                    </td>
+                    <td scope="row">
+                        <div class="row ">
+                            <a class='btn btn-primary' href="{{ path('product_show', {'id': product.id}) }}"
+                               title="{{ 'product.show'|trans }}">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <a class='btn btn-secondary ml-1' href="{{ path('product_edit', {'id': product.id}) }}"
+                               title="{{ 'product.edit'|trans }}" title="{{ 'product.edit'|trans }}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            {{ include('admin/product/_delete_form.html.twig') }}
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">{{ 'product.noProduct'|trans }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
 {% endblock %}
 
