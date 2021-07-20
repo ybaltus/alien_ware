@@ -18,6 +18,13 @@
 	<div class="about_main layout_padding">
 		<div class="collection_section">
 			<div class="container">
+				{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
+					<a class="btn btn-warning col-6" href="{{ path('product_edit2', {'id': product.id}) }}" title="{{'product.manage'|trans }}">
+						<i class="fa fa-cog" aria-hidden="true"></i>
+						{{'product.manage'|trans }}
+					</a>
+					<hr/>
+				{% endif %}
 				<div class="row">
 					<div class="col-12 mt-5">
 						{% for type, messages in app.flashes %}
@@ -63,7 +70,7 @@
 									<span style="color:#0a0506">{{product.price}}</span>
 								</strong>
 							</div>
-							<a href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-danger btn-lg">
+							<a title="{{'product.addToCart'|trans}}" href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-danger btn-lg">
 								{{'product.addToCart'|trans}}
 							</a>
 						</div>

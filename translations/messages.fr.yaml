@@ -27,18 +27,19 @@ monakaSaysHello: Monaka vous salut
 # Product
 product:
   title: Produits
+  title2: Nos produits
   name: Nom
   price: Prix
   description: Description
   new: Nouveau Produit
   PagesAll: Produits
   OutofStockDesc: Suite à une forte demande, nous sommes en rupture de stock.
-  ProductDesc: Voici tout les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes specialise dans la Haute-Technologie à Haute Performance
+  ProductDesc: Voici tous les produits que nous vous proposons. Comme vous pouvez le voir, nous sommes specialise dans la Haute-Technologie à Haute Performance
   added: Produit ajouté
   show: voir plus
   add: Ajouter un produit
   edit: Modifier le produit
-  delete: Supprimer le produit
+  delete: Supprimer
   noProduct: Il n'y a aucun produit dans la base de donnee
   unknown: Produit introuvable
   updated: Produit mis à jour
@@ -53,6 +54,8 @@ product:
   lastStock: Il reste 1 produit
   list: Liste des produits
   submitDelete: Etes-vous sur de vouloir supprimer ce produit?
+  save: Sauvegarder
+  manage: Gerer le produit
   errors:
     mimeTypesMessage: Veuillez inserer une image valide
     minName: Votre nom doit faire au minimum 3 caractères
@@ -83,7 +86,6 @@ cart:
     purchaseAt: Date d'achat
     validate: Valider la commande
     summary: Récapitulatif de votre commande
-
 
 # User
 user:
@@ -153,6 +155,6 @@ admin:
   product:
     title: Gérer les produits
   user:
-    title: Lister les utilisateurs inscrits du jour
+    title: Gérer les utilisateurs
   cart:
     title: Lister les paniers

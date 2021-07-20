@@ -27,6 +27,7 @@ monakaSaysHello: Monaka says hello
 # Product
 product:
   title: Products
+  title2: Our Products
   name: Name
   description: Description
   price: Price
@@ -38,13 +39,14 @@ product:
   show: see more
   add: Add product
   edit: Edit product
-  delete: Delete product
+  delete: Delete
   noProduct: There is no product in the database
   unknown: Product unknown
   updated: Product updated
   deleted: Product deleted
   addToCart: Add to Cart
   addImage: add an image
+  save: Save
   currency: $
   back: < Back
   inStock: in stock
@@ -53,6 +55,7 @@ product:
   lastStock: there is 1 product remaining
   list: List of products
   submitDelete: Are you sure you want to delete this item?
+  manage: Gerer le produit
   errors:
     mimeTypesMessage: Please upload a valid Image
     minName: Your name must be at least 3 characters long
@@ -152,6 +155,7 @@ admin:
   product:
     title: Products management
   user:
-    title: View Today registered user 
+    title: Users management
   cart:
     title: View cart
+

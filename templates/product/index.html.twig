@@ -1,37 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product index
+{% block title %}
+	{{'product.title'|trans}}
 {% endblock %}
 
 {% block body %}
-	<div class="collection_text">{{'product.PagesAll'|trans}}</div>
+	<div class="collection_text">{{'product.title2'|trans}}</div>
 	<!-- breadcrumb end  -->
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
-			<li class="breadcrumb-item active" aria-current="page">{{ 'product.title'|trans }}</li>
+			<li class="breadcrumb-item active" aria-current="page">{{ 'product.title2'|trans }}</li>
 		</ol>
 	</nav>
 	<!-- breadcrumb end -->
 	<div class="collection_section layout_padding">
 		<div class="container">
 			<h1 class="new_text">
-				<strong>{{'product.PagesAll'|trans}}</strong>
+				<strong>{{'product.title2'|trans}}</strong>
 			</h1>
-            <div class="row">
-                <div class="col-12">
-                    {% for type, messages in app.flashes %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-                </div>
-            </div>
+			<div class="row">
+				<div class="col-12">
+					{% for type, messages in app.flashes %}
+						{% for message in messages %}
+							<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+								{{ message }}
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
 			<p class="consectetur_text">{{'product.ProductDesc'|trans}}</p>
 		</div>
 	</div>
@@ -60,8 +61,8 @@
 											<br>
 											<div class="justify-content-center align-items-center ml-10">
 												<div class="justify-content-center align-items-center ml-4 ">
-													<a class='btn btn-danger btn-lg ' href="{{ path('product_show', {'id': product.id}) }}">{{'product.show'|trans}}</a>
-													<a href="{{ path('cart_add', {'id': product.id}) }}?returnToProduct=true" class="btn btn-success btn-lg" title="ajouter au panier">
+													<a class='btn btn-danger btn-lg' href="{{ path('product_show', {'id': product.id}) }}" title="{{'product.show'|trans}}">{{'product.show'|trans}}</a>
+													<a href="{{ path('cart_add', {'id': product.id}) }}?returnToProduct=true" class="btn btn-success btn-lg" title="{{'product.addToCart'|trans}}">
 														<i class="fa fa-shopping-cart"></i>
 														<i class="fa fa-plus"></i>
 													</a>

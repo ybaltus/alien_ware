@@ -5,12 +5,20 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid ram mt-5 mb-5">
-		<div>
-			<h1>
-				<strong>{{'product.new'|trans}}</strong>
-			</h1>
-		</div>
+	<div class="collection_text">{{'product.new'|trans}}</div>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+			<li class="breadcrumb-item"><a href="{{ path('admin_home') }}" title="{{ 'admin.titleHeader'|trans }}">{{ 'admin.titleHeader'|trans }}</a></li>
+			<li class="breadcrumb-item"><a href="{{ path('admin_products') }}" title="{{ 'admin.product.title'|trans }}">{{ 'admin.product.title'|trans }}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{'product.new'|trans}}</li>
+		</ol>
+	</nav>
+<div class="layout_padding contact_section">
+	<div class="container">
+		<h1 class="new_text"><strong>{{'product.new'|trans}}</strong></h1>
+	</div>
+	<div class="container-fluid ram">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="email_box">
@@ -39,21 +47,17 @@
 								{{ form_widget(form.image, {'attr': {'class': 'email-bt'}}) }}
 							</div>
 							<div class="form-group">
-								<button class="btn btn-danger mt-3  mb-3">{{ button_label|default('Save') }}</button>
+								<button title="{{'product.save'|trans}}" class="btn btn-danger mt-3  mb-3">{{ 'product.save'|trans}}</button>
 							</div>
 							{{ form_end(form) }}
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="shop_banner">
-					<div class="our_shop">
-						<button class="out_shop_bt">{{ 'joinUs'|trans }}</button>
-					</div>
-				</div>
+			<div class="col-md-6 text-center">
+				<img src="{{ asset('images/monaka/monaka.png') }}" style="height: 600px"/>
 			</div>
 		</div>
 	</div>
-
+</div>
 {% endblock %}

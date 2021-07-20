@@ -5,15 +5,15 @@
 {% endblock %}
 
 {% block body %}
-<div class="collection_text">{{'product.edit'|trans}}</div>
-<nav aria-label="breadcrumb">
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
-		<li class="breadcrumb-item"><a href="{{ path('admin_home') }}" title="{{ 'admin.titleHeader'|trans }}">{{ 'admin.titleHeader'|trans }}</a></li>
-		<li class="breadcrumb-item"><a href="{{ path('admin_products') }}" title="{{ 'admin.product.title'|trans }}">{{ 'admin.product.title'|trans }}</a></li>
-		<li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
-	</ol>
-</nav>
+	<div class="collection_text">{{'product.edit'|trans}}</div>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
+			<li class="breadcrumb-item"><a href="{{ path('admin_home') }}" title="{{ 'admin.titleHeader'|trans }}">{{ 'admin.titleHeader'|trans }}</a></li>
+			<li class="breadcrumb-item"><a href="{{ path('admin_products') }}" title="{{ 'admin.product.title'|trans }}">{{ 'admin.product.title'|trans }}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
+		</ol>
+	</nav>
 <div class="layout_padding contact_section">
 	<div class="container">
 		<h1 class="new_text"><strong>{{'product.edit'|trans}}</strong></h1>
@@ -46,9 +46,14 @@
 								{{ form_widget(form.image, {'attr': {'class': 'email-bt'}}) }}
 							</div>
 							<div class="form-group">
-								<button class="btn btn-danger mt-3  mb-3">{{ button_label|default('Save') }}</button>
+								<button class="btn btn-danger mt-3  mb-3" title="{{'product.save'|trans}}">{{ button_label|default('Save') }}
+								</button>
 							</div>
 							{{ form_end(form) }}
+							<div class="form-group">
+								<a title="{{'product.back'|trans}}" class="btn btn-warning  mb-3" href=" {{ path('product_show', {'id': product.id}) }} ">Back</a>
+								{{ include('admin/product/_delete_form2.html.twig') }}
+							</div>
 						</div>
 					</div>
 				</div>
