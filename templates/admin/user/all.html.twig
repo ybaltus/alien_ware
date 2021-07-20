@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{'user.today.registered'|trans}}
+	{{'admin.user.viewall'|trans}}
 {% endblock %}
 
 {% block body %}
 	<div class="collection_text">
-		{{'user.today.registered'|trans}}
+		{{'admin.user.viewall'|trans}}
 	</div>
 	<!-- breadcrumb end  -->
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
 			<li class="breadcrumb-item"><a href="{{ path('admin_home') }}" title="{{ 'admin.titleHeader'|trans }}">{{ 'admin.titleHeader'|trans }}</a></li>
-			<li class="breadcrumb-item active" aria-current="page">{{'user.today.registered'|trans}}</li>
+			<li class="breadcrumb-item"><a href="{{ path('admin_users') }}" title="{{'user.today.registered'|trans}}">{{'user.today.registered'|trans}}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{'admin.user.viewall'|trans}}</li>
 		</ol>
 	</nav>
 	<!-- breadcrumb end -->
@@ -31,9 +32,6 @@
 					{% endfor %}
 				{% endfor %}
 			</div>
-		</div>
-		<div class="mb-3">
-			<a class="btn btn-success" href="{{ path('admin_users_all') }}" title="{{'admin.user.viewall'|trans}}">{{'admin.user.viewall'|trans}}</a>
 		</div>
 		<table class="table">
 			<thead>
@@ -55,7 +53,7 @@
 						<td>{{user.email}}</td>
 						<td>
 							{% for role in user.roles %}
-								{{role}},
+								{{role}}
 							{% else %}
 								{{'user.title'|trans}}
 							{% endfor %}

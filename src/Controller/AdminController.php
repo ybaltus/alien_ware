@@ -156,31 +156,6 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin_products', [], Response::HTTP_SEE_OTHER);
     }
 
-    /**
-     * Admin function for get unbought carts
-     * @Route("/carts", name="admin_carts")
-     */
-    public function getUnboughtCarts(CartRepository $cartRepository): Response
-    {
-        $carts = $cartRepository->findByState(false);
-        return $this->render('admin/cart/carts.html.twig', [
-            'carts' => $carts,
-        ]);
-
-    }
-
-    /**
-     * Admin function for get the today Resgistered users
-     * @Route("/users", name="admin_users")
-     */
-    public function getTodayRegisteredUsers(UserRepository $userRepository): Response
-    {
-
-        $users = $userRepository->findByCreatedAt();
-        return $this->render('admin/user/users.html.twig', [
-            'users' => $users
-        ]);
-    }
 
     /**
      * Admin function for deleting a product
@@ -198,4 +173,5 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

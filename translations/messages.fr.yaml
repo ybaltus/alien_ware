@@ -93,6 +93,9 @@ cart:
 
 # User
 user:
+  roles: Rôles
+  email: email 
+  createdat: Date d'inscription
   today:
     registered: Liste des utilisateurs inscrits aujourd'hui
     nouser: Il n'y a pas encore de nouveau inscrit aujourd'hui
@@ -159,6 +162,16 @@ admin:
   product:
     title: Gérer les produits
   user:
-    title: Gérer les utilisateurs
+    title: Lister les utilisateurs inscrits du jour
+    viewall: Voir tous les utilisateurs
+    viewtoday: Voir les utilisateurs inscrits aujourd'hui
   cart:
     title: Lister les paniers
+    viewall: Voir tous les paniers
+    viewunbought: Voir les paniers non achetés
+
+# Roles
+ROLES:
+  ROLE_USER: Utilisateur
+  ROLE_ADMIN: Administrateur
+  ROLE_SUPER_ADMIN: Super Administrateur

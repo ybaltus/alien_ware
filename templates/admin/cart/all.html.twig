@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{'cart.unboughtlist'|trans}}
+	{{'admin.cart.viewall'|trans}}
 {% endblock %}
 
 {% block body %}
 	<div class="collection_text">
-		{{'cart.unboughtlist'|trans}}
+		{{'admin.cart.viewall'|trans}}
 	</div>
 	<!-- breadcrumb end  -->
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
 			<li class="breadcrumb-item"><a href="{{ path('admin_home') }}" title="{{ 'admin.titleHeader'|trans }}">{{ 'admin.titleHeader'|trans }}</a></li>
-			<li class="breadcrumb-item active" aria-current="page">{{'cart.unboughtlist'|trans}}</li>
+			<li class="breadcrumb-item"><a href="{{ path('admin_carts') }}" title="{{'cart.unboughtlist'|trans}}">{{'cart.unboughtlist'|trans}}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{'admin.cart.viewall'|trans}}</li>
 		</ol>
 	</nav>
 	<!-- breadcrumb end -->
@@ -32,9 +33,6 @@
 				{% endfor %}
 			</div>
 		</div>
-		<div class="mb-3">
-			<a class="btn btn-success" href="{{ path('admin_carts_all') }}" title="{{'admin.cart.viewall'|trans}}">{{'admin.cart.viewall'|trans}}</a>
-		</div>
 		<table class="table">
 			<thead>
 				<tr>
@@ -50,7 +48,7 @@
 					<tr>
 						<td>{{cart.id}}</td>
 						<td>{{cart.user.firstName}} {{cart.user.lastName}} <br>{{cart.user.email}}</td>
-						<td><span class="badge badge-warning">{{'user.profil.notPaid'|trans}}</span></td>
+						<td>{% if cart.state == false %}<span class="badge badge-warning">{{'user.profil.notPaid'|trans}}</span>{% else %}<span class="badge badge-success">{{'user.profil.paid'|trans}}</span>{% endif %}</td>
 						<td>{{cart.total }} {{'product.currency'|trans}}</td>
 						<td>
 							<!-- Button trigger modal -->
