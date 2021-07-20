@@ -86,6 +86,9 @@ cart:
 
 # User
 user:
+  roles: Roles
+  email: email 
+  createdat: Created At
   today:
     registered: List of today registered users
     nouser: No one registered today
@@ -151,5 +154,8 @@ admin:
     title: Products management
   user:
     title: View Today registered user 
+    viewall: View all users
   cart:
-    title: View cart
+    title: View carts
+    viewall: View all carts
+    viewunbought: View unbought carts

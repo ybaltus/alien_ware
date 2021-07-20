@@ -144,6 +144,19 @@ class AdminController extends AbstractController
     }
 
     /**
+     * Admin function for get All carts (buy or not)
+     * @Route("/carts/all", name="admin_carts_all")
+     */
+    public function getAllCarts(CartRepository $cartRepository): Response
+    {
+        $carts = $cartRepository->findAll();
+        return $this->render('admin/cart/all.html.twig', [
+            'carts' => $carts,
+        ]);
+    }
+
+
+    /**
      * Admin function for get the today Resgistered users
      * @Route("/users", name="admin_users")
      */
@@ -152,6 +165,19 @@ class AdminController extends AbstractController
 
         $users = $userRepository->findByCreatedAt();
         return $this->render('admin/user/users.html.twig', [
+            'users' => $users
+        ]);
+    }
+
+    /**
+     * Admin function for get all users
+     * @Route("/users/all", name="admin_users_all")
+     */
+    public function getAllUsers(UserRepository $userRepository): Response
+    {
+
+        $users = $userRepository->findAll();
+        return $this->render('admin/user/all.html.twig', [
             'users' => $users
         ]);
     }
