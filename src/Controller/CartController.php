@@ -131,7 +131,7 @@ class CartController extends AbstractController
         $this->session->set('cart', $cart);
 
         // on affiche un message flash a l'utilisateur
-        $this->addFlash("success", $translator->trans('cart.messages.successPayment'));
+        $this->addFlash("success", $translator->trans('cart.messages.successDelete'));
 
         // on redirige l'utilisateur dans la page panier
         return $this->redirectToRoute("cart_show");
