@@ -4,7 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Repository\CartRepository;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
+use DateTime;
+use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -123,5 +127,32 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_products', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+    /**
+     * Admin function for get unbought carts
+     * @Route("/carts", name="admin_carts")
+     */
+    public function getUnboughtCarts(CartRepository $cartRepository): Response
+    {
+        $carts = $cartRepository->findByState(false);
+        return $this->render('admin/cart/carts.html.twig', [
+            'carts' => $carts,
+        ]);
+                
+    }
+
+    /**
+     * Admin function for get the today Resgistered users
+     * @Route("/users", name="admin_users")
+     */
+    public function getTodayRegisteredUsers(UserRepository $userRepository): Response
+    {
+
+        $users = $userRepository->findByCreatedAt();
+        return $this->render('admin/user/users.html.twig', [
+            'users' => $users
+        ]);
     }
 }
