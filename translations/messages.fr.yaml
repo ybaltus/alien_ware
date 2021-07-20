@@ -90,6 +90,11 @@ cart:
   success:
     title: Validation du paiement
     home: Revenir à l'accueil
+  messages:
+    successPayment: Félicitations, vous venez de valider votre paiement
+    successAdd: Vous venez d'ajouter le produit au panier
+    successDelete: Vous venez de supprimer le produit au panier
+    successUpdate: Le produit a bien été mis à jour
 
 # User
 user:

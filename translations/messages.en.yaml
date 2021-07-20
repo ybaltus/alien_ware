@@ -90,7 +90,11 @@ cart:
   success:
     title: Payment validation
     home: Back to Home
-
+  messages:
+    successPayment: Congratulations, you have just validated your payment
+    successAdd: You have just added the product to the cart
+    successDelete: You have just removed the product from the cart
+    successUpdate: The product has been updated successfully
 
 # User
 user:
