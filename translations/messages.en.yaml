@@ -110,6 +110,8 @@ user:
     orderAmount: Amount
     orderDate: Past
     show: Show
+    paid: Paid
+    notPaid: Not paid
   form:
     firstname: Your firstname
     lastname: Your lastname

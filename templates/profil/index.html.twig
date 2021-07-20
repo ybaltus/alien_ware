@@ -55,10 +55,14 @@
                 {% for cart in user.carts %}
                         <div class="col-sm-4">
                             <div class="best_shoes">
-                                <p class="best_text">{{ 'user.profil.orderNumber'|trans }} {{ cart.id }}</p>
-                                <div class="shoes_icon">
-                                    <strong>{{ cart.purchaseAt|date('d/m/Y H:i') }}</strong>
-                                </div>
+                                <p class="best_text">{{ 'user.profil.orderNumber'|trans }} {{ cart.id }}
+                                    {% if cart.state == true %}
+                                        <span class="badge badge-success">{{ 'user.profil.paid'|trans }}</span>
+                                    {% else %}
+                                        <span class="badge badge-warning">{{ 'user.profil.notPaid'|trans }}</span>
+                                    {% endif %}
+                                    <p class="text-center"><strong>{{ cart.purchaseAt|date('d/m/Y H:i') }}</strong></p>
+                                </p>
                                 <div class="star_text">
                                     <div class="left_part">
                                         <a class="btn btn-info" href="{{ path('cart_content_show', {'id': cart.id}) }}"><i class="fa fa-eye" aria-hidden="true"></i> {{ 'user.profil.show'|trans }}</a>

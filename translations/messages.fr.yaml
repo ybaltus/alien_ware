@@ -111,6 +111,8 @@ user:
     orderAmount: Montant
     orderDate: Passé le
     show: Consulter
+    paid: Payé
+    notPaid: Non payé
   form:
     firstname: Votre prénom
     lastname: Votre nom
