@@ -14,9 +14,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationFormType extends AbstractType
 {
+    private TranslatorInterface $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -46,7 +54,7 @@ class RegistrationFormType extends AbstractType
                 ],
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => $this->translator->trans('user.form.agreeTerms'),
                     ]),
                 ],
             ])
@@ -62,11 +70,11 @@ class RegistrationFormType extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'user.form.notBlankPassword',
+                        'message' => $this->translator->trans('user.errors.notBlankPassword'),
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'user.form.minPassword',
+                        'minMessage' => $this->translator->trans('user.errors.minPassword'),
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
