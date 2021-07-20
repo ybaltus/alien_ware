@@ -65,6 +65,11 @@ class CartController extends AbstractController
             return  $this->redirectToRoute('cart_show');
         }
 
+        // on redirige l'utilisateur à la page panier
+        if ($request->query->get('returnToProduct')){
+            return  $this->redirectToRoute('product_index');
+        }
+
         // redirection de l'utilisateur dans la page show d'un produit
         return $this->redirectToRoute('product_show',
             [
@@ -165,7 +170,7 @@ class CartController extends AbstractController
         $this->session->set('cart', $cart);
 
         // on affiche un message flash a l'utilisateur
-        $this->addFlash("success", "Le produit a bien été décrémenté du panier");
+        $this->addFlash("success", "Le produit a bien été mis à jour");
 
         // redirection de l'utilisateur dans la page panier
         return $this->redirectToRoute("cart_show");

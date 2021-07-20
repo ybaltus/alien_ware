@@ -53,12 +53,11 @@
             <h1 class="new_text"><strong>{{ 'user.profil.order'|trans }}</strong></h1>
             <div class="row">
                 {% for cart in user.carts %}
-                    {% if cart.state == true %}
                         <div class="col-sm-4">
                             <div class="best_shoes">
                                 <p class="best_text">{{ 'user.profil.orderNumber'|trans }} {{ cart.id }}</p>
                                 <div class="shoes_icon">
-                                    <strong>{{ cart.purchaseAt|date('d-m-Y H:i') }}</strong>
+                                    <strong>{{ cart.purchaseAt|date('d/m/Y H:i') }}</strong>
                                 </div>
                                 <div class="star_text">
                                     <div class="left_part">
@@ -70,9 +69,6 @@
                                 </div>
                             </div>
                         </div>
-                    {% else %}
-                        <p class="text-bold" style="color:black">{{ 'user.profil.orderEmpty'|trans }} :(</p>
-                    {% endif %}
                 {% else %}
                     <p class="text-bold" style="color:black">{{ 'user.profil.orderEmpty'|trans }} :(</p>
                 {% endfor %}

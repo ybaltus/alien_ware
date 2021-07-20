@@ -1,25 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panier{% endblock %}
+{% block title %}{{ 'cart.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12 mt-5">
-                {% for type, messages in app.flashes %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+    <div class="collection_text">{{ 'cart.content.title'|trans }}</div>
+    <div class="collection_section layout_padding">
+        <div class="container">
+            {% if app.user is not null %}
+            <div class="row">
+                <div class="col-12">
+                    {% for type, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
+                </div>
             </div>
-        </div>
-        <h1 class="text-center">{{ 'cart.content.title'|trans }}</h1>
-        {% if app.user is not null %}
             <table class="table m-5">
                 <thead class="text-center">
                 <tr>
@@ -36,18 +37,17 @@
                         <td>{{ carts.product }}</td>
                         <td>
                             {% set session = app.session.get('cart') %}
-                            {% if session.1 >= 2 %}
-                                <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
-                                   class="btn btn-primary btn-sm ">
-                                    -
-                                </a>
-                            {% else %}
-                                <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
-                                   class="btn btn-primary btn-sm disabled">
-                                    -
-                                </a>
-                            {% endif %}
-
+                                {% if session >= 2 %}
+                                    <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
+                                       class="btn btn-primary btn-sm ">
+                                        -
+                                    </a>
+                                {% else %}
+                                    <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
+                                       class="btn btn-primary btn-sm disabled">
+                                        -
+                                    </a>
+                                {% endif %}
                             {{ carts.qty }}
                             <a href="{{ path('cart_add', {'id': carts.product.id}) }}?returnToCart=true"
                                class="btn btn-sm btn-primary">
@@ -73,19 +73,24 @@
                 </tfoot>
                 </tbody>
             </table>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4"></div>
-                    {% if items|length > 0 %}
-                    <div class="col-md-4 col-sm-12 mb-5"><a href="{{ path('cart_content_insert') }}" class="btn btn-success placer ">{{'cart.content.validate' |trans }}</a></div>
-                    {% endif %}
-                </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+                {% if items|length > 0 %}
+                    <div class="col-md-4 col-sm-12 mb-5"><a href="{{ path('cart_content_insert') }}"
+                                                            class="btn btn-success placer ">{{ 'cart.content.validate' |trans }}</a>
+                    </div>
+                {% endif %}
             </div>
+        </div>
         {% else %}
             <div class="row">
                 <div class="col-md-12 m-5">
-                    <p colspan="4" class="text-center">Veuillez vous connectez pour voir vos produits sur le panier,<a href="{{ path('app_register') }}">ici</a> </p>
+                    <h1 colspan="4" class="text-center col-md-12">Veuillez vous connectez pour voir vos produits sur le
+                        panier</h1>
+                    <a href="{{ path('app_login') }}" class="col-md-12 btn btn-primary">Connexion</a>
                 </div>
             </div>
         {% endif %}

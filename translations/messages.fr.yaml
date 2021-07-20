@@ -62,6 +62,7 @@ product:
 # Cart
 cart:
   title: Panier
+  state: État
   content:
     title: Contenu panier
     delete: Suppression
@@ -73,6 +74,8 @@ cart:
     message: Aucuns produits dans le panier
     purchaseAt: Date d'achat
     validate: Valider la commande
+    summary: Récapitulatif de votre commande
+
 
 # User
 user:

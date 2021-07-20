@@ -3,7 +3,7 @@
 {% block title %}{{ 'cart.content.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="collection_text">{{ 'cart.content.summary'|trans }}</div>
+    <div class="collection_text">{{ 'cart.content.title'|trans }}</div>
     <div class="collection_section layout_padding">
         <div class="container">
             {% if app.user is not null %}
@@ -21,6 +21,10 @@
                         {% endfor %}
                     </div>
                 </div>
+                <div style="width:100%;height:0;padding-bottom:45%;position:relative;">
+                    <iframe src="https://giphy.com/embed/MOWPkhRAUbR7i" width="100%" height="100%"
+                            style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </div>
                 <table class="table m-5">
                     <thead class="text-center">
                     <tr>
@@ -28,6 +32,7 @@
                         <th>{{ 'cart.content.quantity'|trans }}</th>
                         <th>{{ 'cart.content.price'|trans }}€</th>
                         <th>{{ 'cart.content.purchaseAt'|trans }}</th>
+                        <th>{{ 'cart.state'|trans }}</th>
                         <th>{{ 'cart.content.total'|trans }}</th>
                     </tr>
                     </thead>
@@ -38,25 +43,23 @@
                             <td>{{ content.quantity }}</td>
                             <td>{{ content.product.price }} €</td>
                             <td>{{ content.cart.purchaseAt |date("d/m/Y") }}</td>
+                            {% if content.cart.state %}
+                                <td>PAYÉ</td>
+                            {% endif %}
                             <td>{{ content.total }} €</td>
                         </tr>
                     {% endfor %}
                     <tfoot>
                     <tr>
-                        <td colspan="4"><strong>Total</strong></td>
+                        <td colspan="5"><strong>Total</strong></td>
                         <td class="text-center">{{ cart.total }} €</td>
                     </tr>
                     </tfoot>
                     </tbody>
                 </table>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4 col-sm-12 mb-5"><a
-                                    href="{{ path('cart_content_validate',{'id': cart.id}) }}"
-                                    class="btn btn-success placer ">{{ 'cart.content.pay' |trans }}</a>
-                        </div>
+                <div class="row">
+                    <div class="col-md-12 m-5">
+                        <a href="{{ path('home') }}" class="col-md-12 btn btn-primary">Revenir à l'accueil</a>
                     </div>
                 </div>
             {% else %}

@@ -83,4 +83,19 @@ class CartContentController extends AbstractController
             'cart' => $cart,
         ]);
     }
+
+    /**
+     * @Route ("/validate/{id}", name="cart_content_validate", requirements={"id": "\d+"})
+     */
+    public function validate(Cart $cart = null, CartRepository $cartRepository){
+
+        $cart = $cartRepository->find($cart);
+        $cart->setState(true);
+
+        $this->addFlash("success", "FÉLICITATIONS, votre commande a bien été validé");
+
+        return $this->render('cart_content/validate.html.twig', [
+            'cart' => $cart,
+        ]);
+    }
 }
