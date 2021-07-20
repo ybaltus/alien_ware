@@ -62,6 +62,7 @@ product:
 # Cart
 cart:
   title: Cart
+  state: State
   content:
     title: Cart Content
     delete: Delete
@@ -73,6 +74,7 @@ cart:
     message: No products in the cart
     purchaseAt: Date of purchase
     validate: Checkout
+    summary: Summary of your order
 
 # User
 user:
