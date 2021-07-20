@@ -83,7 +83,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * Admin function for editing a product
+     * Admin function for editing a product from admin panel
      * @Route("/product/{id}/edit", name="product_edit", methods={"GET","POST"})
      */
     public function editProduct(Request $request, Product $product, TranslatorInterface $t): Response
@@ -109,8 +109,35 @@ class AdminController extends AbstractController
     }
 
     /**
+     * Admin function for editing a product from product page
+     * @Route("/product/{id}/edit2", name="product_edit2", methods={"GET","POST"})
+     */
+    public function editProduct2(Request $request, Product $product, TranslatorInterface $t): Response
+    {
+        $require = false;
+        $form = $this->createForm(ProductType::class, $product, [
+            'required' => $require
+        ]);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', $t->trans('product.updated'));
+
+            return $this->redirectToRoute('product_show', [
+                'id' => $product->getId()
+            ], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('admin/product/edit2.html.twig', [
+            'product' => $product,
+            'form' => $form,
+        ]);
+    }
+
+    /**
      * Admin function for deleting a product
-     * @Route("/product/{id}", name="product_delete", methods={"POST"})
+     * @Route("/product/{id}/delete", name="product_delete", methods={"POST"})
      */
     public function deleteProduct(Request $request, Product $product, TranslatorInterface $t): Response
     {
@@ -123,5 +150,22 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_products', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * Admin function for deleting a product
+     * @Route("/product/{id}/delete2", name="product_delete2", methods={"POST"})
+     */
+    public function deleteProduct2(Request $request, Product $product, TranslatorInterface $t): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($product);
+            $entityManager->flush();
+
+            $this->addFlash('danger', $t->trans('product.deleted'));
+        }
+
+        return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
 }

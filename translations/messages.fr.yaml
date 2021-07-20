@@ -38,7 +38,7 @@ product:
   show: voir plus
   add: Ajouter un produit
   edit: Modifier le produit
-  delete: Supprimer le produit
+  delete: Supprimer
   noProduct: Il n'y a aucun produit dans la base de donnee
   unknown: Produit introuvable
   updated: Produit mis à jour
@@ -53,6 +53,8 @@ product:
   lastStock: Il reste 1 produit
   list: Liste des produits
   submitDelete: Etes-vous sur de vouloir supprimer ce produit?
+  save: Sauvegarder
+  manage: Gerer le produit
   errors:
     mimeTypesMessage: Veuillez inserer une image valide
     minName: Votre nom doit faire au minimum 3 caractères

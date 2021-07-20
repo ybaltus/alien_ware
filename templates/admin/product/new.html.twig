@@ -6,7 +6,10 @@
 
 {% block body %}
 	<div class="container-fluid ram mt-5 mb-5">
-
+		<div class="container-fluid ml-5">
+			<h1>
+				{{'product.new'|trans}}</h1>
+		</div>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="email_box">
@@ -35,7 +38,7 @@
 								{{ form_widget(form.image, {'attr': {'class': 'email-bt'}}) }}
 							</div>
 							<div class="form-group">
-								<button class="btn btn-danger mt-3  mb-3">{{ button_label|default('Save') }}</button>
+								<button title="{{'product.save'|trans}}" class="btn btn-danger mt-3  mb-3">{{ 'product.save'|trans}}</button>
 							</div>
 							{{ form_end(form) }}
 						</div>

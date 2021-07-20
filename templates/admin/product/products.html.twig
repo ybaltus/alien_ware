@@ -21,7 +21,7 @@
 				{% endfor %}
 			</div>
 		</div>
-		<a class=' btn btn-success mt-2 mb-2' href="{{ path('product_new') }}">{{'product.add'|trans}}</a>
+		<a class=' btn btn-success mt-2 mb-2' href="{{ path('product_new') }}" title="{{ 'product.add'|trans }}">{{'product.add'|trans}}</a>
 		<table class="table">
 			<thead>
 				<tr>
@@ -47,10 +47,10 @@
 						</td>
 						<td scope="row">
 							<div class="row ">
-								<a class='btn btn-primary' href="{{ path('product_show', {'id': product.id}) }}">
+								<a class='btn btn-primary' href="{{ path('product_show', {'id': product.id}) }}" title="{{'product.show'|trans}}">
 									<i class="fa fa-eye"></i>
 								</a>
-								<a class='btn btn-secondary ml-1' href="{{ path('product_edit', {'id': product.id}) }}">
+								<a class='btn btn-secondary ml-1' href="{{ path('product_edit', {'id': product.id}) }}" title="{{'product.edit'|trans}}" title="{{'product.edit'|trans}}">
 									<i class="fa fa-pencil"></i>
 								</a>
 								{{ include('admin/product/_delete_form.html.twig') }}
