@@ -51,6 +51,7 @@ product:
   outOfStock: Out of stock
   lastStocks: there is %nb% products remaining
   lastStock: there is 1 product remaining
+  list: List of products
   errors:
     minName: Your name must be at least 3 characters long
     maxName: Your name cannot be longer than 255 characters

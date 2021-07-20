@@ -19,6 +19,20 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    /**
+     * Retrieve 12 products ordered by name
+     * @return Product[] | null
+     */
+    public function findLast12()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.name', 'ASC')
+            ->setMaxResults(12)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
