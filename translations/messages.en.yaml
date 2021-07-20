@@ -122,7 +122,7 @@ user:
     order: History of my orders
     edit: Edit my profil
     delete: Delete my profil
-    orderEmpty: You are not orders.
+    orderEmpty: There is no orders.
     orderNumber: Order n°
     orderAmount: Amount
     orderDate: Past

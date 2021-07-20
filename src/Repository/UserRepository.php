@@ -46,18 +46,17 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function findByCreatedAt()
     {
         $date = new \DateTime("now");
-        $from = new \DateTime($date->format("Y-m-d")." 00:00:00");
-        $to   = new \DateTime($date->format("Y-m-d")." 23:59:59");
+        $from = new \DateTime($date->format("Y-m-d") . " 00:00:00");
+        $to   = new \DateTime($date->format("Y-m-d") . " 23:59:59");
         return $this->createQueryBuilder('u')
             ->andWhere('u.created_at BETWEEN :from AND :to')
             ->setParameter('to', $to)
             ->setParameter('from', $from)
-            ->orderBy('u.id', 'ASC')
+            ->orderBy('u.created_at', 'DESC')
             ->setMaxResults(50)
-            ->getQuery()->getResult()
-        ;
+            ->getQuery()->getResult();
     }
-   
+
 
     /*
     public function findOneBySomeField($value): ?User

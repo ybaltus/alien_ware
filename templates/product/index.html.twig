@@ -61,8 +61,11 @@
 											<br>
 											<div class="justify-content-center align-items-center ml-10">
 												<div class="justify-content-center align-items-center ml-4 ">
+												
 													<a class='btn btn-danger btn-lg' href="{{ path('product_show', {'id': product.id}) }}" title="{{'product.show'|trans}}">{{'product.show'|trans}}</a>
-													<a href="{{ path('cart_add', {'id': product.id}) }}?returnToProduct=true" class="btn btn-success btn-lg" title="{{'product.addToCart'|trans}}">
+													<a href="{{ path('cart_add', {'id': product.id}) }}?returnToProduct=true" 
+													class="btn btn-success btn-lg {% if app.user is null %}disabled{% endif %}" 
+													title="{{'product.addToCart'|trans}}">
 														<i class="fa fa-shopping-cart"></i>
 														<i class="fa fa-plus"></i>
 													</a>

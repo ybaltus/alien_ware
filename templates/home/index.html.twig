@@ -109,6 +109,13 @@
 	<!-- New Arrivals section start -->
 	<div class="layout_padding gallery_section">
 		<div class="container">
+		{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
+					<a class="btn btn-warning col-6" href="{{ path('product_new') }}" title="{{'product.new'|trans }}">
+						<i class="fa fa-cog" aria-hidden="true"></i>
+						{{'product.new'|trans }}
+					</a>
+					<hr/>
+				{% endif %}
 			<div class="row">
 				<h1 class="new_text">{{ 'product.list'|trans }}</h1>
 				{% for product in products %}

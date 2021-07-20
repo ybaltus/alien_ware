@@ -70,7 +70,7 @@
 									<span style="color:#0a0506">{{product.price}}</span>
 								</strong>
 							</div>
-							<a title="{{'product.addToCart'|trans}}" href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-danger btn-lg">
+							<a title="{{'product.addToCart'|trans}}" href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-danger btn-lg {% if app.user is null %}disabled{% endif %}">
 								{{'product.addToCart'|trans}}
 							</a>
 						</div>
