@@ -6,7 +6,7 @@
 
 {% block body %}
 	<div class="container-fluid ram mt-5 mb-5">
-		
+
 		<div class="row">
 			<div class="col-md-6">
 				<div class="email_box">
@@ -14,29 +14,24 @@
 						<div class="container">
 							{{ form_start(form) }}
 							<div class="form-group">
-								{{form_label(form.name)}}
 								{{ form_errors(form.name) }}
 								{{ form_widget(form.name, {'attr': {'class': 'email-bt'}}) }}
 							</div>
 							<div class="form-group">
-								{{form_label(form.description)}}
 								{{ form_errors(form.description) }}
 								{{ form_widget(form.description, {'attr': {'class': 'email-bt'}}) }}
 							</div>
 							<div class="form-group">
-								{{form_label(form.price)}}
 								{{ form_errors(form.price) }}
 								{{ form_widget(form.price, {'attr': {'class': 'email-bt'}}) }}
 							</div>
 							<div class="form-group">
-								{{form_label(form.stock)}}
-								{{ form_errors(form.stock, {'attr': {'class': 'email-bt'}}) }}
+								{{ form_errors(form.stock) }}
 								{{ form_widget(form.stock, {'attr': {'class': 'email-bt'}}) }}
 							</div>
 							<div class="form-group">
-								{{form_label(form.image)}}
 								{{ form_errors(form.image) }}
-								{{ form_widget(form.image) }}
+								{{ form_widget(form.image, {'attr': {'class': 'email-bt'}}) }}
 							</div>
 							<div class="form-group">
 								<button class="btn btn-danger mt-3  mb-3">{{ button_label|default('Save') }}</button>

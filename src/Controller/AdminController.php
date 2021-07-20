@@ -23,7 +23,8 @@ class AdminController extends AbstractController
      *
      * @return Response
      */
-    public function index() {
+    public function index()
+    {
         return $this->render('admin/index.html.twig');
     }
     /**
@@ -87,8 +88,10 @@ class AdminController extends AbstractController
      */
     public function editProduct(Request $request, Product $product, TranslatorInterface $t): Response
     {
-        $form = $this->createForm(ProductType::class, $product);
-        // dd($form);
+        $require = false;
+        $form = $this->createForm(ProductType::class, $product, [
+            'required' => $require
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -4,15 +4,16 @@ namespace App\Form;
 
 use App\Entity\Product;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ProductType extends AbstractType
 {
@@ -30,6 +31,14 @@ class ProductType extends AbstractType
                 "label" => "product.name",
                 "attr" => [
                     "placeholder" => "product.name",
+                ],
+                "constraints" => [
+                    new Length([
+                        'min' => 3,
+                        'max' => 255,
+                        'minMessage' => $this->translator->trans('product.errors.minName'),
+                        'maxMessage' => $this->translator->trans('product.errors.maxName')
+                    ]),
                 ]
             ])
             ->add('description', TextareaType::class, [
@@ -46,19 +55,25 @@ class ProductType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('price')
-            ->add('stock')
+            ->add('price', NumberType::class, [
+                'label' => "product.price",
+                "attr" => [
+                    "placeholder" => "product.price",
+                ]
+            ])
+            ->add('stock', NumberType::class, [
+                'label' => "Stock",
+                "attr" => [
+                    "placeholder" => "Stock",
+                ]
+            ])
             ->add('image', FileType::class, [
                 'label' => 'Image (PNG, JPG)',
-
-                // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
-
-                // every time you edit the Product details
+                "attr" => [
+                    "placeholder" => "product.addImage",
+                ],
                 'required' => true,
-
-                // unmapped fields can't define their validation using annotations
-                // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',
@@ -67,7 +82,7 @@ class ProductType extends AbstractType
                             'image/jpg',
                             'image/jpeg',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid Image document',
+                        'mimeTypesMessage' => $this->translator->trans('product.errors.mimeTypesMessage'),
                     ])
                 ],
             ]);

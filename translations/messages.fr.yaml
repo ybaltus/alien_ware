@@ -21,7 +21,6 @@ joinUs: Rejoignez-nous !
 superAdmin: Super administrateur
 alienShop: Boutique en ligne Alien Where
 
-
 #Monaka
 monakaSaysHello: Monaka vous salut
 
@@ -45,13 +44,16 @@ product:
   updated: Produit mis à jour
   deleted: Produit supprimé
   addToCart: Ajouter au panier
+  addImage: Ajouter une image
   currency: €
   back: < Retour
   inStock: En stock
   outOfStock: Rupture de  stock
   lastStocks: Il reste %nb% produits
   lastStock: Il reste 1 produit
+  submitDelete: Etes-vous sur de vouloir supprimer ce produit?
   errors:
+    mimeTypesMessage: Veuillez inserer une image valide
     minName: Votre nom doit faire au minimum 3 caractères
     maxName: Votre nom doit faire au maximum 255 caractères
     minDescription: Votre description doit faire au minimum 10 caractères
@@ -72,7 +74,6 @@ cart:
     purchaseAt: Date d'achat
     validate: Valider la commande
 
-
 # User
 user:
   title: Utilisateur
@@ -85,7 +86,7 @@ user:
     title: Mon compte
     title2: Mes informations
     editTitle: Éditer mon compte
-    welcome: "Bonjour %firstname% %lastname% !"
+    welcome: 'Bonjour %firstname% %lastname% !'
     order: Historique de mes commandes
     edit: Éditer mon profil
     delete: Supprimer mon profil
