@@ -3,6 +3,7 @@
 {% block title %}{{ 'cart.content.title'|trans }}{% endblock %}
 
 {% block body %}
+    {% set url = app.request.requestUri %}
     <div class="collection_text">{{ 'cart.content.summary'|trans }}</div>
     <div class="collection_section layout_padding">
         <div class="container">
@@ -22,6 +23,29 @@
                     </div>
                 </div>
                 <table class="table m-5">
+                    {% if '?returnToSummary' in url %}
+                    <thead class="text-center">
+                    <tr>
+                        <th>{{ 'cart.content.name'|trans }}</th>
+                        <th>{{ 'cart.content.quantity'|trans }}</th>
+                        <th>{{ 'cart.content.price'|trans }}€</th>
+                        <th>{{ 'cart.content.purchaseAt'|trans }}</th>
+                        <th>{{ 'cart.state'|trans }}</th>
+                        <th>{{ 'cart.content.total'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-center">
+                    {% for content in cart.cartContents %}
+                        <tr>
+                            <td>{{ content.product }}</td>
+                            <td>{{ content.quantity }}</td>
+                            <td>{{ content.product.price }} €</td>
+                            <td>{{ content.cart.purchaseAt |date("d/m/Y") }}</td>
+                            <td class="badge badge-success">{{ 'cart.content.paid'|trans }}</td>
+                            <td>{{ content.total }} €</td>
+                        </tr>
+                    {% endfor %}
+                    {% else %}
                     <thead class="text-center">
                     <tr>
                         <th>{{ 'cart.content.name'|trans }}</th>
@@ -41,30 +65,37 @@
                             <td>{{ content.total }} €</td>
                         </tr>
                     {% endfor %}
+                    {% endif %}
                     <tfoot>
                     <tr>
-                        <td colspan="4"><strong>Total</strong></td>
+                        <td colspan="{% if '?returnToSummary' in url %}5{% else %}4{% endif %}"><strong>Total</strong>
+                        </td>
                         <td class="text-center">{{ cart.total }} €</td>
                     </tr>
                     </tfoot>
                     </tbody>
                 </table>
+
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-md-4"></div>
                         <div class="col-md-4 col-sm-12 mb-5"><a
-                                    href="{{ path('cart_content_validate',{'id': cart.id}) }}"
-                                    class="btn btn-success placer ">{{ 'cart.content.pay' |trans }}</a>
+                            {% if '?returnToSummary' in url %}
+                            <div class="col-md-4"></div>
+                        {% else %}
+                            href="{{ path('cart_content_validate',{'id': cart.id}) }}
+                            {% endif %}"
+                            class="btn btn-success placer ">{{ 'cart.content.pay' |trans }}</a>
                         </div>
                     </div>
                 </div>
             {% else %}
                 <div class="row">
                     <div class="col-md-12 m-5">
-                        <h1 colspan="4" class="text-center col-md-12">Veuillez vous connectez pour voir vos produits sur
-                            le panier</h1>
-                        <a href="{{ path('app_register') }}" class="col-md-12 btn btn-primary">Connexion</a>
+                        <h1 colspan="4" class="text-center col-md-12">Veuillez vous connectez pour accéder à votre
+                            récapitulatif de commande </h1>
+                        <a href="{{ path('app_login') }}" class="col-md-12 btn btn-primary">Connexion</a>
                     </div>
                 </div>
             {% endif %}

@@ -75,6 +75,11 @@ cart:
     purchaseAt: Date of purchase
     validate: Checkout
     summary: Summary of your order
+    paid: PAID
+  success:
+    title: Payment validation
+    home: Back to Home
+
 
 # User
 user:

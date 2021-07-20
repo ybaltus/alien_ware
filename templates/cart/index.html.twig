@@ -32,22 +32,15 @@
                 </tr>
                 </thead>
                 <tbody class="text-center">
+
                 {% for carts in items %}
                     <tr>
                         <td>{{ carts.product }}</td>
                         <td>
-                            {% set session = app.session.get('cart') %}
-                                {% if session >= 2 %}
-                                    <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
-                                       class="btn btn-primary btn-sm ">
-                                        -
-                                    </a>
-                                {% else %}
-                                    <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
-                                       class="btn btn-primary btn-sm disabled">
-                                        -
-                                    </a>
-                                {% endif %}
+                            <a href="{{ path('cart_decrement', {'id': carts.product.id}) }}"
+                               class="btn btn-primary btn-sm {% if carts.qty <= 1 %} disabled {% endif%} ">
+                                -
+                            </a>
                             {{ carts.qty }}
                             <a href="{{ path('cart_add', {'id': carts.product.id}) }}?returnToCart=true"
                                class="btn btn-sm btn-primary">

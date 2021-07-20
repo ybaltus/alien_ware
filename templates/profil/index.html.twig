@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="star_text">
                                     <div class="left_part">
-                                        <a class="btn btn-info" href="{{ path('cart_content_show', {'id': cart.id}) }}"><i class="fa fa-eye" aria-hidden="true"></i> {{ 'user.profil.show'|trans }}</a>
+                                        <a class="btn btn-info" href="{{ path('cart_content_show', {'id': cart.id}) }}?returnToSummary"><i class="fa fa-eye" aria-hidden="true"></i> {{ 'user.profil.show'|trans }}</a>
                                     </div>
                                     <div class="right_part">
                                         <div class="shoes_price">&euro; <span style="color: #ff4e5b;">{{ cart.total }}</span></div>
