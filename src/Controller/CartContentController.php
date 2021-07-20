@@ -91,8 +91,11 @@ class CartContentController extends AbstractController
 
         $cart = $cartRepository->find($cart);
         $cart->setState(true);
+        $this->em->persist($cart);
 
         $this->addFlash("success", "FÉLICITATIONS, votre commande a bien été validé");
+
+        $this->em->flush();
 
         return $this->render('cart_content/validate.html.twig', [
             'cart' => $cart,

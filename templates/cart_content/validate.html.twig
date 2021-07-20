@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'cart.content.title'|trans }}{% endblock %}
+{% block title %}{{ 'cart.success.title'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="collection_text">{{ 'cart.content.title'|trans }}</div>
+    <div class="collection_text">{{ 'cart.success.title'|trans }}</div>
     <!-- breadcrumb end  -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
             <li class="breadcrumb-item"><a href="{{ path('cart_show') }}" title="{{ 'cart.title'|trans }}">{{ 'cart.title'|trans }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ 'cart.content.summary'|trans }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ 'cart.success.title'|trans }}</li>
         </ol>
     </nav>
     <!-- breadcrumb end -->
@@ -53,7 +53,7 @@
                             <td>{{ content.product.price }} €</td>
                             <td>{{ content.cart.purchaseAt |date("d/m/Y") }}</td>
                             {% if content.cart.state %}
-                                <td>PAYÉ</td>
+                                <td class="badge badge-success">{{ 'cart.content.paid'|trans }}</td>
                             {% endif %}
                             <td>{{ content.total }} €</td>
                         </tr>
@@ -68,15 +68,14 @@
                 </table>
                 <div class="row">
                     <div class="col-md-12 m-5">
-                        <a href="{{ path('home') }}" class="col-md-12 btn btn-primary">Revenir à l'accueil</a>
+                        <a href="{{ path('home') }}" class="col-md-12 btn btn-primary">{{ 'cart.success.home'|trans }}</a>
                     </div>
                 </div>
             {% else %}
                 <div class="row">
                     <div class="col-md-12 m-5">
-                        <h1 colspan="4" class="text-center col-md-12">Veuillez vous connectez pour voir vos produits sur
-                            le panier</h1>
-                        <a href="{{ path('app_register') }}" class="col-md-12 btn btn-primary">Connexion</a>
+                        <h1 colspan="4" class="text-center col-md-12">Veuillez vous connectez pour voir votre contenus du panier</h1>
+                        <a href="{{ path('app_login') }}" class="col-md-12 btn btn-primary">Connexion</a>
                     </div>
                 </div>
             {% endif %}

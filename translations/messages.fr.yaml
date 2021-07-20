@@ -77,7 +77,7 @@ cart:
     view: Voir le contenu
     title: Contenu panier
     delete: Suppression
-    pay: Paiement
+    pay: Passer au paiement
     name: Nom du produit
     quantity: Quantité
     price: Prix T.T.C
@@ -86,6 +86,10 @@ cart:
     purchaseAt: Date d'achat
     validate: Valider la commande
     summary: Récapitulatif de votre commande
+    paid: PAYER
+  success:
+    title: Validation du paiement
+    home: Revenir à l'accueil
 
 # User
 user:
