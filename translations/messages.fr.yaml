@@ -20,6 +20,9 @@ joinUs: Rejoignez-nous !
 superAdmin: Super administrateur
 alienShop: Boutique en ligne Alien Where
 close: Fermer
+
+
+# Errors
 errors:
   catchError: Une erreur est survenu
   catchError404: OUPS! LA PAGE EST INTROUVABLE
