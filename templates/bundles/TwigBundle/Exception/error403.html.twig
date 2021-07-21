@@ -1,30 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{ 'errors.error403'|trans }}
+	{% if app.request.requesturi|slice(1, 2) == 'fr' %}
+		La page est interdite
+	{% else %}
+		The page is prohibited
+	{% endif %}
 {% endblock %}
 
 {% block body %}
-	<div class="collection_text">{{'errors.catchError403'|trans}}</div>
-	<div class="collection_section layout_padding ">
-		<div id="notfound">
-			<div class="notfound ">
-				<div class="notfound-404 ">
-					<h1>
-						<strong>403</strong>
-					</h1>
+	{% if app.request.requesturi|slice(1, 2) == 'fr' %}
+		<!-- FR start-->
+		<div class="collection_text">LA PAGE EST INTERDITE</div>
+		<div class="collection_section layout_padding ">
+			<div id="notfound">
+				<div class="notfound ">
+					<div class="notfound-404 ">
+						<h1>
+							<strong>403</strong>
+						</h1>
+					</div>
+					<h2>
+						<strong>LA PAGE EST INTERDITE</strong>
+					</h2>
+					<p>
+						<strong>Nous sommes désolés, mais vous n'avez pas accès à cette page.</strong>
+					</p>
 				</div>
-				<h2>
-					<strong>{{'errors.catchError403'|trans}}</strong>
-				</h2>
-				<p>
-					<strong>{{'errors.msgError403'|trans}}</strong>
-				</p>
+			</div>
+			<div class='container mb-5'>
+				<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="Accueil">Accueil</a>
 			</div>
 		</div>
-		<div class='container mb-5'>
-			<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+		<!-- FR end-->
+	{% else %}
+		<!-- EN start-->
+		<div class="collection_text">FORBIDDEN PAGE</div>
+		<div class="collection_section layout_padding ">
+			<div id="notfound">
+				<div class="notfound ">
+					<div class="notfound-404 ">
+						<h1>
+							<strong>403</strong>
+						</h1>
+					</div>
+					<h2>
+						<strong>FORBIDDEN PAGE</strong>
+					</h2>
+					<p>
+						<strong>We are sorry, but you do not have access to this page.</strong>
+					</p>
+				</div>
+			</div>
+			<div class='container mb-5'>
+				<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="Home">Home</a>
+			</div>
 		</div>
-	</div>
-
+		<!-- EN end-->
+	{% endif %}
 {% endblock %}

@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{'errors.catchError'|trans}}
+	{% if app.request.requesturi|slice(1, 2) == 'fr' %}
+		Une erreur est survenu
+	{% else %}
+		We have a mistake
+	{% endif %}
 {% endblock %}
 
 {% block body %}
-	<div class="collection_text">{{'errors.catchError'|trans}}</div>
+	{% if app.request.requesturi|slice(1, 2) == 'fr' %}
+	<!-- FR start-->
+	<div class="collection_text">Une erreur est survenu</div>
 	<div class="collection_section layout_padding ">
 		<div id="notfound">
 			<div class="notfound ">
@@ -15,15 +21,41 @@
 					</h1>
 				</div>
 				<h2>
-					<strong>{{'errors.catchError'|trans}}</strong>
+					<strong>Une erreur est survenu</strong>
 				</h2>
 				<p>
-					<strong>{{'errors.msgError500'|trans}}</strong>
+					<strong>Désole, nous avons rencontrons un ou plusieurs soucis.Nous sommes actuellement entrain de résoudre le/les problème(s).</strong>
 				</p>
 			</div>
 		</div>
 		<div class='container mb-5'>
-			<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+			<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="Accueil">Accueil</a>
 		</div>
 	</div>
+	<!-- FR end-->
+	{% else %}
+		<!-- EN start-->
+		<div class="collection_text">We have a mistake</div>
+		<div class="collection_section layout_padding ">
+			<div id="notfound">
+				<div class="notfound ">
+					<div class="notfound-404 ">
+						<h1>
+							<strong>OOPS!</strong>
+						</h1>
+					</div>
+					<h2>
+						<strong>We have a mistake</strong>
+					</h2>
+					<p>
+						<strong>Sorry, something went wrong on our end. We are currently trying to fix the problem.</strong>
+					</p>
+				</div>
+			</div>
+			<div class='container mb-5'>
+				<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="Home">Home</a>
+			</div>
+		</div>
+		<!-- EN end-->
+	{% endif %}
 {% endblock %}
