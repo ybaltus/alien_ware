@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
+ * 
+ * Get all products on customer side
  * @Route("/{_locale}")
  */
 class ProductController extends AbstractController
@@ -30,6 +32,7 @@ class ProductController extends AbstractController
 
 
     /**
+     * show detail from a product both side(admin and customer side)
      * @Route("/product/{id}", name="product_show", methods={"GET"})
      */
     public function show(Product $product = null): Response

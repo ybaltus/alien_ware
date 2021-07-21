@@ -20,8 +20,19 @@ joinUs: Join Us !
 superAdmin: Super admin
 alienShop: Alien Where Shop
 close: Close
+errors:
+  catchError: We have a mistake
+  catchError404: OOPS! NOTHING WAS FOUND
+  msgError404: The page you are looking for might have been removed had its name changed or is temporarily unavailable.
+  error404: Erreur 404
+  catchError403: LA PAGE EST INTERDITE
+  msgError403: we are sorry, but you do not have access to this page.
+  error403: Erreur 403
+  catchError500: INTERNAL SERVER ERROR
+  msgError500: Sorry, something went wrong on our end. We are currently trying to fix the problem.
+  error500: Erreur 500
 
-#Monaka
+  #Monaka
 monakaSaysHello: Monaka says hello
 
 # Product
@@ -101,7 +112,7 @@ cart:
 # User
 user:
   roles: Roles
-  email: email 
+  email: email
   createdat: Created At
   today:
     registered: List of today registered users

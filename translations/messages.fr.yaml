@@ -20,6 +20,17 @@ joinUs: Rejoignez-nous !
 superAdmin: Super administrateur
 alienShop: Boutique en ligne Alien Where
 close: Fermer
+errors:
+  catchError: Une erreur est survenu
+  catchError404: OUPS! LA PAGE EST INTROUVABLE
+  msgError404: La page que vous recherchez semble être supprimée ou le nom à change ou temporairement indisponible.
+  error404: Erreur 404
+  catchError403: LA PAGE EST INTERDITE
+  msgError403: Nous sommes désolés, mais vous n'avez pas accès à cette page.
+  error403: Erreur 403
+  catchError500: ERREUR DU SERVEUR
+  msgError500: Désole, nous avons rencontrons un ou plusieurs soucis.Nous sommes actuellement entrain de résoudre le/les problème(s).
+  error500: Erreur 500
 
 #Monaka
 monakaSaysHello: Monaka vous salut
@@ -72,7 +83,7 @@ cart:
   state: État
   number: Numéro du panier
   unbought: Non acheté
-  unboughtlist: Liste des paniers non achetés 
+  unboughtlist: Liste des paniers non achetés
   nocart: Nous n'avons pas trouvé de panier abandonnés
   title: Panier
   content:
@@ -101,7 +112,7 @@ cart:
 # User
 user:
   roles: Rôles
-  email: email 
+  email: email
   createdat: Date d'inscription
   today:
     registered: Liste des utilisateurs inscrits aujourd'hui

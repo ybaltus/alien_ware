@@ -1,5 +1,30 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+	{{ 'errors.error403'|trans }}
+{% endblock %}
+
 {% block body %}
-    <p>Error 403</p>
+	<div class="collection_text">{{'errors.catchError403'|trans}}</div>
+	<div class="collection_section layout_padding ">
+		<div id="notfound">
+			<div class="notfound ">
+				<div class="notfound-404 ">
+					<h1>
+						<strong>403</strong>
+					</h1>
+				</div>
+				<h2>
+					<strong>{{'errors.catchError403'|trans}}</strong>
+				</h2>
+				<p>
+					<strong>{{'errors.msgError403'|trans}}</strong>
+				</p>
+			</div>
+		</div>
+		<div class='container mb-5'>
+			<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+		</div>
+	</div>
+
 {% endblock %}

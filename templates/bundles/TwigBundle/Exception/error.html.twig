@@ -1,6 +1,29 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+	{{'errors.catchError'|trans}}
+{% endblock %}
+
 {% block body %}
-    <h1>oops</h1>
-    <h1>an error</h1>
+	<div class="collection_text">{{'errors.catchError'|trans}}</div>
+	<div class="collection_section layout_padding ">
+		<div id="notfound">
+			<div class="notfound ">
+				<div class="notfound-404 ">
+					<h1>
+						<strong>OOPS!</strong>
+					</h1>
+				</div>
+				<h2>
+					<strong>{{'errors.catchError'|trans}}</strong>
+				</h2>
+				<p>
+					<strong>{{'errors.msgError500'|trans}}</strong>
+				</p>
+			</div>
+		</div>
+		<div class='container mb-5'>
+			<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+		</div>
+	</div>
 {% endblock %}

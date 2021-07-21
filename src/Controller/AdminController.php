@@ -32,7 +32,7 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig');
     }
     /**
-     * Admin index for managing products
+     * Admin panel for managing products
      * @Route("/products", name="admin_products")
      */
     public function indexProducts(ProductRepository $productRepository): Response
@@ -113,7 +113,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * Admin function for editing a product from product page
+     * Edit a product from product detail page
      * @Route("/product/{id}/edit2", name="product_edit2", methods={"GET","POST"})
      */
     public function editProduct2(Request $request, Product $product, TranslatorInterface $t): Response
@@ -140,7 +140,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * Admin function for deleting a product
+     * delete a product from the admin pannel
      * @Route("/product/{id}/delete", name="product_delete", methods={"POST"})
      */
     public function deleteProduct(Request $request, Product $product, TranslatorInterface $t): Response
@@ -158,7 +158,7 @@ class AdminController extends AbstractController
 
 
     /**
-     * Admin function for deleting a product
+     * delete a product from product detail page
      * @Route("/product/{id}/delete2", name="product_delete2", methods={"POST"})
      */
     public function deleteProduct2(Request $request, Product $product, TranslatorInterface $t): Response
@@ -173,5 +173,4 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
     }
-
 }
