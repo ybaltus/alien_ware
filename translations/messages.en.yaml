@@ -24,7 +24,7 @@ errors:
   catchError: We have a mistake
   catchError404: OOPS! NOTHING WAS FOUND
   msgError404: The page you are looking for might have been removed had its name changed or is temporarily unavailable.
-  error404: Erreur 404
+  error404: Error 404
   catchError403: LA PAGE EST INTERDITE
   msgError403: we are sorry, but you do not have access to this page.
   error403: Erreur 403

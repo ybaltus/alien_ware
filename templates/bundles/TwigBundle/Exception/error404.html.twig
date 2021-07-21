@@ -1,29 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{ 'errors.error404'|trans }}
+	{% if app.request.requesturi|slice(1, 2) == 'en' %}
+		Error 404
+	{% else %}
+		Erreur 404
+	{% endif %}
 {% endblock %}
 
 {% block body %}
-	<div class="collection_text">{{'errors.catchError404'|trans}}</div>
-	<div class="collection_section layout_padding ">
-		<div id="notfound">
-			<div class="notfound ">
-				<div class="notfound-404 ">
-					<h1>
-						<strong>404</strong>
-					</h1>
+	{% if app.request.requesturi|slice(1, 2) == 'en' %}
+		<div class="collection_text">OOPS! NOTHING WAS FOUND</div>
+		<div class="collection_section layout_padding ">
+			<div id="notfound">
+				<div class="notfound ">
+					<div class="notfound-404 ">
+						<h1>
+							<strong>404</strong>
+						</h1>
+					</div>
+					<h2>
+						<strong>
+							OOPS! NOTHING WAS FOUND
+						</strong>
+					</h2>
+					<p>
+						<strong>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</strong>
+					</p>
 				</div>
-				<h2>
-					<strong>{{'errors.catchError404'|trans}}</strong>
-				</h2>
-				<p>
-					<strong>{{'errors.msgError404'|trans}}</strong>
-				</p>
+			</div>
+			<div class='container mb-5'>
+				<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="{{ 'home'|trans }}">Home</a>
 			</div>
 		</div>
-		<div class='container mb-5'>
-			<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+	{% else %}
+		<div class="collection_text">OUPS! LA PAGE EST INTROUVABLE</div>
+		<div class="collection_section layout_padding ">
+			<div id="notfound">
+				<div class="notfound ">
+					<div class="notfound-404 ">
+						<h1>
+							<strong>404</strong>
+						</h1>
+					</div>
+					<h2>
+						<strong>OUPS! LA PAGE EST INTROUVABLE</strong>
+					</h2>
+					<p>
+						<strong>La page que vous recherchez semble être supprimée ou le nom à change ou temporairement indisponible.</strong>
+					</p>
+				</div>
+			</div>
+			<div class='container mb-5'>
+				<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="{{ 'home'|trans }}">Acceuil</a>
+			</div>
 		</div>
-	</div>
+	{% endif %}
+
+
 {% endblock %}
