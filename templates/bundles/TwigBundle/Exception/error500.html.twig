@@ -1,30 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{ 'errors.error500'|trans }}
+	{% if app.request.requesturi|slice(1, 2) == 'en' %}
+		Error 500
+	{% else %}
+		Erreur 500
+	{% endif %}
 {% endblock %}
 
 {% block body %}
-	<div class="collection_text">{{'errors.catchError500'|trans}}</div>
-	<div class="collection_section layout_padding ">
-		<div id="notfound">
-			<div class="notfound ">
-				<div class="notfound-404 ">
-					<h1>
-						<strong>500</strong>
-					</h1>
+	{% if app.request.requesturi|slice(1, 2) == 'en' %}
+		<div class="collection_text">INTERNAL SERVER ERROR</div>
+		<div class="collection_section layout_padding ">
+			<div id="notfound">
+				<div class="notfound ">
+					<div class="notfound-404 ">
+						<h1>
+							<strong>500</strong>
+						</h1>
+					</div>
+					<h2>
+						<strong>
+							INTERNAL SERVER ERROR
+						</strong>
+					</h2>
+					<p>
+						<strong>Sorry, something went wrong on our end. We are currently trying to fix the problem.</strong>
+					</p>
 				</div>
-				<h2>
-					<strong>{{'errors.catchError500'|trans}}</strong>
-				</h2>
-				<p>
-					<strong>{{'errors.msgError500'|trans}}</strong>
-				</p>
+			</div>
+			<div class='container mb-5'>
+				<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="Home">Home</a>
 			</div>
 		</div>
-		<div class='container mb-5'>
-			<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+	{% else %}
+		<div class="collection_text">ERREUR DU SERVEUR</div>
+		<div class="collection_section layout_padding ">
+			<div id="notfound">
+				<div class="notfound ">
+					<div class="notfound-404 ">
+						<h1>
+							<strong>500</strong>
+						</h1>
+					</div>
+					<h2>
+						<strong>ERREUR DU SERVEUR</strong>
+					</h2>
+					<p>
+						<strong>Désole, nous avons rencontrons un ou plusieurs soucis.Nous sommes actuellement entrain de résoudre le/les problème(s).</strong>
+					</p>
+				</div>
+			</div>
+			<div class='container mb-5'>
+				<a class='btn btn-success btn-lg btn-block' href="{{ path('home') }}" title="Acceuil">Acceuil</a>
+			</div>
 		</div>
-	</div>
+	{% endif %}
+
 
 {% endblock %}
