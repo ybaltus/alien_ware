@@ -21,39 +21,39 @@ class Product
     private $id;
 
     /**
+     * Name of the product
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * Description of the product
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
+     * Price of the product
      * @ORM\Column(type="float")
      * @Assert\PositiveOrZero
      */
     private $price;
 
     /**
+     * Stock of the product
      * @ORM\Column(type="integer")
      * @Assert\PositiveOrZero
      */
     private $stock;
 
     /**
+     * Image of the product
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      *      max = 255,
      * )
      */
     private $image;
-
-    public function __toString()
-    {
-        return $this->name;
-    }
 
     public function getId(): ?int
     {
@@ -121,6 +121,7 @@ class Product
     }
 
     /**
+     * Event trigger when a product is deleted in order to delete the image file
      * @ORM\PostRemove
      */
     public function deleteImage()
@@ -130,5 +131,10 @@ class Product
             unlink($path);
         }
         return true;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

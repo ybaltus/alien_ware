@@ -26,6 +26,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
+     * Email of the user
      * @Assert\NotBlank
      * @Assert\Email(
      *     message = "user.errors.email"
@@ -35,17 +36,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
+     * Roles of the user
      * @ORM\Column(type="json")
      */
     private $roles = [];
 
     /**
+     * Password of the user
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * Firstname of the product
      * @Assert\NotBlank
      * @Assert\Length(
      *  min = 2,
@@ -58,6 +62,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $firstname;
 
     /**
+     * Lastname of the product
      * @Assert\NotBlank
      * @Assert\Length(
      *  min = 2,
@@ -70,11 +75,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $lastname;
 
     /**
+     * The saved carts of the user
      * @ORM\OneToMany(targetEntity=Cart::class, mappedBy="User")
      */
     private $carts;
 
     /**
+     * The date of the creation of the user
      * @ORM\Column(type="datetime_immutable")
      */
     private $created_at;
