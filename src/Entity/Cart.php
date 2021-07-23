@@ -21,26 +21,31 @@ class Cart
     private $id;
 
     /**
+     * Purchase date
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $purchaseAt;
 
     /**
+     * State of cart (false=notPaid, true=Paid)
      * @ORM\Column(type="boolean", options={"default": false})
      */
     private $state = false;
 
     /**
+     * User who created a cart
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="carts")
      */
     private $User;
 
     /**
+     * Content of the cart ( products, quantities and dates)
      * @ORM\OneToMany(targetEntity=CartContent::class, mappedBy="cart", orphanRemoval=true)
      */
     private $cartContents;
 
     /**
+     * Total price of the cart
      * @ORM\Column(type="float")
      */
     private $total;

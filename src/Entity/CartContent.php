@@ -22,6 +22,7 @@ class CartContent
     private $id;
 
     /**
+     * Quantity of the product
      * @ORM\Column(type="integer")
      * @Assert\NotBlank
      * @Assert\PositiveOrZero
@@ -29,23 +30,27 @@ class CartContent
     private $quantity;
 
     /**
+     * Date added in the cart
      * @ORM\Column(type="datetime_immutable")
      */
     private $createAt;
 
     /**
+     * The product
      * @ORM\ManyToOne(targetEntity=Product::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
 
     /**
+     * The cart associated
      * @ORM\ManyToOne(targetEntity=Cart::class, inversedBy="cartContents")
      * @ORM\JoinColumn(nullable=false)
      */
     private $cart;
 
     /**
+     * Total price for a quantity of product
      * @ORM\Column(type="float")
      */
     private $total;
