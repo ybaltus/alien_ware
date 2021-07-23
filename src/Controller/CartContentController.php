@@ -35,6 +35,7 @@ class CartContentController extends AbstractController
     }
 
     /**
+     * Sauvegarde le contenue et le panier et redirige vers la page de page de récapitulatif
      * @Route("/", name="cart_content_insert")
      */
     public function insert(): Response
@@ -48,10 +49,10 @@ class CartContentController extends AbstractController
         $this->em->persist($cart);
 
         foreach ($this->session->get('cart', []) as $id => $qty) {
+            // création de l'entité CartContent
             $cartContent = new CartContent();
             $cartContent->setCart($cart);
             $cartContent->setCreateAt(new DateTimeImmutable('now'));
-            dump($cartContent);
             $cartContent->setQuantity($qty);
             //On récupère chaque produit dans la Base de donnée
             $product = $this->productRepository->find($id);
@@ -74,10 +75,12 @@ class CartContentController extends AbstractController
     }
 
     /**
+     * Récapitulatif de la commande et du panier
      * @Route ("/{id}", name="cart_content_show", requirements={"id": "\d+"})
      */
     public function show(Cart $cart = null, CartRepository $cartRepository){
 
+        // recupération dans la BDD du panier
         $cart = $cartRepository->find($cart);
 
         return $this->render('cart_content/show.html.twig', [
@@ -86,14 +89,19 @@ class CartContentController extends AbstractController
     }
 
     /**
+     * Validation du panier
      * @Route ("/validate/{id}", name="cart_content_validate", requirements={"id": "\d+"})
      */
     public function validate(Cart $cart = null, CartRepository $cartRepository, TranslatorInterface $translator){
 
+        // recupération dans la BDD du panier
         $cart = $cartRepository->find($cart);
+        // On change la valeur de setState à TRUE
         $cart->setState(true);
+        // puis on le persiste dans la BDD
         $this->em->persist($cart);
 
+        // on affiche un message flash a l'utilisateur
         $this->addFlash("success", $translator->trans('cart.messages.successPayment'));
 
         $this->em->flush();

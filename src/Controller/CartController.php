@@ -30,6 +30,7 @@ class CartController extends AbstractController
     }
 
     /**
+     * Ajout d'un produit dans le panier
      * @Route("/add/{id}", name="cart_add", methods={"GET"}, requirements={"id":"\d+"})
      */
     public function add($id, ProductRepository $productRepository, SessionInterface $session, Request $request, TranslatorInterface $translator): Response
@@ -79,6 +80,7 @@ class CartController extends AbstractController
     }
 
     /**
+     * Affichage des produits sur le panier
      *@Route("/", name="cart_show")
      */
     public function show(SessionInterface $session, ProductRepository $productRepository)
@@ -110,6 +112,7 @@ class CartController extends AbstractController
     }
 
     /**
+     * Suppression d'un produit dans le panier
      * @Route("/delete/{id}", name="cart_delete", requirements={"id": "\d+"})
      */
     public function delete($id, TranslatorInterface $translator){
@@ -139,6 +142,7 @@ class CartController extends AbstractController
     }
 
     /**
+     * Diminution de la quantité d'un produit
      * @Route("/decrement/{id}", name="cart_decrement", requirements={"id": "\d+"})
      */
     public function decrement($id, TranslatorInterface $translator){

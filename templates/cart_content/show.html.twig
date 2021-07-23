@@ -8,8 +8,10 @@
     <!-- breadcrumb end  -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ path('cart_show') }}" title="{{ 'cart.title'|trans }}">{{ 'cart.title'|trans }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('home') }}" title="{{ 'home'|trans }}">{{ 'home'|trans }}</a>
+            </li>
+            <li class="breadcrumb-item"><a href="{{ path('cart_show') }}"
+                                           title="{{ 'cart.title'|trans }}">{{ 'cart.title'|trans }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ 'cart.content.summary'|trans }}</li>
         </ol>
     </nav>
@@ -17,95 +19,77 @@
     <div class="collection_section layout_padding">
         <div class="container">
             {% if app.user is not null %}
-                <div class="row">
-                    <div class="col-12">
-                        {% for type, messages in app.flashes %}
-                            {% for message in messages %}
-                                <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-                                    {{ message }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            {% endfor %}
+            <div class="row">
+                <div class="col-12">
+                    {% for type, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         {% endfor %}
-                    </div>
+                    {% endfor %}
                 </div>
-                <table class="table m-5">
-                    {% if '?returnToSummary' in url %}
-                    <thead class="text-center">
-                    <tr>
-                        <th>{{ 'cart.content.name'|trans }}</th>
-                        <th>{{ 'cart.content.quantity'|trans }}</th>
-                        <th>{{ 'cart.content.price'|trans }}€</th>
-                        <th>{{ 'cart.content.purchaseAt'|trans }}</th>
-                        <th>{{ 'cart.state'|trans }}</th>
-                        <th>{{ 'cart.content.total'|trans }}</th>
-                    </tr>
-                    </thead>
-                    <tbody class="text-center">
-                    {% for content in cart.cartContents %}
-                        <tr>
-                            <td>{{ content.product }}</td>
-                            <td>{{ content.quantity }}</td>
-                            <td>{{ content.product.price }} €</td>
-                            <td>{{ content.cart.purchaseAt |date("d/m/Y") }}</td>
-                            <td class="badge badge-success">{{ 'cart.content.paid'|trans }}</td>
-                            <td>{{ content.total }} €</td>
-                        </tr>
-                    {% endfor %}
-                    {% else %}
-                    <thead class="text-center">
-                    <tr>
-                        <th>{{ 'cart.content.name'|trans }}</th>
-                        <th>{{ 'cart.content.quantity'|trans }}</th>
-                        <th>{{ 'cart.content.price'|trans }}€</th>
-                        <th>{{ 'cart.content.purchaseAt'|trans }}</th>
-                        <th>{{ 'cart.content.total'|trans }}</th>
-                    </tr>
-                    </thead>
-                    <tbody class="text-center">
-                    {% for content in cart.cartContents %}
-                        <tr>
-                            <td>{{ content.product }}</td>
-                            <td>{{ content.quantity }}</td>
-                            <td>{{ content.product.price }} €</td>
-                            <td>{{ content.cart.purchaseAt |date("d/m/Y") }}</td>
-                            <td>{{ content.total }} €</td>
-                        </tr>
-                    {% endfor %}
-                    {% endif %}
-                    <tfoot>
-                    <tr>
-                        <td colspan="{% if '?returnToSummary' in url %}5{% else %}4{% endif %}"><strong>Total</strong>
-                        </td>
-                        <td class="text-center">{{ cart.total }} €</td>
-                    </tr>
-                    </tfoot>
-                    </tbody>
-                </table>
+            </div>
+            <table class="table m-5">
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4 col-sm-12 mb-5"><a
-                            {% if '?returnToSummary' in url %}
-                            <div class="col-md-4"></div>
-                        {% else %}
-                            href="{{ path('cart_content_validate',{'id': cart.id}) }}
-                            {% endif %}"
-                            class="btn btn-success placer ">{{ 'cart.content.pay' |trans }}</a>
-                        </div>
-                    </div>
-                </div>
-            {% else %}
+                <thead class="text-center">
+                <tr>
+                    <th>{{ 'cart.content.name'|trans }}</th>
+                    <th>{{ 'cart.content.quantity'|trans }}</th>
+                    <th>{{ 'cart.content.price'|trans }}€</th>
+                    <th>{{ 'cart.content.purchaseAt'|trans }}</th>
+                    {% if '?returnToSummary' in url %}
+                        <th>{{ 'cart.state'|trans }}</th>
+                    {% endif %}
+                    <th>{{ 'cart.content.total'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                {% for content in cart.cartContents %}
+                    <tr>
+                        <td>{{ content.product }}</td>
+                        <td>{{ content.quantity }}</td>
+                        <td>{{ content.product.price }} €</td>
+                        <td>{{ content.cart.purchaseAt |date("d/m/Y") }}</td>
+                        {% if '?returnToSummary' in url %}
+                            <td class="badge badge-success">{{ 'cart.content.paid'|trans }}</td>
+                        {% endif %}
+                        <td>{{ content.total }} €</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="{% if '?returnToSummary' in url %}5{% else %}4{% endif %}"><strong>Total</strong>
+                    </td>
+                    <td class="text-center">{{ cart.total }} €</td>
+                </tr>
+                </tfoot>
+
+            </table>
+
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-12 m-5">
-                        <h1 colspan="4" class="text-center col-md-12">{{ 'cart.noConnect2'|trans }}</h1>
-                        <a href="{{ path('app_login') }}" class="col-md-12 btn btn-primary">Connexion</a>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 col-sm-12 mb-5">
+                        {% if '?returnToSummary' not in url %}
+                        <a href="{{ path('cart_content_validate',{'id': cart.id}) }}"
+                          class=" btn btn-success placer ">{{ 'cart.content.pay' |trans }}</a>
+                        {% endif %}
                     </div>
                 </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col-md-12 m-5">
+                    <h1 colspan="4" class="text-center col-md-12">{{ 'cart.noConnect2'|trans }}</h1>
+                    <a href="{{ path('app_login') }}" class="col-md-12 btn btn-primary">Connexion</a>
+                </div>
+            </div>
             {% endif %}
         </div>
     </div>
