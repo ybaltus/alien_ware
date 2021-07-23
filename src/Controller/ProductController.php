@@ -20,6 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ProductController extends AbstractController
 {
     /**
+     * List of products
      * @Route("/products", name="product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
@@ -32,7 +33,7 @@ class ProductController extends AbstractController
 
 
     /**
-     * show detail from a product both side(admin and customer side)
+     * Show detail from a product both side(admin and customer side)
      * @Route("/product/{id}", name="product_show", methods={"GET"})
      */
     public function show(Product $product = null): Response
