@@ -41,6 +41,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
 
     /**
+     * Retrieves and sort the users per date
      * @return User[] Returns an array of User objects
      */
     public function findByCreatedAt()
